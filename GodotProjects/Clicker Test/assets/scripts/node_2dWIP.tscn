@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0lpgflcl3g2h"]
+[gd_scene load_steps=12 format=3 uid="uid://d0lpgflcl3g2h"]
 
 [ext_resource type="Script" path="res://Node2D.gd" id="1_fotvq"]
 [ext_resource type="Texture2D" uid="uid://0p5agevu7aqj" path="res://assets/UIassets/Background/BackgroundWIP.png" id="2_lp2fs"]
 [ext_resource type="Texture2D" uid="uid://blak5420nx6yu" path="res://assets/UIassets/Buttons/ButtonWIP.png" id="3_3scn5"]
 [ext_resource type="Texture2D" uid="uid://dpt4cfr3sm3na" path="res://assets/UIassets/Buttons/ClickUpgradeWIP.png" id="4_h4cb1"]
 [ext_resource type="Texture2D" uid="uid://nmvgg2gg11bi" path="res://assets/UIassets/Buttons/PassiveUpgradeWIP.png" id="5_gm1vf"]
+[ext_resource type="Texture2D" uid="uid://cp5q8pt66pb4b" path="res://assets/UIassets/Background/MiscUpgradeWIP.png" id="5_gqx5s"]
 [ext_resource type="Texture2D" uid="uid://cvgxsk56nicrq" path="res://assets/UIassets/SideMenuWIP.png" id="6_2quv8"]
 [ext_resource type="Texture2D" uid="uid://cjyuh8n465h17" path="res://assets/UIassets/Buttons/IAPButtonWIP.png" id="7_51t22"]
+[ext_resource type="Texture2D" uid="uid://byomeo0i54u7g" path="res://assets/UIassets/Background/PassUpgradeWIP.png" id="7_np1i2"]
 [ext_resource type="Texture2D" uid="uid://j3806usw5pba" path="res://assets/UIassets/Background/InAppShopWIP.png" id="8_xbo1h"]
 
 [sub_resource type="GDScript" id="GDScript_ak56l"]
@@ -66,6 +68,13 @@ offset_right = 287.0
 offset_bottom = 868.0
 texture_normal = ExtResource("4_h4cb1")
 
+[node name="UpgBackround" type="Sprite2D" parent="canvas/UpgradeMenu"]
+visible = false
+show_behind_parent = true
+position = Vector2(313.5, -240.5)
+scale = Vector2(1.05833, 1.18875)
+texture = ExtResource("5_gqx5s")
+
 [node name="PassiveUpgrade" type="TextureButton" parent="canvas"]
 offset_left = 308.0
 offset_top = 693.0
@@ -73,6 +82,13 @@ offset_right = 608.0
 offset_bottom = 868.0
 tooltip_text = "Upgrades passive rate of points"
 texture_normal = ExtResource("5_gm1vf")
+
+[node name="PasBackground" type="Sprite2D" parent="canvas/PassiveUpgrade"]
+visible = false
+show_behind_parent = true
+position = Vector2(-5, -240)
+scale = Vector2(1.06667, 1.185)
+texture = ExtResource("7_np1i2")
 
 [node name="Timer" type="Timer" parent="canvas"]
 
@@ -94,7 +110,7 @@ offset_right = 133.0
 offset_bottom = 620.0
 texture_normal = ExtResource("7_51t22")
 
-[node name="Sprite2D" type="Sprite2D" parent="canvas/IAPMenu"]
+[node name="IAPBackground" type="Sprite2D" parent="canvas/IAPMenu"]
 visible = false
 show_behind_parent = true
 position = Vector2(314, 39.0001)

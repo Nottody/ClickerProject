@@ -18,7 +18,7 @@ func _ready():
 	$canvas/Points.text = str(points)
 	$canvas/Money.text = "$" + str(money)
 	$canvas/Clock.text = str(clock)
-	$canvas/ClickUpgrade.tooltip_text = "Upgrade Cost:" + str(upgradeCost)
+	$canvas/UpgradeMenu.tooltip_text = "Upgrade Cost:" + str(upgradeCost)
 	$canvas/PassiveUpgrade.tooltip_text = "Upgrade Cost:" + str(passiveCost)
 	orgin = $canvas/SideMenu.position
 
@@ -31,7 +31,7 @@ func _on_click_upgrade_pressed():
 		points -= upgradeCost
 		upgradeCost += (10 * click)
 		click += 2
-		$canvas/ClickUpgrade.tooltip_text = "Upgrade Cost:" + str(upgradeCost)
+		$canvas/UpgradeMenu.tooltip_text = "Upgrade Cost:" + str(upgradeCost)
 		$canvas/Points.text = str(points)
 
 
@@ -64,34 +64,34 @@ func _on_side_menu_2_toggled(button_pressed):
 
 
 func _on_iap_menu_pressed():
-	if $canvas/IAPMenu/Sprite2D.visible:
-		$canvas/ClickUpgrade.disabled = false
+	if $canvas/IAPMenu/IAPBackground.visible:
+		$canvas/UpgradeMenu.disabled = false
 		$canvas/PassiveUpgrade.disabled = false
-		$canvas/IAPMenu/Sprite2D.visible = false
+		$canvas/IAPMenu/IAPBackground.visible = false
 		
 	else:
-		$canvas/IAPMenu/Sprite2D.visible = true
-		$canvas/ClickUpgrade.disabled = true
+		$canvas/IAPMenu/IAPBackground.visible = true
+		$canvas/UpgradeMenu.disabled = true
 		$canvas/PassiveUpgrade.disabled = true
 
 func _on_upgrade_menu_pressed():
-	if $canvas/UpgradeMenu/Sprite2D.visible:
-		$canvas/ClickUpgrade.disabled = false
+	if $canvas/UpgradeMenu/UpgBackround.visible:
+		$canvas/IAPMenu.disabled = false
 		$canvas/PassiveUpgrade.disabled = false
-		$canvas/UpgradeMenu/Sprite2D.visible = false
+		$canvas/UpgradeMenu/UpgBackround.visible = false
 		
 	else:
-		$canvas/UpgradeMenu/Sprite2D.visible = true
-		$canvas/ClickUpgrade.disabled = true
+		$canvas/UpgradeMenu/UpgBackround.visible = true
+		$canvas/IAPMenu.disabled = true
 		$canvas/PassiveUpgrade.disabled = true
 
 func _on_passive_menu_pressed():
-	if $canvas/PassiveUpgrade/Sprite2D.visible:
-		$canvas/ClickUpgrade.disabled = false
-		$canvas/PassiveUpgrade.disabled = false
-		$canvas/PassiveUpgrade/Sprite2D.visible = false
+	if $canvas/PassiveUpgrade/PasBackground.visible:
+		$canvas/UpgradeMenu.disabled = false
+		$canvas/IAPMenu.disabled = false
+		$canvas/PassiveUpgrade/PasBackground.visible = false
 		
 	else:
-		$canvas/IAPButton/Sprite2D.visible = true
-		$canvas/ClickUpgrade.disabled = true
-		$canvas/PassiveUpgrade.disabled = true
+		$canvas/PassiveUpgrade/PasBackground.visible = true
+		$canvas/UpgradeMenu.disabled = true
+		$canvas/IAPMenu.disabled = true
