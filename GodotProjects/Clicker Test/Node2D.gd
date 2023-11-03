@@ -95,3 +95,9 @@ func _on_passive_menu_pressed():
 		$canvas/PassiveUpgrade/PasBackground.visible = true
 		$canvas/UpgradeMenu.disabled = true
 		$canvas/IAPMenu.disabled = true
+
+func _on_shmoney_store_pressed():
+	if $canvas/ShmoneyStore/ShStoreBackground.visible:
+		$canvas/ShmoneyStore/ShStoreBackground.visible = false
+	else:
+		$canvas/ShmoneyStore/ShStoreBackground.visible = true

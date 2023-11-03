@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d0lpgflcl3g2h"]
+[gd_scene load_steps=14 format=3 uid="uid://d0lpgflcl3g2h"]
 
 [ext_resource type="Script" path="res://Node2D.gd" id="1_fotvq"]
 [ext_resource type="Texture2D" uid="uid://0p5agevu7aqj" path="res://assets/UIassets/Background/BackgroundWIP.png" id="2_lp2fs"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cjyuh8n465h17" path="res://assets/UIassets/Buttons/IAPButtonWIP.png" id="7_51t22"]
 [ext_resource type="Texture2D" uid="uid://byomeo0i54u7g" path="res://assets/UIassets/Background/PassUpgradeWIP.png" id="7_np1i2"]
 [ext_resource type="Texture2D" uid="uid://j3806usw5pba" path="res://assets/UIassets/Background/InAppShopWIP.png" id="8_xbo1h"]
+[ext_resource type="Texture2D" uid="uid://b3iqdkvsgbjyo" path="res://assets/UIassets/Buttons/ShmonyStoreWIP.png" id="10_5lrp8"]
+[ext_resource type="Texture2D" uid="uid://dwaw2jv0r22yt" path="res://assets/UIassets/Background/ShmoneyStoreWIP.png" id="11_lkuwl"]
 
 [sub_resource type="GDScript" id="GDScript_ak56l"]
 script/source = "extends CanvasLayer
@@ -31,7 +33,11 @@ script = ExtResource("1_fotvq")
 [node name="canvas" type="CanvasLayer" parent="."]
 script = SubResource("GDScript_ak56l")
 
+[node name="Timer" type="Timer" parent="canvas"]
+
 [node name="Background" type="Sprite2D" parent="canvas"]
+light_mask = 16
+visibility_layer = 16
 position = Vector2(288.5, 437.5)
 scale = Vector2(1.1375, 0.825781)
 texture = ExtResource("2_lp2fs")
@@ -61,36 +67,87 @@ offset_bottom = 249.0
 theme_override_font_sizes/normal_font_size = 75
 text = "points"
 
-[node name="UpgradeMenu" type="TextureButton" parent="canvas"]
-offset_left = -13.0
-offset_top = 693.0
-offset_right = 287.0
-offset_bottom = 868.0
+[node name="Money" type="RichTextLabel" parent="canvas"]
+offset_left = 47.0
+offset_top = 14.0
+offset_right = 309.0
+offset_bottom = 150.0
+theme_override_font_sizes/normal_font_size = 75
+text = "$"
+scroll_active = false
+
+[node name="UpgradeMenu" type="TextureButton" parent="canvas" groups=["MenuButtons"]]
+light_mask = 8
+visibility_layer = 8
+offset_left = 35.0
+offset_top = 625.0
+offset_right = 294.0
+offset_bottom = 786.0
 texture_normal = ExtResource("4_h4cb1")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="UpgBackround" type="Sprite2D" parent="canvas/UpgradeMenu"]
 visible = false
-show_behind_parent = true
-position = Vector2(313.5, -240.5)
-scale = Vector2(1.05833, 1.18875)
+z_index = 1
+position = Vector2(273, -185)
+scale = Vector2(1.19333, 1.3275)
 texture = ExtResource("5_gqx5s")
 
-[node name="PassiveUpgrade" type="TextureButton" parent="canvas"]
-offset_left = 308.0
-offset_top = 693.0
-offset_right = 608.0
-offset_bottom = 868.0
+[node name="IAPMenu" type="TextureButton" parent="canvas" groups=["MenuButtons"]]
+light_mask = 8
+visibility_layer = 8
+offset_left = 8.0
+offset_top = 88.0
+offset_right = 120.0
+offset_bottom = 215.0
+texture_normal = ExtResource("7_51t22")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="IAPBackground" type="Sprite2D" parent="canvas/IAPMenu"]
+visible = false
+show_behind_parent = true
+z_index = 1
+position = Vector2(303, 422)
+scale = Vector2(1.385, 1.32094)
+texture = ExtResource("8_xbo1h")
+
+[node name="PassiveUpgrade" type="TextureButton" parent="canvas" groups=["MenuButtons"]]
+light_mask = 8
+visibility_layer = 8
+offset_left = 317.0
+offset_top = 627.0
+offset_right = 581.0
+offset_bottom = 786.0
 tooltip_text = "Upgrades passive rate of points"
 texture_normal = ExtResource("5_gm1vf")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="PasBackground" type="Sprite2D" parent="canvas/PassiveUpgrade"]
 visible = false
 show_behind_parent = true
-position = Vector2(-5, -240)
-scale = Vector2(1.06667, 1.185)
+z_index = 1
+position = Vector2(-19, -186)
+scale = Vector2(1.28833, 1.30625)
 texture = ExtResource("7_np1i2")
 
-[node name="Timer" type="Timer" parent="canvas"]
+[node name="ShmoneyStore" type="TextureButton" parent="canvas" groups=["MenuButtons"]]
+offset_left = 23.0
+offset_top = 798.0
+offset_right = 588.0
+offset_bottom = 876.0
+texture_normal = ExtResource("10_5lrp8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ShStoreBackground" type="Sprite2D" parent="canvas/ShmoneyStore"]
+visible = false
+z_index = 1
+position = Vector2(269, -359)
+scale = Vector2(1.25167, 1.27375)
+texture = ExtResource("11_lkuwl")
 
 [node name="SideMenu" type="Sprite2D" parent="canvas"]
 position = Vector2(782, 458)
@@ -103,29 +160,6 @@ offset_right = -190.0
 offset_bottom = 58.0
 toggle_mode = true
 
-[node name="IAPMenu" type="TextureButton" parent="canvas"]
-offset_left = -17.0
-offset_top = 420.0
-offset_right = 133.0
-offset_bottom = 620.0
-texture_normal = ExtResource("7_51t22")
-
-[node name="IAPBackground" type="Sprite2D" parent="canvas/IAPMenu"]
-visible = false
-show_behind_parent = true
-position = Vector2(314, 39.0001)
-scale = Vector2(1.385, 1.32094)
-texture = ExtResource("8_xbo1h")
-
-[node name="Money" type="RichTextLabel" parent="canvas"]
-offset_left = 34.0
-offset_top = 17.0
-offset_right = 296.0
-offset_bottom = 153.0
-theme_override_font_sizes/normal_font_size = 75
-text = "$"
-scroll_active = false
-
 [node name="Clock" type="RichTextLabel" parent="canvas"]
 offset_left = 422.0
 offset_top = -4.0
@@ -134,9 +168,10 @@ offset_bottom = 141.0
 theme_override_font_sizes/normal_font_size = 75
 text = "time"
 
+[connection signal="timeout" from="canvas/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="canvas/TextureButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="canvas/UpgradeMenu" to="." method="_on_upgrade_menu_pressed"]
-[connection signal="pressed" from="canvas/PassiveUpgrade" to="." method="_on_passive_menu_pressed"]
-[connection signal="timeout" from="canvas/Timer" to="." method="_on_timer_timeout"]
-[connection signal="toggled" from="canvas/SideMenu/SideMenu2" to="." method="_on_side_menu_2_toggled"]
 [connection signal="pressed" from="canvas/IAPMenu" to="." method="_on_iap_menu_pressed"]
+[connection signal="pressed" from="canvas/PassiveUpgrade" to="." method="_on_passive_menu_pressed"]
+[connection signal="pressed" from="canvas/ShmoneyStore" to="." method="_on_shmoney_store_pressed"]
+[connection signal="toggled" from="canvas/SideMenu/SideMenu2" to="." method="_on_side_menu_2_toggled"]
