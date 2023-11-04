@@ -12,6 +12,7 @@ var passiveEarn = 0
 var passiveCost = 100
 var clock = 120
 var orgin
+var buttons
 
 func _ready():
 	$canvas/Timer.start()
@@ -21,6 +22,7 @@ func _ready():
 	$canvas/UpgradeMenu.tooltip_text = "Upgrade Cost:" + str(upgradeCost)
 	$canvas/PassiveUpgrade.tooltip_text = "Upgrade Cost:" + str(passiveCost)
 	orgin = $canvas/SideMenu.position
+	buttons = get_tree().get_nodes_in_group("MenuButtons")
 
 func _on_button_pressed():
 	points += click
@@ -62,42 +64,43 @@ func _on_side_menu_2_toggled(button_pressed):
 	else:
 		$canvas/SideMenu.move_local_x(450,false)
 
-
 func _on_iap_menu_pressed():
-	if $canvas/IAPMenu/IAPBackground.visible:
-		$canvas/UpgradeMenu.disabled = false
-		$canvas/PassiveUpgrade.disabled = false
-		$canvas/IAPMenu/IAPBackground.visible = false
-		
-	else:
-		$canvas/IAPMenu/IAPBackground.visible = true
-		$canvas/UpgradeMenu.disabled = true
-		$canvas/PassiveUpgrade.disabled = true
+	$canvas/IAPMenu/IAPBackground.visible = true
+	$canvas/Back.visible = true
+	$canvas/Back.disabled = false
+	_toggle_menu_buttons()
 
 func _on_upgrade_menu_pressed():
-	if $canvas/UpgradeMenu/UpgBackround.visible:
-		$canvas/IAPMenu.disabled = false
-		$canvas/PassiveUpgrade.disabled = false
-		$canvas/UpgradeMenu/UpgBackround.visible = false
-		
-	else:
-		$canvas/UpgradeMenu/UpgBackround.visible = true
-		$canvas/IAPMenu.disabled = true
-		$canvas/PassiveUpgrade.disabled = true
+	$canvas/UpgradeMenu/UpgBackround.visible = true
+	$canvas/Back.visible = true
+	$canvas/Back.disabled = false
+	_toggle_menu_buttons()
 
 func _on_passive_menu_pressed():
-	if $canvas/PassiveUpgrade/PasBackground.visible:
-		$canvas/UpgradeMenu.disabled = false
-		$canvas/IAPMenu.disabled = false
-		$canvas/PassiveUpgrade/PasBackground.visible = false
-		
-	else:
-		$canvas/PassiveUpgrade/PasBackground.visible = true
-		$canvas/UpgradeMenu.disabled = true
-		$canvas/IAPMenu.disabled = true
+	$canvas/PassiveUpgrade/PasBackground.visible = true
+	$canvas/Back.visible = true
+	$canvas/Back.disabled = false
+	_toggle_menu_buttons()
 
 func _on_shmoney_store_pressed():
-	if $canvas/ShmoneyStore/ShStoreBackground.visible:
-		$canvas/ShmoneyStore/ShStoreBackground.visible = false
-	else:
-		$canvas/ShmoneyStore/ShStoreBackground.visible = true
+	$canvas/ShmoneyStore/ShStoreBackground.visible = true
+	$canvas/Back.visible = true
+	$canvas/Back.disabled = false
+	_toggle_menu_buttons()
+		
+func _toggle_menu_buttons():
+	for i in buttons:
+		if i.disabled:
+			i.disabled = false
+		else:
+			i.disabled = true
+
+func _back_button():
+	_toggle_menu_buttons()
+	$canvas/Back.visible = false
+	$canvas/Back.disabled = true
+	$canvas/IAPMenu/IAPBackground.visible = false
+	$canvas/UpgradeMenu/UpgBackround.visible = false
+	$canvas/PassiveUpgrade/PasBackground.visible = false
+	$canvas/ShmoneyStore/ShStoreBackground.visible = false
+	

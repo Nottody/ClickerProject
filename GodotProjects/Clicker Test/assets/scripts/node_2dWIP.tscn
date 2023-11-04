@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0lpgflcl3g2h"]
+[gd_scene load_steps=15 format=3 uid="uid://d0lpgflcl3g2h"]
 
 [ext_resource type="Script" path="res://Node2D.gd" id="1_fotvq"]
 [ext_resource type="Texture2D" uid="uid://0p5agevu7aqj" path="res://assets/UIassets/Background/BackgroundWIP.png" id="2_lp2fs"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://nmvgg2gg11bi" path="res://assets/UIassets/Buttons/PassiveUpgradeWIP.png" id="5_gm1vf"]
 [ext_resource type="Texture2D" uid="uid://cp5q8pt66pb4b" path="res://assets/UIassets/Background/MiscUpgradeWIP.png" id="5_gqx5s"]
 [ext_resource type="Texture2D" uid="uid://cvgxsk56nicrq" path="res://assets/UIassets/SideMenuWIP.png" id="6_2quv8"]
+[ext_resource type="Texture2D" uid="uid://dv7ctjvj77ggb" path="res://assets/UIassets/Buttons/BackWIP.png" id="6_ondub"]
 [ext_resource type="Texture2D" uid="uid://cjyuh8n465h17" path="res://assets/UIassets/Buttons/IAPButtonWIP.png" id="7_51t22"]
 [ext_resource type="Texture2D" uid="uid://byomeo0i54u7g" path="res://assets/UIassets/Background/PassUpgradeWIP.png" id="7_np1i2"]
 [ext_resource type="Texture2D" uid="uid://j3806usw5pba" path="res://assets/UIassets/Background/InAppShopWIP.png" id="8_xbo1h"]
@@ -42,22 +43,13 @@ position = Vector2(288.5, 437.5)
 scale = Vector2(1.1375, 0.825781)
 texture = ExtResource("2_lp2fs")
 
-[node name="TextureButton" type="TextureButton" parent="canvas"]
-z_as_relative = false
-clip_contents = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -145.0
-offset_top = -215.0
-offset_right = 155.0
-offset_bottom = 85.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("3_3scn5")
-flip_v = true
+[node name="Clock" type="RichTextLabel" parent="canvas"]
+offset_left = 422.0
+offset_top = -4.0
+offset_right = 604.0
+offset_bottom = 141.0
+theme_override_font_sizes/normal_font_size = 75
+text = "time"
 
 [node name="Points" type="RichTextLabel" parent="canvas"]
 offset_left = 108.0
@@ -76,6 +68,23 @@ theme_override_font_sizes/normal_font_size = 75
 text = "$"
 scroll_active = false
 
+[node name="TextureButton" type="TextureButton" parent="canvas"]
+z_as_relative = false
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -215.0
+offset_right = 155.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_3scn5")
+flip_v = true
+
 [node name="UpgradeMenu" type="TextureButton" parent="canvas" groups=["MenuButtons"]]
 light_mask = 8
 visibility_layer = 8
@@ -89,6 +98,7 @@ stretch_mode = 0
 
 [node name="UpgBackround" type="Sprite2D" parent="canvas/UpgradeMenu"]
 visible = false
+clip_children = 2
 z_index = 1
 position = Vector2(273, -185)
 scale = Vector2(1.19333, 1.3275)
@@ -160,13 +170,15 @@ offset_right = -190.0
 offset_bottom = 58.0
 toggle_mode = true
 
-[node name="Clock" type="RichTextLabel" parent="canvas"]
-offset_left = 422.0
-offset_top = -4.0
-offset_right = 604.0
-offset_bottom = 141.0
-theme_override_font_sizes/normal_font_size = 75
-text = "time"
+[node name="Back" type="TextureButton" parent="canvas" groups=["BackButton"]]
+visible = false
+z_index = 1
+offset_left = 34.0
+offset_top = 765.0
+offset_right = 109.0
+offset_bottom = 840.0
+disabled = true
+texture_normal = ExtResource("6_ondub")
 
 [connection signal="timeout" from="canvas/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="canvas/TextureButton" to="." method="_on_button_pressed"]
@@ -175,3 +187,4 @@ text = "time"
 [connection signal="pressed" from="canvas/PassiveUpgrade" to="." method="_on_passive_menu_pressed"]
 [connection signal="pressed" from="canvas/ShmoneyStore" to="." method="_on_shmoney_store_pressed"]
 [connection signal="toggled" from="canvas/SideMenu/SideMenu2" to="." method="_on_side_menu_2_toggled"]
+[connection signal="pressed" from="canvas/Back" to="." method="_back_button"]
