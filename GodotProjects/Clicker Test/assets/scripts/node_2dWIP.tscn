@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0lpgflcl3g2h"]
+[gd_scene load_steps=16 format=3 uid="uid://d0lpgflcl3g2h"]
 
 [ext_resource type="Script" path="res://Node2D.gd" id="1_fotvq"]
 [ext_resource type="Texture2D" uid="uid://0p5agevu7aqj" path="res://assets/UIassets/Background/BackgroundWIP.png" id="2_lp2fs"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://j3806usw5pba" path="res://assets/UIassets/Background/InAppShopWIP.png" id="8_xbo1h"]
 [ext_resource type="Texture2D" uid="uid://b3iqdkvsgbjyo" path="res://assets/UIassets/Buttons/ShmonyStoreWIP.png" id="10_5lrp8"]
 [ext_resource type="Texture2D" uid="uid://dwaw2jv0r22yt" path="res://assets/UIassets/Background/ShmoneyStoreWIP.png" id="11_lkuwl"]
+[ext_resource type="Script" path="res://assets/scripts/MiscUp.gd" id="14_w8sl8"]
 
 [sub_resource type="GDScript" id="GDScript_ak56l"]
 script/source = "extends CanvasLayer
@@ -180,6 +181,21 @@ offset_bottom = 840.0
 disabled = true
 texture_normal = ExtResource("6_ondub")
 
+[node name="MiscUp" type="CanvasLayer" parent="." groups=["Shops"]]
+visible = false
+script = ExtResource("14_w8sl8")
+
+[node name="FlatCliUp" type="TextureButton" parent="MiscUp" groups=["MiscButtons"]]
+visible = false
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 265.0
+offset_bottom = 165.0
+disabled = true
+texture_normal = ExtResource("4_h4cb1")
+ignore_texture_size = true
+stretch_mode = 0
+
 [connection signal="timeout" from="canvas/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="canvas/TextureButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="canvas/UpgradeMenu" to="." method="_on_upgrade_menu_pressed"]
@@ -188,3 +204,5 @@ texture_normal = ExtResource("6_ondub")
 [connection signal="pressed" from="canvas/ShmoneyStore" to="." method="_on_shmoney_store_pressed"]
 [connection signal="toggled" from="canvas/SideMenu/SideMenu2" to="." method="_on_side_menu_2_toggled"]
 [connection signal="pressed" from="canvas/Back" to="." method="_back_button"]
+[connection signal="visibility_changed" from="MiscUp" to="MiscUp" method="_toggle_buttons"]
+[connection signal="pressed" from="MiscUp/FlatCliUp" to="MiscUp" method="_on_misc_shop_pressed" binds= [50, 2]]

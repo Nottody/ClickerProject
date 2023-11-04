@@ -7,35 +7,28 @@ var qol = 0
 var money = 0
 var shmoney = 0
 var click = 1
-var upgradeCost = 50
 var passiveEarn = 0
 var passiveCost = 100
 var clock = 120
 var orgin
 var buttons
+var shops
 
 func _ready():
 	$canvas/Timer.start()
-	$canvas/Points.text = str(points)
+	_update_points()
 	$canvas/Money.text = "$" + str(money)
 	$canvas/Clock.text = str(clock)
-	$canvas/UpgradeMenu.tooltip_text = "Upgrade Cost:" + str(upgradeCost)
-	$canvas/PassiveUpgrade.tooltip_text = "Upgrade Cost:" + str(passiveCost)
 	orgin = $canvas/SideMenu.position
 	buttons = get_tree().get_nodes_in_group("MenuButtons")
+	shops = get_tree().get_nodes_in_group("Shops")
+
+func _update_points():
+	$canvas/Points.text = str(points)
 
 func _on_button_pressed():
 	points += click
-	$canvas/Points.text = str(points)
-
-func _on_click_upgrade_pressed():
-	if points >= upgradeCost:
-		points -= upgradeCost
-		upgradeCost += (10 * click)
-		click += 2
-		$canvas/UpgradeMenu.tooltip_text = "Upgrade Cost:" + str(upgradeCost)
-		$canvas/Points.text = str(points)
-
+	_update_points()
 
 func _on_passive_upgrade_pressed():
 	if points >= passiveCost:
@@ -72,6 +65,7 @@ func _on_iap_menu_pressed():
 
 func _on_upgrade_menu_pressed():
 	$canvas/UpgradeMenu/UpgBackround.visible = true
+	$MiscUp.visible = true
 	$canvas/Back.visible = true
 	$canvas/Back.disabled = false
 	_toggle_menu_buttons()
@@ -94,9 +88,16 @@ func _toggle_menu_buttons():
 			i.disabled = false
 		else:
 			i.disabled = true
+			
+func _disable_shops():
+	for i in shops:
+		if i.visible:
+			i.visible = false
+			return
 
 func _back_button():
 	_toggle_menu_buttons()
+	_disable_shops()
 	$canvas/Back.visible = false
 	$canvas/Back.disabled = true
 	$canvas/IAPMenu/IAPBackground.visible = false
