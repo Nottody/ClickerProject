@@ -105,6 +105,28 @@ position = Vector2(273, -185)
 scale = Vector2(1.19333, 1.3275)
 texture = ExtResource("5_gqx5s")
 
+[node name="ShopName" type="RichTextLabel" parent="canvas/UpgradeMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 25.0
+offset_right = -6.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 40
+text = "  	Upgrade 
+		Shop"
+
 [node name="IAPMenu" type="TextureButton" parent="canvas" groups=["MenuButtons"]]
 light_mask = 8
 visibility_layer = 8
@@ -144,6 +166,28 @@ position = Vector2(-19, -186)
 scale = Vector2(1.28833, 1.30625)
 texture = ExtResource("7_np1i2")
 
+[node name="ShopName" type="RichTextLabel" parent="canvas/PassiveUpgrade"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 25.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 40
+text = "  	Passive 
+	  Shop"
+
 [node name="ShmoneyStore" type="TextureButton" parent="canvas" groups=["MenuButtons"]]
 offset_left = 23.0
 offset_top = 798.0
@@ -159,6 +203,27 @@ z_index = 1
 position = Vector2(269, -359)
 scale = Vector2(1.25167, 1.27375)
 texture = ExtResource("11_lkuwl")
+
+[node name="ShopName" type="RichTextLabel" parent="canvas/ShmoneyStore"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 8.0
+offset_right = -5.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 40
+text = "		     Shmoney Shop"
 
 [node name="SideMenu" type="Sprite2D" parent="canvas"]
 position = Vector2(782, 458)
