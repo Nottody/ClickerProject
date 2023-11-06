@@ -1,5 +1,3 @@
-# Idle Game to Test True Spending Awareness in Abstracted Versus Non-Abstracted Microtransactions
-
 In this project, we created a simple idle game in which aims to test if players are able to keep track of their True Spending Value better in the case of currency being abstracted versus a lack of abstraction.
 
 ## Background
