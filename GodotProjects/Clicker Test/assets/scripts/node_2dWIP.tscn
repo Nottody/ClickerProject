@@ -250,16 +250,227 @@ texture_normal = ExtResource("6_ondub")
 visible = false
 script = ExtResource("14_w8sl8")
 
-[node name="FlatCliUp" type="TextureButton" parent="MiscUp" groups=["MiscButtons"]]
+[node name="FlatCliUp0" type="TextureButton" parent="MiscUp" groups=["MiscButtons"]]
 visible = false
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 265.0
-offset_bottom = 165.0
+offset_left = 61.0
+offset_top = 107.0
+offset_right = 286.0
+offset_bottom = 228.0
 disabled = true
 texture_normal = ExtResource("4_h4cb1")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="ButtonText" type="RichTextLabel" parent="MiscUp/FlatCliUp0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 27.0
+offset_right = -2.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 27
+text = "		Cost: 50
+		Clicks + 1"
+
+[node name="Owned" type="RichTextLabel" parent="MiscUp/FlatCliUp0"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 93.0
+offset_right = 96.0
+offset_bottom = 133.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/normal_font_size = 20
+text = "0 owned"
+
+[node name="FlatCliUp1" type="TextureButton" parent="MiscUp" groups=["MiscButtons"]]
+visible = false
+offset_left = 59.0
+offset_top = 270.0
+offset_right = 284.0
+offset_bottom = 395.0
+disabled = true
+texture_normal = ExtResource("4_h4cb1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ButtonText" type="RichTextLabel" parent="MiscUp/FlatCliUp1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 27.0
+offset_right = -2.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 27
+text = "		Cost: 150
+		Clicks + 3"
+
+[node name="Owned" type="RichTextLabel" parent="MiscUp/FlatCliUp1"]
+visible = false
+offset_left = 4.0
+offset_top = 93.0
+offset_right = 96.0
+offset_bottom = 133.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/normal_font_size = 20
+text = "0 owned"
+
+[node name="FlatCliUp2" type="TextureButton" parent="MiscUp" groups=["MiscButtons"]]
+visible = false
+offset_left = 59.0
+offset_top = 434.0
+offset_right = 284.0
+offset_bottom = 559.0
+disabled = true
+texture_normal = ExtResource("4_h4cb1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ButtonText" type="RichTextLabel" parent="MiscUp/FlatCliUp2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 27.0
+offset_right = -2.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 27
+text = "		Cost: 500
+		Clicks + 10"
+
+[node name="Owned" type="RichTextLabel" parent="MiscUp/FlatCliUp2"]
+visible = false
+offset_left = 4.0
+offset_top = 93.0
+offset_right = 96.0
+offset_bottom = 133.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/normal_font_size = 20
+text = "0 owned"
+
+[node name="FlatCliUp3" type="TextureButton" parent="MiscUp" groups=["MiscButtons"]]
+visible = false
+offset_left = 57.0
+offset_top = 597.0
+offset_right = 282.0
+offset_bottom = 722.0
+disabled = true
+texture_normal = ExtResource("4_h4cb1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ButtonText" type="RichTextLabel" parent="MiscUp/FlatCliUp3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 27.0
+offset_right = -2.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 27
+text = "		Cost: 1000
+		Clicks + 15"
+
+[node name="Owned" type="RichTextLabel" parent="MiscUp/FlatCliUp3"]
+visible = false
+offset_left = 4.0
+offset_top = 93.0
+offset_right = 96.0
+offset_bottom = 133.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/normal_font_size = 20
+text = "0 owned"
+
+[node name="OtpUp0" type="TextureButton" parent="MiscUp" groups=["MiscButtons"]]
+visible = false
+offset_left = 334.0
+offset_top = 108.0
+offset_right = 559.0
+offset_bottom = 233.0
+disabled = true
+texture_normal = ExtResource("4_h4cb1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ButtonText" type="RichTextLabel" parent="MiscUp/OtpUp0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 27.0
+offset_right = -2.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 27
+text = "		Cost: 150
+		Clicks + 10%"
 
 [connection signal="timeout" from="canvas/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="canvas/TextureButton" to="." method="_on_button_pressed"]
@@ -270,4 +481,8 @@ stretch_mode = 0
 [connection signal="toggled" from="canvas/SideMenu/SideMenu2" to="." method="_on_side_menu_2_toggled"]
 [connection signal="pressed" from="canvas/Back" to="." method="_back_button"]
 [connection signal="visibility_changed" from="MiscUp" to="MiscUp" method="_toggle_buttons"]
-[connection signal="pressed" from="MiscUp/FlatCliUp" to="MiscUp" method="_on_misc_shop_pressed" binds= [50, 2]]
+[connection signal="pressed" from="MiscUp/FlatCliUp0" to="MiscUp" method="_on_misc_shop_pressed" binds= [50, 2, 0, 0]]
+[connection signal="pressed" from="MiscUp/FlatCliUp1" to="MiscUp" method="_on_misc_shop_pressed" binds= [150, 3, 1, 0]]
+[connection signal="pressed" from="MiscUp/FlatCliUp2" to="MiscUp" method="_on_misc_shop_pressed" binds= [500, 10, 2, 0]]
+[connection signal="pressed" from="MiscUp/FlatCliUp3" to="MiscUp" method="_on_misc_shop_pressed" binds= [1000, 15, 3, 0]]
+[connection signal="pressed" from="MiscUp/OtpUp0" to="MiscUp" method="_on_otp_shop_pressed" binds= [150, 1, 4, false]]

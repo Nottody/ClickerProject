@@ -5,10 +5,9 @@ var hunger = 0
 var soc = 0
 var qol = 0
 var money = 0
+var passiveEarn = 0
 var shmoney = 0
 var click = 1
-var passiveEarn = 0
-var passiveCost = 100
 var clock = 120
 var orgin
 var buttons
@@ -24,19 +23,11 @@ func _ready():
 	shops = get_tree().get_nodes_in_group("Shops")
 
 func _update_points():
-	$canvas/Points.text = str(points)
+	$canvas/Points.text = str(roundi(points))
 
 func _on_button_pressed():
 	points += click
 	_update_points()
-
-func _on_passive_upgrade_pressed():
-	if points >= passiveCost:
-		points -= passiveCost
-		passiveCost += (10 * (passiveEarn+1))
-		passiveEarn += 2
-		$canvas/PassiveUpgrade.tooltip_text = "Upgrade Cost:" + str(passiveCost)
-		$canvas/Points.text = str(points)
 
 func _on_timer_timeout():
 	$canvas/Timer.start()
