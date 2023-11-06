@@ -333,6 +333,7 @@ text = "		Cost: 150
 
 [node name="Owned" type="RichTextLabel" parent="MiscUp/FlatCliUp1"]
 visible = false
+layout_mode = 0
 offset_left = 4.0
 offset_top = 93.0
 offset_right = 96.0
@@ -380,6 +381,7 @@ text = "		Cost: 500
 
 [node name="Owned" type="RichTextLabel" parent="MiscUp/FlatCliUp2"]
 visible = false
+layout_mode = 0
 offset_left = 4.0
 offset_top = 93.0
 offset_right = 96.0
@@ -427,6 +429,7 @@ text = "		Cost: 1000
 
 [node name="Owned" type="RichTextLabel" parent="MiscUp/FlatCliUp3"]
 visible = false
+layout_mode = 0
 offset_left = 4.0
 offset_top = 93.0
 offset_right = 96.0
@@ -481,7 +484,7 @@ text = "		Cost: 150
 [connection signal="toggled" from="canvas/SideMenu/SideMenu2" to="." method="_on_side_menu_2_toggled"]
 [connection signal="pressed" from="canvas/Back" to="." method="_back_button"]
 [connection signal="visibility_changed" from="MiscUp" to="MiscUp" method="_toggle_buttons"]
-[connection signal="pressed" from="MiscUp/FlatCliUp0" to="MiscUp" method="_on_misc_shop_pressed" binds= [50, 2, 0, 0]]
+[connection signal="pressed" from="MiscUp/FlatCliUp0" to="MiscUp" method="_on_misc_shop_pressed" binds= [50, 1, 0, 0]]
 [connection signal="pressed" from="MiscUp/FlatCliUp1" to="MiscUp" method="_on_misc_shop_pressed" binds= [150, 3, 1, 0]]
 [connection signal="pressed" from="MiscUp/FlatCliUp2" to="MiscUp" method="_on_misc_shop_pressed" binds= [500, 10, 2, 0]]
 [connection signal="pressed" from="MiscUp/FlatCliUp3" to="MiscUp" method="_on_misc_shop_pressed" binds= [1000, 15, 3, 0]]
