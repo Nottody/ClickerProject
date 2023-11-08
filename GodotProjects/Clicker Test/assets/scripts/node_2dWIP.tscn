@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d0lpgflcl3g2h"]
+[gd_scene load_steps=22 format=3 uid="uid://d0lpgflcl3g2h"]
 
 [ext_resource type="Script" path="res://Node2D.gd" id="1_fotvq"]
 [ext_resource type="Texture2D" uid="uid://0p5agevu7aqj" path="res://assets/UIassets/Background/BackgroundWIP.png" id="2_lp2fs"]
@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://b3iqdkvsgbjyo" path="res://assets/UIassets/Buttons/ShmonyStoreWIP.png" id="10_5lrp8"]
 [ext_resource type="Texture2D" uid="uid://dwaw2jv0r22yt" path="res://assets/UIassets/Background/ShmoneyStoreWIP.png" id="11_lkuwl"]
 [ext_resource type="Script" path="res://assets/scripts/MiscUp.gd" id="14_w8sl8"]
+[ext_resource type="Script" path="res://assets/scripts/VirtPet.gd" id="15_jjcwn"]
+[ext_resource type="Texture2D" uid="uid://bk4aaxwxkfmo4" path="res://assets/UIassets/Buttons/SideButtonWIP.png" id="16_qkkls"]
+[ext_resource type="Texture2D" uid="uid://yr8g6i7epxgd" path="res://assets/UIassets/Background/SideMenuWIP.png" id="17_3k6qq"]
 
 [sub_resource type="GDScript" id="GDScript_ak56l"]
 script/source = "extends CanvasLayer
@@ -28,6 +31,44 @@ func _ready():
 func _process(_delta):
 	pass
 "
+
+[sub_resource type="Animation" id="Animation_ia8hw"]
+resource_name = "Slide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PetMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(615, 100), Vector2(15, 100)]
+}
+
+[sub_resource type="Animation" id="Animation_h0ym6"]
+resource_name = "Close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PetMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(15, 100), Vector2(615, 100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_16c7x"]
+_data = {
+"Close": SubResource("Animation_h0ym6"),
+"Slide": SubResource("Animation_ia8hw")
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_fotvq")
@@ -226,6 +267,7 @@ theme_override_font_sizes/normal_font_size = 40
 text = "		     Shmoney Shop"
 
 [node name="SideMenu" type="Sprite2D" parent="canvas"]
+visible = false
 position = Vector2(782, 458)
 texture = ExtResource("6_2quv8")
 
@@ -475,6 +517,29 @@ theme_override_font_sizes/normal_font_size = 27
 text = "		Cost: 150
 		Clicks + 10%"
 
+[node name="VirtPet" type="CanvasLayer" parent="."]
+script = ExtResource("15_jjcwn")
+
+[node name="SlideAnim" type="AnimationPlayer" parent="VirtPet"]
+libraries = {
+"": SubResource("AnimationLibrary_16c7x")
+}
+
+[node name="OpenPet" type="TextureButton" parent="VirtPet"]
+offset_left = 542.0
+offset_top = 402.0
+offset_right = 637.0
+offset_bottom = 521.0
+texture_normal = ExtResource("16_qkkls")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PetMenu" type="Sprite2D" parent="VirtPet"]
+position = Vector2(615, 100)
+scale = Vector2(1.15, 1.15)
+texture = ExtResource("17_3k6qq")
+centered = false
+
 [connection signal="timeout" from="canvas/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="canvas/TextureButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="canvas/UpgradeMenu" to="." method="_on_upgrade_menu_pressed"]
@@ -489,3 +554,4 @@ text = "		Cost: 150
 [connection signal="pressed" from="MiscUp/FlatCliUp2" to="MiscUp" method="_on_misc_shop_pressed" binds= [500, 10, 2, 0]]
 [connection signal="pressed" from="MiscUp/FlatCliUp3" to="MiscUp" method="_on_misc_shop_pressed" binds= [1000, 15, 3, 0]]
 [connection signal="pressed" from="MiscUp/OtpUp0" to="MiscUp" method="_on_otp_shop_pressed" binds= [150, 1, 4, false]]
+[connection signal="pressed" from="VirtPet/OpenPet" to="VirtPet" method="_on_open_pet_pressed" binds= [false]]

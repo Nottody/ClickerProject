@@ -96,3 +96,6 @@ func _back_button():
 	$canvas/PassiveUpgrade/PasBackground.visible = false
 	$canvas/ShmoneyStore/ShStoreBackground.visible = false
 	
+
+
+
