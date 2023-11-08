@@ -1,9 +1,10 @@
 extends Node2D
 
 var points = 0
-var hunger = 0
-var soc = 0
-var qol = 0
+var hunger = 0.0
+var clean = 0.0
+var happy = 0.0
+var qol = 0.0
 var money = 0
 var passiveEarn = 0
 var shmoney = 0
@@ -40,13 +41,6 @@ func _on_timer_timeout():
 		clock = 120
 		$canvas/Clock.text = str(clock)
 		$canvas/Money.text = "$" + str(money)
-
-func _on_side_menu_2_toggled(button_pressed):
-	if button_pressed:
-		if $canvas/SideMenu.position == orgin:
-			$canvas/SideMenu.move_local_x(-450,false)
-	else:
-		$canvas/SideMenu.move_local_x(450,false)
 
 func _on_iap_menu_pressed():
 	$canvas/IAPMenu/IAPBackground.visible = true
