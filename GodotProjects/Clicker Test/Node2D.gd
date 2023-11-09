@@ -1,16 +1,15 @@
 extends Node2D
 
 var points = 0
-var hunger = 0.0
-var clean = 0.0
-var happy = 0.0
+var hunger 
+var clean 
+var happy 
 var qol = 0.0
-var money = 0
-var passiveEarn = 0
+var money = 25
+var passiveEarn = 0.0
 var shmoney = 0
 var click = 1
 var clock = 120
-var orgin
 var buttons
 var shops
 
@@ -19,9 +18,11 @@ func _ready():
 	_update_points()
 	$canvas/Money.text = "$" + str(money)
 	$canvas/Clock.text = str(clock)
-	orgin = $canvas/SideMenu.position
 	buttons = get_tree().get_nodes_in_group("MenuButtons")
 	shops = get_tree().get_nodes_in_group("Shops")
+	hunger = get_node("VirtPet/Hunger")
+	clean = get_node("VirtPet/Clean")
+	happy = get_node("VirtPet/Happy")
 
 func _update_points():
 	$canvas/Points.text = str(roundi(points))
@@ -35,12 +36,18 @@ func _on_timer_timeout():
 	clock -= 1
 	points += passiveEarn
 	$canvas/Points.text = str(points)
-	$canvas/Clock.text = str(clock)
 	if clock == 0:
 		money += 100
 		clock = 120
-		$canvas/Clock.text = str(clock)
-		$canvas/Money.text = "$" + str(money)
+		
+	$canvas/Clock.text = str(clock)
+	$canvas/Money.text = "$" + str(money)
+	
+	if clock%3 == 0:
+		hunger.value -= 1
+		clean.value -= 0.6
+		happy.value -= 0.8
+	qol = (hunger.value * clean.value * happy.value)/3
 
 func _on_iap_menu_pressed():
 	$canvas/IAPMenu/IAPBackground.visible = true
