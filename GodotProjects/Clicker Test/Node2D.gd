@@ -15,34 +15,40 @@ var shops
 
 func _ready():
 	$canvas/Timer.start()
-	_update_points()
-	$canvas/Money.text = "$" + str(money)
-	$canvas/Clock.text = str(clock)
+
+	_update_pmc()
 	buttons = get_tree().get_nodes_in_group("MenuButtons")
 	shops = get_tree().get_nodes_in_group("Shops")
 	hunger = get_node("VirtPet/Hunger")
 	clean = get_node("VirtPet/Clean")
 	happy = get_node("VirtPet/Happy")
 
+
 func _update_points():
 	$canvas/Points.text = str(roundi(points))
+func _update_money():
+	$canvas/Money.text = "$" + str(money)
+func _update_clock():
+	$canvas/Clock.text = str(clock)
+func _update_pmc():
+	_update_clock()
+	_update_money()
+	_update_points()
 
 func _on_button_pressed():
 	points += click
 	_update_points()
 
+
 func _on_timer_timeout():
 	$canvas/Timer.start()
 	clock -= 1
 	points += passiveEarn
-	$canvas/Points.text = str(points)
+	_update_pmc()
 	if clock == 0:
 		money += 100
 		clock = 120
-		
-	$canvas/Clock.text = str(clock)
-	$canvas/Money.text = "$" + str(money)
-	
+		_update_pmc()
 	if clock%3 == 0:
 		hunger.value -= 1
 		clean.value -= 0.6

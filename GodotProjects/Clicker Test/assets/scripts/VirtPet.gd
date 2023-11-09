@@ -7,7 +7,7 @@ var menu
 var hunger
 var clean
 var happy
-var money
+#var money
 
 func _ready():
 	player = get_parent()
@@ -16,7 +16,7 @@ func _ready():
 	hunger = get_node("Hunger")
 	clean = get_node("Clean")
 	happy = get_node("Happy")
-	money = player.money
+	#money = player.money
 
 func _on_open_pet_pressed(button_pressed):
 	if button_pressed:
@@ -33,35 +33,37 @@ func _on_open_pet_pressed(button_pressed):
 		toggleMenu.connect("pressed",_on_open_pet_pressed.bind(true))
 			
 func _on_hunger_purchase(price):
-	if money >= price:
+	if player.money >= price:
 		if price > 5:
-			money -= price
+			player.money -= price
 			hunger.value += 25
 			happy.value += 15
 		else:
-			money -= price
+			player.money -= price
 			hunger.value += 20
+		player._update_money()
 			
 func _on_clean_purchase(price):
-	if money >= price:
+	if player.money >= price:
 		if price > 5:
-			money -= price
+			player.money -= price
 			clean.value += 25
 			hunger.value += 15
 		else:
-			money -= price
+			player.money -= price
 			clean.value += 20
+		player._update_money()
 	
 func _on_happy_purchase(price):
-	if money >= price:
+	if player.money >= price:
 		if price > 5:
-			money -= price
+			player.money -= price
 			happy.value += 25
 			clean.value += 15
 		else:
-			money -= price
+			player.money -= price
 			happy.value += 20
-	
+		player._update_money()
 
 
 
