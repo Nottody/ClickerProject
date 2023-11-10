@@ -1,36 +1,23 @@
-[gd_scene load_steps=22 format=3 uid="uid://d0lpgflcl3g2h"]
+[gd_scene load_steps=22 format=3 uid="uid://bykaff5xnfya0"]
 
-[ext_resource type="Script" path="res://Node2D.gd" id="1_fotvq"]
-[ext_resource type="Texture2D" uid="uid://0p5agevu7aqj" path="res://assets/UIassets/Background/BackgroundWIP.png" id="2_lp2fs"]
-[ext_resource type="Texture2D" uid="uid://blak5420nx6yu" path="res://assets/UIassets/Buttons/ButtonWIP.png" id="3_3scn5"]
-[ext_resource type="Texture2D" uid="uid://dpt4cfr3sm3na" path="res://assets/UIassets/Buttons/ClickUpgradeWIP.png" id="4_h4cb1"]
-[ext_resource type="Texture2D" uid="uid://nmvgg2gg11bi" path="res://assets/UIassets/Buttons/PassiveUpgradeWIP.png" id="5_gm1vf"]
-[ext_resource type="Texture2D" uid="uid://cp5q8pt66pb4b" path="res://assets/UIassets/Background/MiscUpgradeWIP.png" id="5_gqx5s"]
-[ext_resource type="Texture2D" uid="uid://dv7ctjvj77ggb" path="res://assets/UIassets/Buttons/BackWIP.png" id="6_ondub"]
-[ext_resource type="Texture2D" uid="uid://cjyuh8n465h17" path="res://assets/UIassets/Buttons/IAPButtonWIP.png" id="7_51t22"]
-[ext_resource type="Texture2D" uid="uid://byomeo0i54u7g" path="res://assets/UIassets/Background/PassUpgradeWIP.png" id="7_np1i2"]
-[ext_resource type="Texture2D" uid="uid://j3806usw5pba" path="res://assets/UIassets/Background/InAppShopWIP.png" id="8_xbo1h"]
-[ext_resource type="Texture2D" uid="uid://b3iqdkvsgbjyo" path="res://assets/UIassets/Buttons/ShmonyStoreWIP.png" id="10_5lrp8"]
-[ext_resource type="Texture2D" uid="uid://dwaw2jv0r22yt" path="res://assets/UIassets/Background/ShmoneyStoreWIP.png" id="11_lkuwl"]
-[ext_resource type="Script" path="res://assets/scripts/MiscUp.gd" id="14_w8sl8"]
-[ext_resource type="Script" path="res://assets/scripts/VirtPet.gd" id="15_jjcwn"]
-[ext_resource type="Texture2D" uid="uid://bk4aaxwxkfmo4" path="res://assets/UIassets/Buttons/SideButtonWIP.png" id="16_qkkls"]
-[ext_resource type="Texture2D" uid="uid://bexwiggm7xsi8" path="res://assets/UIassets/PetVisuals/DogWIP.png" id="16_ro10y"]
-[ext_resource type="Texture2D" uid="uid://yr8g6i7epxgd" path="res://assets/UIassets/Background/SideMenuWIP.png" id="17_3k6qq"]
-
-[sub_resource type="GDScript" id="GDScript_ak56l"]
-script/source = "extends CanvasLayer
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-"
+[ext_resource type="Script" path="res://assets/scripts/eventlogger.gd" id="2_b72aw"]
+[ext_resource type="Script" path="res://assets/scripts/canvas.gd" id="3_61uyt"]
+[ext_resource type="Texture2D" uid="uid://0p5agevu7aqj" path="res://assets/UIassets/Background/BackgroundWIP.png" id="3_npvp0"]
+[ext_resource type="Texture2D" uid="uid://blak5420nx6yu" path="res://assets/UIassets/Buttons/ButtonWIP.png" id="4_mhha5"]
+[ext_resource type="Texture2D" uid="uid://dpt4cfr3sm3na" path="res://assets/UIassets/Buttons/ClickUpgradeWIP.png" id="5_k1yog"]
+[ext_resource type="Texture2D" uid="uid://cp5q8pt66pb4b" path="res://assets/UIassets/Background/MiscUpgradeWIP.png" id="6_0a3bb"]
+[ext_resource type="Texture2D" uid="uid://cjyuh8n465h17" path="res://assets/UIassets/Buttons/IAPButtonWIP.png" id="7_trubm"]
+[ext_resource type="Texture2D" uid="uid://j3806usw5pba" path="res://assets/UIassets/Background/InAppShopWIP.png" id="8_oyxb0"]
+[ext_resource type="Texture2D" uid="uid://nmvgg2gg11bi" path="res://assets/UIassets/Buttons/PassiveUpgradeWIP.png" id="9_qy4fn"]
+[ext_resource type="Texture2D" uid="uid://byomeo0i54u7g" path="res://assets/UIassets/Background/PassUpgradeWIP.png" id="10_8n2cq"]
+[ext_resource type="Texture2D" uid="uid://b3iqdkvsgbjyo" path="res://assets/UIassets/Buttons/ShmonyStoreWIP.png" id="11_jxiia"]
+[ext_resource type="Texture2D" uid="uid://dwaw2jv0r22yt" path="res://assets/UIassets/Background/ShmoneyStoreWIP.png" id="12_rtywa"]
+[ext_resource type="Texture2D" uid="uid://dv7ctjvj77ggb" path="res://assets/UIassets/Buttons/BackWIP.png" id="13_yuop2"]
+[ext_resource type="Script" path="res://assets/scripts/MiscUp.gd" id="14_4nxat"]
+[ext_resource type="Script" path="res://assets/scripts/VirtPet.gd" id="15_1gy51"]
+[ext_resource type="Texture2D" uid="uid://yr8g6i7epxgd" path="res://assets/UIassets/Background/SideMenuWIP.png" id="16_38vj7"]
+[ext_resource type="Texture2D" uid="uid://bexwiggm7xsi8" path="res://assets/UIassets/PetVisuals/DogWIP.png" id="17_d4gmj"]
+[ext_resource type="Texture2D" uid="uid://bk4aaxwxkfmo4" path="res://assets/UIassets/Buttons/SideButtonWIP.png" id="18_kftsq"]
 
 [sub_resource type="Animation" id="Animation_h0ym6"]
 resource_name = "Close"
@@ -95,11 +82,16 @@ _data = {
 }
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_fotvq")
 metadata/_edit_vertical_guides_ = []
 
+[node name="LogNode" type="Node" parent="."]
+script = ExtResource("2_b72aw")
+
+[node name="Timer" type="Timer" parent="LogNode"]
+wait_time = 10.0
+
 [node name="canvas" type="CanvasLayer" parent="."]
-script = SubResource("GDScript_ak56l")
+script = ExtResource("3_61uyt")
 
 [node name="Timer" type="Timer" parent="canvas"]
 
@@ -108,7 +100,7 @@ light_mask = 16
 visibility_layer = 16
 position = Vector2(288.5, 437.5)
 scale = Vector2(1.1375, 0.825781)
-texture = ExtResource("2_lp2fs")
+texture = ExtResource("3_npvp0")
 
 [node name="Clock" type="RichTextLabel" parent="canvas"]
 offset_left = 422.0
@@ -147,7 +139,7 @@ offset_right = 150.0
 offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("3_3scn5")
+texture_normal = ExtResource("4_mhha5")
 flip_v = true
 
 [node name="UpgradeMenu" type="TextureButton" parent="canvas" groups=["MenuButtons"]]
@@ -157,7 +149,7 @@ offset_left = 16.0
 offset_top = 624.0
 offset_right = 275.0
 offset_bottom = 785.0
-texture_normal = ExtResource("4_h4cb1")
+texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -167,7 +159,7 @@ clip_children = 2
 z_index = 1
 position = Vector2(273, -185)
 scale = Vector2(1.19333, 1.3275)
-texture = ExtResource("5_gqx5s")
+texture = ExtResource("6_0a3bb")
 
 [node name="ShopName" type="RichTextLabel" parent="canvas/UpgradeMenu"]
 layout_mode = 1
@@ -198,7 +190,7 @@ offset_left = 8.0
 offset_top = 88.0
 offset_right = 120.0
 offset_bottom = 215.0
-texture_normal = ExtResource("7_51t22")
+texture_normal = ExtResource("7_trubm")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -208,7 +200,7 @@ show_behind_parent = true
 z_index = 1
 position = Vector2(303, 422)
 scale = Vector2(1.385, 1.32094)
-texture = ExtResource("8_xbo1h")
+texture = ExtResource("8_oyxb0")
 
 [node name="PassiveUpgrade" type="TextureButton" parent="canvas" groups=["MenuButtons"]]
 light_mask = 8
@@ -218,7 +210,7 @@ offset_top = 625.0
 offset_right = 584.0
 offset_bottom = 784.0
 tooltip_text = "Upgrades passive rate of points"
-texture_normal = ExtResource("5_gm1vf")
+texture_normal = ExtResource("9_qy4fn")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -228,7 +220,7 @@ show_behind_parent = true
 z_index = 1
 position = Vector2(-19, -186)
 scale = Vector2(1.28833, 1.30625)
-texture = ExtResource("7_np1i2")
+texture = ExtResource("10_8n2cq")
 
 [node name="ShopName" type="RichTextLabel" parent="canvas/PassiveUpgrade"]
 layout_mode = 1
@@ -257,7 +249,7 @@ offset_left = 16.0
 offset_top = 800.0
 offset_right = 584.0
 offset_bottom = 878.0
-texture_normal = ExtResource("10_5lrp8")
+texture_normal = ExtResource("11_jxiia")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -266,7 +258,7 @@ visible = false
 z_index = 1
 position = Vector2(269, -359)
 scale = Vector2(1.25167, 1.27375)
-texture = ExtResource("11_lkuwl")
+texture = ExtResource("12_rtywa")
 
 [node name="ShopName" type="RichTextLabel" parent="canvas/ShmoneyStore"]
 layout_mode = 1
@@ -296,11 +288,11 @@ offset_top = 765.0
 offset_right = 109.0
 offset_bottom = 840.0
 disabled = true
-texture_normal = ExtResource("6_ondub")
+texture_normal = ExtResource("13_yuop2")
 
 [node name="MiscUp" type="CanvasLayer" parent="." groups=["Shops"]]
 visible = false
-script = ExtResource("14_w8sl8")
+script = ExtResource("14_4nxat")
 
 [node name="FlatCliUp0" type="TextureButton" parent="MiscUp" groups=["MiscButtons"]]
 visible = false
@@ -309,7 +301,7 @@ offset_top = 107.0
 offset_right = 286.0
 offset_bottom = 228.0
 disabled = true
-texture_normal = ExtResource("4_h4cb1")
+texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -357,7 +349,7 @@ offset_top = 270.0
 offset_right = 284.0
 offset_bottom = 395.0
 disabled = true
-texture_normal = ExtResource("4_h4cb1")
+texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -405,7 +397,7 @@ offset_top = 434.0
 offset_right = 284.0
 offset_bottom = 559.0
 disabled = true
-texture_normal = ExtResource("4_h4cb1")
+texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -453,7 +445,7 @@ offset_top = 597.0
 offset_right = 282.0
 offset_bottom = 722.0
 disabled = true
-texture_normal = ExtResource("4_h4cb1")
+texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -501,7 +493,7 @@ offset_top = 108.0
 offset_right = 559.0
 offset_bottom = 233.0
 disabled = true
-texture_normal = ExtResource("4_h4cb1")
+texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -530,7 +522,7 @@ text = "		Cost: 150
 [node name="VirtPet" type="CanvasLayer" parent="."]
 offset = Vector2(615, -50)
 transform = Transform2D(1, 0, 0, 1, 615, -50)
-script = ExtResource("15_jjcwn")
+script = ExtResource("15_1gy51")
 
 [node name="SlideAnim" type="AnimationPlayer" parent="VirtPet"]
 libraries = {
@@ -540,12 +532,12 @@ libraries = {
 [node name="PetMenu" type="Sprite2D" parent="VirtPet"]
 position = Vector2(1, 98)
 scale = Vector2(1.15, 1.358)
-texture = ExtResource("17_3k6qq")
+texture = ExtResource("16_38vj7")
 centered = false
 
 [node name="DogieWIP" type="Sprite2D" parent="VirtPet"]
 position = Vector2(300, 350)
-texture = ExtResource("16_ro10y")
+texture = ExtResource("17_d4gmj")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VirtPet"]
 anchors_preset = 5
@@ -573,8 +565,8 @@ offset_bottom = 550.0
 step = 0.1
 value = 50.0
 nine_patch_stretch = true
-texture_under = ExtResource("4_h4cb1")
-texture_progress = ExtResource("4_h4cb1")
+texture_under = ExtResource("5_k1yog")
+texture_progress = ExtResource("5_k1yog")
 tint_under = Color(0.419608, 0.419608, 0.419608, 1)
 
 [node name="StatLabel" type="RichTextLabel" parent="VirtPet/Hunger"]
@@ -593,8 +585,8 @@ offset_bottom = 600.0
 step = 0.1
 value = 50.0
 nine_patch_stretch = true
-texture_under = ExtResource("10_5lrp8")
-texture_progress = ExtResource("10_5lrp8")
+texture_under = ExtResource("11_jxiia")
+texture_progress = ExtResource("11_jxiia")
 tint_under = Color(0.109804, 0.192157, 0.568627, 1)
 tint_progress = Color(0.270588, 0.439216, 1, 1)
 
@@ -614,8 +606,8 @@ offset_bottom = 650.0
 step = 0.1
 value = 50.0
 nine_patch_stretch = true
-texture_under = ExtResource("10_5lrp8")
-texture_progress = ExtResource("10_5lrp8")
+texture_under = ExtResource("11_jxiia")
+texture_progress = ExtResource("11_jxiia")
 tint_under = Color(0, 0.419608, 0.0352941, 1)
 tint_progress = Color(0.133333, 1, 0, 1)
 
@@ -639,7 +631,7 @@ offset_right = -105.0
 offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("10_5lrp8")
+texture_normal = ExtResource("11_jxiia")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
@@ -670,7 +662,7 @@ offset_right = -105.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("10_5lrp8")
+texture_normal = ExtResource("11_jxiia")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
@@ -701,7 +693,7 @@ offset_right = 70.0
 offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("10_5lrp8")
+texture_normal = ExtResource("11_jxiia")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -731,7 +723,7 @@ offset_right = 70.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("10_5lrp8")
+texture_normal = ExtResource("11_jxiia")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -761,7 +753,7 @@ offset_right = 245.0
 offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("10_5lrp8")
+texture_normal = ExtResource("11_jxiia")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -791,7 +783,7 @@ offset_right = 245.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("10_5lrp8")
+texture_normal = ExtResource("11_jxiia")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -814,17 +806,18 @@ offset_left = -83.0
 offset_top = 450.0
 offset_right = 12.0001
 offset_bottom = 570.0
-texture_normal = ExtResource("16_qkkls")
+texture_normal = ExtResource("18_kftsq")
 ignore_texture_size = true
 stretch_mode = 0
 
-[connection signal="timeout" from="canvas/Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="canvas/TextureButton" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="canvas/UpgradeMenu" to="." method="_on_upgrade_menu_pressed"]
-[connection signal="pressed" from="canvas/IAPMenu" to="." method="_on_iap_menu_pressed"]
-[connection signal="pressed" from="canvas/PassiveUpgrade" to="." method="_on_passive_menu_pressed"]
-[connection signal="pressed" from="canvas/ShmoneyStore" to="." method="_on_shmoney_store_pressed"]
-[connection signal="pressed" from="canvas/Back" to="." method="_back_button"]
+[connection signal="timeout" from="LogNode/Timer" to="LogNode" method="_on_timer_timeout"]
+[connection signal="timeout" from="canvas/Timer" to="canvas" method="_on_timer_timeout"]
+[connection signal="pressed" from="canvas/TextureButton" to="canvas" method="_on_button_pressed"]
+[connection signal="pressed" from="canvas/UpgradeMenu" to="canvas" method="_on_upgrade_menu_pressed"]
+[connection signal="pressed" from="canvas/IAPMenu" to="canvas" method="_on_iap_menu_pressed"]
+[connection signal="pressed" from="canvas/PassiveUpgrade" to="canvas" method="_on_passive_menu_pressed"]
+[connection signal="pressed" from="canvas/ShmoneyStore" to="canvas" method="_on_shmoney_store_pressed"]
+[connection signal="pressed" from="canvas/Back" to="canvas" method="_back_button"]
 [connection signal="visibility_changed" from="MiscUp" to="MiscUp" method="_toggle_buttons"]
 [connection signal="pressed" from="MiscUp/FlatCliUp0" to="MiscUp" method="_on_misc_shop_pressed" binds= [50, 1, 0, 0]]
 [connection signal="pressed" from="MiscUp/FlatCliUp1" to="MiscUp" method="_on_misc_shop_pressed" binds= [150, 3, 1, 0]]

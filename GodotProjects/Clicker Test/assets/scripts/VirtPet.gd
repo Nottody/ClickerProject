@@ -10,7 +10,7 @@ var happy
 #var money
 
 func _ready():
-	player = get_parent()
+	player = get_parent().get_node("canvas")
 	toggleMenu = get_node("OpenPet")
 	menu = get_node("PetMenu")
 	hunger = get_node("Hunger")
