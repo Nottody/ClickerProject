@@ -577,6 +577,14 @@ texture_under = ExtResource("4_h4cb1")
 texture_progress = ExtResource("4_h4cb1")
 tint_under = Color(0.419608, 0.419608, 0.419608, 1)
 
+[node name="StatLabel" type="RichTextLabel" parent="VirtPet/Hunger"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 76.0
+offset_bottom = 32.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Hunger"
+
 [node name="Clean" type="TextureProgressBar" parent="VirtPet" groups=["PetStats"]]
 offset_left = 115.0
 offset_top = 580.0
@@ -587,8 +595,16 @@ value = 50.0
 nine_patch_stretch = true
 texture_under = ExtResource("10_5lrp8")
 texture_progress = ExtResource("10_5lrp8")
-tint_under = Color(0.0784314, 0.184314, 0.658824, 1)
-tint_progress = Color(0.360784, 0.560784, 1, 1)
+tint_under = Color(0.109804, 0.192157, 0.568627, 1)
+tint_progress = Color(0.270588, 0.439216, 1, 1)
+
+[node name="StatLabel" type="RichTextLabel" parent="VirtPet/Clean"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 100.0
+offset_bottom = 40.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Cleanliness"
 
 [node name="Happy" type="TextureProgressBar" parent="VirtPet" groups=["PetStats"]]
 offset_left = 115.0
@@ -602,6 +618,14 @@ texture_under = ExtResource("10_5lrp8")
 texture_progress = ExtResource("10_5lrp8")
 tint_under = Color(0, 0.419608, 0.0352941, 1)
 tint_progress = Color(0.133333, 1, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VirtPet/Happy"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 92.0
+offset_bottom = 40.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Happiness"
 
 [node name="FoodButton" type="TextureButton" parent="VirtPet"]
 anchors_preset = 7
@@ -620,6 +644,20 @@ ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
+[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/FoodButton"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 158.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 30
+text = "  5$ Food"
+
 [node name="FoodButton2" type="TextureButton" parent="VirtPet"]
 anchors_preset = 7
 anchor_left = 0.5
@@ -637,6 +675,19 @@ ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
+[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/FoodButton2"]
+offset_top = 16.0
+offset_right = 158.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 30
+text = " 10$ Food"
+
 [node name="CleanButton" type="TextureButton" parent="VirtPet"]
 anchors_preset = 7
 anchor_left = 0.5
@@ -652,6 +703,19 @@ grow_vertical = 0
 texture_normal = ExtResource("10_5lrp8")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/CleanButton"]
+offset_top = 16.0
+offset_right = 158.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 30
+text = " 5$ Clean"
 
 [node name="CleanButton2" type="TextureButton" parent="VirtPet"]
 anchors_preset = 7
@@ -669,6 +733,19 @@ texture_normal = ExtResource("10_5lrp8")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/CleanButton2"]
+offset_top = 16.0
+offset_right = 158.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 30
+text = " 10$ Clean"
+
 [node name="HappyButton" type="TextureButton" parent="VirtPet"]
 anchors_preset = 7
 anchor_left = 0.5
@@ -684,6 +761,19 @@ grow_vertical = 0
 texture_normal = ExtResource("10_5lrp8")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/HappyButton"]
+offset_top = 16.0
+offset_right = 158.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 30
+text = " 5$ Happy"
 
 [node name="HappyButton2" type="TextureButton" parent="VirtPet"]
 anchors_preset = 7
@@ -701,10 +791,23 @@ texture_normal = ExtResource("10_5lrp8")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/HappyButton2"]
+offset_top = 16.0
+offset_right = 158.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 28
+text = " 10$ Happy"
+
 [node name="OpenPet" type="TextureButton" parent="VirtPet"]
 offset_left = -83.0
 offset_top = 450.0
-offset_right = 11.9997
+offset_right = 12.0001
 offset_bottom = 570.0
 texture_normal = ExtResource("16_qkkls")
 ignore_texture_size = true
