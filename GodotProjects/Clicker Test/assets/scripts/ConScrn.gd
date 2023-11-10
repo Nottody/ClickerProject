@@ -12,4 +12,4 @@ func _process(delta):
 
 
 func _on_debug_button_pressed():
-	get_tree().change_scene_to_file("res://assets/scripts/node_2dWIP.tscn")
+	get_tree().change_scene_to_file("res://assets/Scenes/MainGame.tscn")

@@ -1,4 +1,5 @@
-extends Node2D
+extends CanvasLayer
+
 
 var points = 0
 var hunger 
@@ -14,22 +15,21 @@ var buttons
 var shops
 
 func _ready():
-	$canvas/Timer.start()
-
+	$Timer.start()
 	_update_pmc()
 	buttons = get_tree().get_nodes_in_group("MenuButtons")
 	shops = get_tree().get_nodes_in_group("Shops")
-	hunger = get_node("VirtPet/Hunger")
-	clean = get_node("VirtPet/Clean")
-	happy = get_node("VirtPet/Happy")
+	hunger = get_parent().get_node("VirtPet/Hunger")
+	clean = get_parent().get_node("VirtPet/Clean")
+	happy = get_parent().get_node("VirtPet/Happy")
 
 
 func _update_points():
-	$canvas/Points.text = str(roundi(points))
+	$Points.text = str(roundi(points))
 func _update_money():
-	$canvas/Money.text = "$" + str(money)
+	$Money.text = "$" + str(money)
 func _update_clock():
-	$canvas/Clock.text = str(clock)
+	$Clock.text = str(clock)
 func _update_pmc():
 	_update_clock()
 	_update_money()
@@ -39,9 +39,8 @@ func _on_button_pressed():
 	points += click
 	_update_points()
 
-
 func _on_timer_timeout():
-	$canvas/Timer.start()
+	$Timer.start()
 	clock -= 1
 	points += passiveEarn
 	_update_pmc()
@@ -56,28 +55,28 @@ func _on_timer_timeout():
 	qol = (hunger.value * clean.value * happy.value)/3
 
 func _on_iap_menu_pressed():
-	$canvas/IAPMenu/IAPBackground.visible = true
-	$canvas/Back.visible = true
-	$canvas/Back.disabled = false
+	$IAPMenu/IAPBackground.visible = true
+	$Back.visible = true
+	$Back.disabled = false
 	_toggle_menu_buttons()
 
 func _on_upgrade_menu_pressed():
-	$canvas/UpgradeMenu/UpgBackround.visible = true
-	$MiscUp.visible = true
-	$canvas/Back.visible = true
-	$canvas/Back.disabled = false
+	$UpgradeMenu/UpgBackround.visible = true
+	get_parent().get_node("MiscUp").visible = true
+	$Back.visible = true
+	$Back.disabled = false
 	_toggle_menu_buttons()
 
 func _on_passive_menu_pressed():
-	$canvas/PassiveUpgrade/PasBackground.visible = true
-	$canvas/Back.visible = true
-	$canvas/Back.disabled = false
+	$PassiveUpgrade/PasBackground.visible = true
+	$Back.visible = true
+	$Back.disabled = false
 	_toggle_menu_buttons()
 
 func _on_shmoney_store_pressed():
-	$canvas/ShmoneyStore/ShStoreBackground.visible = true
-	$canvas/Back.visible = true
-	$canvas/Back.disabled = false
+	$ShmoneyStore/ShStoreBackground.visible = true
+	$Back.visible = true
+	$Back.disabled = false
 	_toggle_menu_buttons()
 		
 func _toggle_menu_buttons():
@@ -96,13 +95,10 @@ func _disable_shops():
 func _back_button():
 	_toggle_menu_buttons()
 	_disable_shops()
-	$canvas/Back.visible = false
-	$canvas/Back.disabled = true
-	$canvas/IAPMenu/IAPBackground.visible = false
-	$canvas/UpgradeMenu/UpgBackround.visible = false
-	$canvas/PassiveUpgrade/PasBackground.visible = false
-	$canvas/ShmoneyStore/ShStoreBackground.visible = false
+	$Back.visible = false
+	$Back.disabled = true
+	$IAPMenu/IAPBackground.visible = false
+	$UpgradeMenu/UpgBackround.visible = false
+	$PassiveUpgrade/PasBackground.visible = false
+	$ShmoneyStore/ShStoreBackground.visible = false
 	
-
-
-
