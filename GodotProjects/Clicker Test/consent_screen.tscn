@@ -1,13 +1,70 @@
-[gd_scene format=3 uid="uid://c6u46xxlycdk7"]
+[gd_scene load_steps=6 format=3 uid="uid://c6u46xxlycdk7"]
+
+[ext_resource type="Texture2D" uid="uid://b8qxhh2yll88o" path="res://assets/UIassets/Background/Consent.png" id="1_3pnt6"]
+[ext_resource type="Script" path="res://assets/scripts/ConScrn.gd" id="1_fol76"]
+[ext_resource type="FontFile" uid="uid://7036dkcqaq6x" path="res://assets/fonts/Raleway-SemiBold.ttf" id="2_gvga0"]
+[ext_resource type="Texture2D" uid="uid://ci7sy45pdsitj" path="res://assets/UIassets/Buttons/Unchecked Box.png" id="2_x46ao"]
+[ext_resource type="Texture2D" uid="uid://roul4q5rsjvu" path="res://assets/UIassets/Buttons/Checked Box.png" id="3_mc36o"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_fol76")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(300, 450)
+texture = ExtResource("1_3pnt6")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Consent Check" type="TextureButton" parent="."]
+offset_left = 63.0
+offset_top = 658.0
+offset_right = 137.0
+offset_bottom = 731.0
+toggle_mode = true
+texture_normal = ExtResource("2_x46ao")
+texture_pressed = ExtResource("3_mc36o")
+ignore_texture_size = true
+stretch_mode = 4
 
-[node name="TextureButton" type="TextureButton" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Scene Title" type="RichTextLabel" parent="."]
+offset_left = 120.0
+offset_top = 30.0
+offset_right = 486.0
+offset_bottom = 99.0
+theme_override_fonts/normal_font = ExtResource("2_gvga0")
+theme_override_font_sizes/normal_font_size = 54
+text = "Consent Form"
+
+[node name="Confirmation Text" type="RichTextLabel" parent="."]
+offset_left = 151.0
+offset_top = 675.0
+offset_right = 550.0
+offset_bottom = 744.0
+theme_override_fonts/normal_font = ExtResource("2_gvga0")
+theme_override_font_sizes/normal_font_size = 18
+text = "By checking this box, I am acknowledging that I have read the consent form for this study."
+
+[node name="Consent Form" type="RichTextLabel" parent="."]
+offset_left = 46.0
+offset_top = 120.0
+offset_right = 566.0
+offset_bottom = 645.0
+theme_override_fonts/normal_font = ExtResource("2_gvga0")
+theme_override_font_sizes/normal_font_size = 16
+text = "	You are being invited to participate in a research study about abstracted currency and how it affects awareness of one’s awareness of their true spending value. This research project is being conducted by Theodore Farland and Benjamin Deschene. The objective of this research project is to attempt to use a custom-made idle game in order to find out if abstracted currency is helpful or detrimental in ascertaining and keeping track of one’s own true spending value. It is being conducted in section 1 of Dr. Dancik’s Senior Research course. The idle game (as well as its’ internal surveys) will be distributed to all of the students within the course.
+
+	There are no known risks if you decide to participate in this research study, nor are there any costs for participating in the study. The information you provide will help us understand how currency abstraction affects spending awareness. The information collected may not benefit you directly, but what we learn from this study may help us determine the best case of implementing microtransactions into games without allowing them to be deceptive.
+
+	This survey is anonymous. If you choose to participate, you will not have to share your identity. No one will be able to identify whose results belongs to whom, including the researchers for this study.
+
+	Your participation in this study is voluntary. Upon exiting this screen, you will receive the preliminary survey, asking questions about gaming habits and other similar questions. After reaching 1,000,000 bits, you will receive the final survey, asking questions about how you felt and what you recalled while playing the game, particularly regarding your spending. The answers to these questions will be anonymous.
+
+	If you have any questions or concerns about completing the surveys, playing the game, or being in the study at all, you may contact us at farlandt@my.easternct.edu or descheneb@my.easternct.edu.
+
+	This study is being conducted as part of our Senior Research Course, and is approved by Dr. Dancik. As the study will be limited to this class project, it was not reviewed by Eastern Connecticut State University's Institutional Review Board. However, we have completed the Collaborative Institutional Training Initiative (CITI) Program course for Social & Behavior Research. If you have any concerns about your rights in this study, please contact Dr. Dancik at (860) 465-4587 or email dancikg@easternct.edu."
+
+[node name="Debug Button" type="Button" parent="."]
+offset_left = 510.0
+offset_top = 819.0
+offset_right = 589.0
+offset_bottom = 889.0
+
+[connection signal="pressed" from="Debug Button" to="." method="_on_debug_button_pressed"]
