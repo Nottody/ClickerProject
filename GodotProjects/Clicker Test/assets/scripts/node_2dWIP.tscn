@@ -676,6 +676,7 @@ stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="PriceLabel" type="RichTextLabel" parent="VirtPet/FoodButton2"]
+layout_mode = 0
 offset_top = 16.0
 offset_right = 158.0
 offset_bottom = 72.0
@@ -705,6 +706,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="PriceLabel" type="RichTextLabel" parent="VirtPet/CleanButton"]
+layout_mode = 0
 offset_top = 16.0
 offset_right = 158.0
 offset_bottom = 72.0
@@ -734,6 +736,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="PriceLabel" type="RichTextLabel" parent="VirtPet/CleanButton2"]
+layout_mode = 0
 offset_top = 16.0
 offset_right = 158.0
 offset_bottom = 72.0
@@ -763,6 +766,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="PriceLabel" type="RichTextLabel" parent="VirtPet/HappyButton"]
+layout_mode = 0
 offset_top = 16.0
 offset_right = 158.0
 offset_bottom = 72.0
@@ -792,6 +796,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="PriceLabel" type="RichTextLabel" parent="VirtPet/HappyButton2"]
+layout_mode = 0
 offset_top = 16.0
 offset_right = 158.0
 offset_bottom = 72.0
