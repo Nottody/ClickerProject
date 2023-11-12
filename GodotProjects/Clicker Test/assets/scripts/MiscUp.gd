@@ -11,7 +11,7 @@ var childNode
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	buttons = get_tree().get_nodes_in_group("MiscButtons")
-	player = get_parent()
+	player = get_parent().get_node("canvas")
 	
 func _toggle_buttons():
 	for i in buttons:

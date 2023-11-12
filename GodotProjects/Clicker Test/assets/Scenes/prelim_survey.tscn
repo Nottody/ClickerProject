@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqqc331wy0w17"]
+
+[ext_resource type="Texture2D" uid="uid://b8qxhh2yll88o" path="res://assets/UIassets/Background/Consent.png" id="1_21gns"]
+[ext_resource type="Script" path="res://assets/Scenes/prelim_survey.gd" id="1_jjanr"]
+
+[node name="PrelimSurvey" type="CanvasLayer"]
+script = ExtResource("1_jjanr")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(300, 450)
+texture = ExtResource("1_21gns")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 505.0
+offset_bottom = 390.0
+theme_override_font_sizes/normal_font_size = 100
+text = "NAME THE DOG"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 158.0
+offset_top = 311.0
+offset_right = 410.0
+offset_bottom = 401.0
+placeholder_text = "Type dog name here"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 153.0
+offset_top = 491.0
+offset_right = 306.0
+offset_bottom = 625.0
+
+[node name="doggie" type="RichTextLabel" parent="."]
+offset_left = 337.0
+offset_top = 482.0
+offset_right = 553.0
+offset_bottom = 546.0
+theme_override_font_sizes/normal_font_size = 40
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
