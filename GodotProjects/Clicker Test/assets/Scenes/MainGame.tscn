@@ -88,7 +88,7 @@ metadata/_edit_vertical_guides_ = []
 script = ExtResource("2_b72aw")
 
 [node name="Timer" type="Timer" parent="LogNode"]
-wait_time = 10.0
+wait_time = 2.5
 
 [node name="canvas" type="CanvasLayer" parent="."]
 script = ExtResource("3_61uyt")
@@ -289,6 +289,14 @@ offset_right = 109.0
 offset_bottom = 840.0
 disabled = true
 texture_normal = ExtResource("13_yuop2")
+
+[node name="Reset" type="TextureButton" parent="canvas"]
+offset_left = 504.0
+offset_top = 128.0
+offset_right = 579.0
+offset_bottom = 203.0
+texture_normal = ExtResource("13_yuop2")
+flip_h = true
 
 [node name="MiscUp" type="CanvasLayer" parent="." groups=["Shops"]]
 visible = false
@@ -818,6 +826,7 @@ stretch_mode = 0
 [connection signal="pressed" from="canvas/PassiveUpgrade" to="canvas" method="_on_passive_menu_pressed"]
 [connection signal="pressed" from="canvas/ShmoneyStore" to="canvas" method="_on_shmoney_store_pressed"]
 [connection signal="pressed" from="canvas/Back" to="canvas" method="_back_button"]
+[connection signal="pressed" from="canvas/Reset" to="LogNode" method="_on_reset_pressed"]
 [connection signal="visibility_changed" from="MiscUp" to="MiscUp" method="_toggle_buttons"]
 [connection signal="pressed" from="MiscUp/FlatCliUp0" to="MiscUp" method="_on_misc_shop_pressed" binds= [50, 1, 0, 0]]
 [connection signal="pressed" from="MiscUp/FlatCliUp1" to="MiscUp" method="_on_misc_shop_pressed" binds= [150, 3, 1, 0]]

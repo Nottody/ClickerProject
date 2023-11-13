@@ -52,7 +52,7 @@ func _on_timer_timeout():
 		hunger.value -= 1
 		clean.value -= 0.6
 		happy.value -= 0.8
-	qol = (hunger.value * clean.value * happy.value)/3
+	qol = snappedf(((hunger.value * clean.value * happy.value)/50),0.01)
 
 func _on_iap_menu_pressed():
 	$IAPMenu/IAPBackground.visible = true
