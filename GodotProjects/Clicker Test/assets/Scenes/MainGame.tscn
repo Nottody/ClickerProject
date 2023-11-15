@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dqsdtb7gmxa3m"]
+[gd_scene load_steps=23 format=3 uid="uid://dqsdtb7gmxa3m"]
 
 [ext_resource type="Script" path="res://assets/scripts/eventlogger.gd" id="2_b72aw"]
 [ext_resource type="Script" path="res://assets/scripts/canvas.gd" id="3_61uyt"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dv7ctjvj77ggb" path="res://assets/UIassets/Buttons/BackWIP.png" id="13_yuop2"]
 [ext_resource type="Script" path="res://assets/scripts/MiscUp.gd" id="14_4nxat"]
 [ext_resource type="Script" path="res://assets/scripts/VirtPet.gd" id="15_1gy51"]
+[ext_resource type="Script" path="res://assets/scripts/PassiveUp.gd" id="15_c4loe"]
 [ext_resource type="Texture2D" uid="uid://yr8g6i7epxgd" path="res://assets/UIassets/Background/SideMenuWIP.png" id="16_38vj7"]
 [ext_resource type="Texture2D" uid="uid://bexwiggm7xsi8" path="res://assets/UIassets/PetVisuals/DogWIP.png" id="17_d4gmj"]
 [ext_resource type="Texture2D" uid="uid://bk4aaxwxkfmo4" path="res://assets/UIassets/Buttons/SideButtonWIP.png" id="18_kftsq"]
@@ -283,12 +284,27 @@ text = "		     Shmoney Shop"
 [node name="Back" type="TextureButton" parent="canvas" groups=["BackButton"]]
 visible = false
 z_index = 1
-offset_left = 34.0
-offset_top = 765.0
-offset_right = 109.0
-offset_bottom = 840.0
+offset_left = 10.0
+offset_top = 840.0
+offset_right = 60.0
+offset_bottom = 890.0
 disabled = true
 texture_normal = ExtResource("13_yuop2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="BackLabel" type="RichTextLabel" parent="canvas/Back"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 10.0
+offset_right = 110.0
+offset_bottom = 43.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "Back"
 
 [node name="Reset" type="TextureButton" parent="canvas"]
 offset_left = 504.0
@@ -303,11 +319,10 @@ visible = false
 script = ExtResource("14_4nxat")
 
 [node name="FlatCliUp0" type="TextureButton" parent="MiscUp" groups=["MiscButtons"]]
-visible = false
-offset_left = 61.0
-offset_top = 107.0
-offset_right = 286.0
-offset_bottom = 228.0
+offset_left = 50.0
+offset_top = 210.0
+offset_right = 275.0
+offset_bottom = 335.0
 disabled = true
 texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
@@ -315,13 +330,15 @@ stretch_mode = 0
 
 [node name="Cost" type="RichTextLabel" parent="MiscUp/FlatCliUp0"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 21.0
-offset_right = -2.0
-offset_bottom = -9.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -331,18 +348,20 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 10
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/normal_font_size = 27
+theme_override_font_sizes/normal_font_size = 30
 text = "	Cost: 50"
 
 [node name="Bonus" type="RichTextLabel" parent="MiscUp/FlatCliUp0"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 61.0
-offset_right = -3.0
-offset_bottom = -13.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -2.5
+offset_right = 112.5
+offset_bottom = 47.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -352,7 +371,7 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 10
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/normal_font_size = 27
+theme_override_font_sizes/normal_font_size = 30
 text = "	Clicks + 1"
 
 [node name="Owned" type="RichTextLabel" parent="MiscUp/FlatCliUp0"]
@@ -371,11 +390,10 @@ theme_override_font_sizes/normal_font_size = 20
 text = "0 owned"
 
 [node name="FlatCliUp1" type="TextureButton" parent="MiscUp" groups=["MiscButtons"]]
-visible = false
-offset_left = 59.0
-offset_top = 270.0
-offset_right = 284.0
-offset_bottom = 395.0
+offset_left = 50.0
+offset_top = 375.0
+offset_right = 275.0
+offset_bottom = 500.0
 disabled = true
 texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
@@ -383,13 +401,15 @@ stretch_mode = 0
 
 [node name="Cost" type="RichTextLabel" parent="MiscUp/FlatCliUp1"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 21.0
-offset_right = -2.0
-offset_bottom = -9.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -399,18 +419,20 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 10
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/normal_font_size = 27
+theme_override_font_sizes/normal_font_size = 30
 text = "	Cost: 150"
 
 [node name="Bonus" type="RichTextLabel" parent="MiscUp/FlatCliUp1"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 61.0
-offset_right = -3.0
-offset_bottom = -13.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -2.5
+offset_right = 112.5
+offset_bottom = 47.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -420,7 +442,7 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 10
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/normal_font_size = 27
+theme_override_font_sizes/normal_font_size = 30
 text = "	Clicks + 3"
 
 [node name="Owned" type="RichTextLabel" parent="MiscUp/FlatCliUp1"]
@@ -439,11 +461,10 @@ theme_override_font_sizes/normal_font_size = 20
 text = "0 owned"
 
 [node name="FlatCliUp2" type="TextureButton" parent="MiscUp" groups=["MiscButtons"]]
-visible = false
-offset_left = 59.0
-offset_top = 434.0
-offset_right = 284.0
-offset_bottom = 559.0
+offset_left = 50.0
+offset_top = 540.0
+offset_right = 275.0
+offset_bottom = 665.0
 disabled = true
 texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
@@ -451,13 +472,15 @@ stretch_mode = 0
 
 [node name="Cost" type="RichTextLabel" parent="MiscUp/FlatCliUp2"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 21.0
-offset_right = -2.0
-offset_bottom = -9.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -467,18 +490,20 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 10
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/normal_font_size = 27
+theme_override_font_sizes/normal_font_size = 30
 text = "	Cost: 500"
 
 [node name="Bonus" type="RichTextLabel" parent="MiscUp/FlatCliUp2"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 61.0
-offset_right = -3.0
-offset_bottom = -13.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -2.5
+offset_right = 112.5
+offset_bottom = 47.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -488,7 +513,7 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 10
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/normal_font_size = 27
+theme_override_font_sizes/normal_font_size = 30
 text = "	Clicks + 10"
 
 [node name="Owned" type="RichTextLabel" parent="MiscUp/FlatCliUp2"]
@@ -507,11 +532,10 @@ theme_override_font_sizes/normal_font_size = 20
 text = "0 owned"
 
 [node name="FlatCliUp3" type="TextureButton" parent="MiscUp" groups=["MiscButtons"]]
-visible = false
-offset_left = 57.0
-offset_top = 597.0
-offset_right = 282.0
-offset_bottom = 722.0
+offset_left = 50.0
+offset_top = 705.0
+offset_right = 275.0
+offset_bottom = 830.0
 disabled = true
 texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
@@ -519,13 +543,15 @@ stretch_mode = 0
 
 [node name="Cost" type="RichTextLabel" parent="MiscUp/FlatCliUp3"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 21.0
-offset_right = -2.0
-offset_bottom = -9.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -535,18 +561,20 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 10
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/normal_font_size = 27
+theme_override_font_sizes/normal_font_size = 30
 text = "	Cost: 1000"
 
 [node name="Bonus" type="RichTextLabel" parent="MiscUp/FlatCliUp3"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 61.0
-offset_right = -3.0
-offset_bottom = -13.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -2.5
+offset_right = 112.5
+offset_bottom = 47.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -556,7 +584,7 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 10
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/normal_font_size = 27
+theme_override_font_sizes/normal_font_size = 30
 text = "	Clicks + 15"
 
 [node name="Owned" type="RichTextLabel" parent="MiscUp/FlatCliUp3"]
@@ -575,24 +603,30 @@ theme_override_font_sizes/normal_font_size = 20
 text = "0 owned"
 
 [node name="OtpUp0" type="TextureButton" parent="MiscUp" groups=["MiscButtons"]]
-offset_left = 334.0
-offset_top = 108.0
-offset_right = 559.0
-offset_bottom = 233.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -275.0
+offset_top = 210.0
+offset_right = -50.0
+offset_bottom = 335.0
+grow_horizontal = 0
 disabled = true
 texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ButtonText" type="RichTextLabel" parent="MiscUp/OtpUp0"]
+[node name="Cost_Bonus" type="RichTextLabel" parent="MiscUp/OtpUp0"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 27.0
-offset_right = -2.0
-offset_bottom = -3.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 57.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -602,9 +636,411 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 10
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/normal_font_size = 27
-text = "		Cost: 150
-		Clicks + 10%"
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: 150
+	Clicks + 10%"
+
+[node name="ShopTitle" type="RichTextLabel" parent="MiscUp"]
+offset_left = 3.0
+offset_top = 20.0
+offset_right = 603.0
+offset_bottom = 116.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 20
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 60
+text = "	 Click Upgrades"
+
+[node name="ColumnTitle" type="RichTextLabel" parent="MiscUp"]
+offset_top = 150.0
+offset_right = 300.0
+offset_bottom = 200.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/normal_font_size = 30
+text = "	  Multi Upgrades"
+
+[node name="ColumnTitle2" type="RichTextLabel" parent="MiscUp"]
+offset_left = 290.0
+offset_top = 150.0
+offset_right = 590.0
+offset_bottom = 200.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/normal_font_size = 30
+text = " One Time Upgrades"
+
+[node name="PassiveUp" type="CanvasLayer" parent="." groups=["Shops"]]
+visible = false
+script = ExtResource("15_c4loe")
+
+[node name="FlatCliUp0" type="TextureButton" parent="PassiveUp" groups=["PassButtons"]]
+offset_left = 50.0
+offset_top = 210.0
+offset_right = 275.0
+offset_bottom = 335.0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost" type="RichTextLabel" parent="PassiveUp/FlatCliUp0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: 50"
+
+[node name="Bonus" type="RichTextLabel" parent="PassiveUp/FlatCliUp0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -2.5
+offset_right = 112.5
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Clicks + 1"
+
+[node name="Owned" type="RichTextLabel" parent="PassiveUp/FlatCliUp0"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 93.0
+offset_right = 221.0
+offset_bottom = 133.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/normal_font_size = 20
+text = "0 owned"
+
+[node name="FlatCliUp1" type="TextureButton" parent="PassiveUp" groups=["PassButtons"]]
+offset_left = 50.0
+offset_top = 375.0
+offset_right = 275.0
+offset_bottom = 500.0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost" type="RichTextLabel" parent="PassiveUp/FlatCliUp1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: 150"
+
+[node name="Bonus" type="RichTextLabel" parent="PassiveUp/FlatCliUp1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -2.5
+offset_right = 112.5
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Clicks + 3"
+
+[node name="Owned" type="RichTextLabel" parent="PassiveUp/FlatCliUp1"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 93.0
+offset_right = 223.0
+offset_bottom = 133.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/normal_font_size = 20
+text = "0 owned"
+
+[node name="FlatCliUp2" type="TextureButton" parent="PassiveUp" groups=["PassButtons"]]
+offset_left = 50.0
+offset_top = 540.0
+offset_right = 275.0
+offset_bottom = 665.0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost" type="RichTextLabel" parent="PassiveUp/FlatCliUp2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: 500"
+
+[node name="Bonus" type="RichTextLabel" parent="PassiveUp/FlatCliUp2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -2.5
+offset_right = 112.5
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Clicks + 10"
+
+[node name="Owned" type="RichTextLabel" parent="PassiveUp/FlatCliUp2"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 93.0
+offset_right = 221.0
+offset_bottom = 133.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/normal_font_size = 20
+text = "0 owned"
+
+[node name="FlatCliUp3" type="TextureButton" parent="PassiveUp" groups=["PassButtons"]]
+offset_left = 50.0
+offset_top = 705.0
+offset_right = 275.0
+offset_bottom = 830.0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost" type="RichTextLabel" parent="PassiveUp/FlatCliUp3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: 1000"
+
+[node name="Bonus" type="RichTextLabel" parent="PassiveUp/FlatCliUp3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -2.5
+offset_right = 112.5
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Clicks + 15"
+
+[node name="Owned" type="RichTextLabel" parent="PassiveUp/FlatCliUp3"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 93.0
+offset_right = 223.0
+offset_bottom = 133.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/normal_font_size = 20
+text = "0 owned"
+
+[node name="OtpUp0" type="TextureButton" parent="PassiveUp" groups=["PassButtons"]]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -275.0
+offset_top = 210.0
+offset_right = -50.0
+offset_bottom = 335.0
+grow_horizontal = 0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost_Bonus" type="RichTextLabel" parent="PassiveUp/OtpUp0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: 150
+	Clicks + 10%"
+
+[node name="ShopTitle" type="RichTextLabel" parent="PassiveUp"]
+offset_left = 3.0
+offset_top = 20.0
+offset_right = 603.0
+offset_bottom = 116.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 20
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 60
+text = "	 Click Upgrades"
+
+[node name="ColumnTitle" type="RichTextLabel" parent="PassiveUp"]
+offset_top = 150.0
+offset_right = 300.0
+offset_bottom = 200.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/normal_font_size = 30
+text = "	  Multi Upgrades"
+
+[node name="ColumnTitle2" type="RichTextLabel" parent="PassiveUp"]
+offset_left = 290.0
+offset_top = 150.0
+offset_right = 590.0
+offset_bottom = 200.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/normal_font_size = 30
+text = " One Time Upgrades"
 
 [node name="VirtPet" type="CanvasLayer" parent="."]
 offset = Vector2(615, -50)
@@ -626,7 +1062,7 @@ centered = false
 position = Vector2(300, 350)
 texture = ExtResource("17_d4gmj")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VirtPet"]
+[node name="Name" type="RichTextLabel" parent="VirtPet"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

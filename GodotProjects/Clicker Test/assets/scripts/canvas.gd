@@ -56,15 +56,22 @@ func _on_timer_timeout():
 
 func _on_iap_menu_pressed():
 	$IAPMenu/IAPBackground.visible = true
+	get_parent().get_node("VirtPet/OpenPet").visible = false
+	get_parent().get_node("VirtPet/OpenPet").disabled = true
 	_toggle_menu_buttons()
 
 func _on_upgrade_menu_pressed():
 	$UpgradeMenu/UpgBackround.visible = true
+	get_parent().get_node("VirtPet/OpenPet").visible = false
+	get_parent().get_node("VirtPet/OpenPet").disabled = true
 	get_parent().get_node("MiscUp").visible = true
 	_toggle_menu_buttons()
 
 func _on_passive_menu_pressed():
 	$PassiveUpgrade/PasBackground.visible = true
+	get_parent().get_node("VirtPet/OpenPet").visible = false
+	get_parent().get_node("VirtPet/OpenPet").disabled = true
+	get_parent().get_node("PassiveUp").visible = true	
 	_toggle_menu_buttons()
 
 func _on_shmoney_store_pressed():
@@ -100,4 +107,6 @@ func _back_button():
 	$UpgradeMenu/UpgBackround.visible = false
 	$PassiveUpgrade/PasBackground.visible = false
 	$ShmoneyStore/ShStoreBackground.visible = false
+	get_parent().get_node("VirtPet/OpenPet").visible = true
+	get_parent().get_node("VirtPet/OpenPet").disabled = false
 	
