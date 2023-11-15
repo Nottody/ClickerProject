@@ -23,7 +23,6 @@ func _ready():
 	clean = get_parent().get_node("VirtPet/Clean")
 	happy = get_parent().get_node("VirtPet/Happy")
 
-
 func _update_points():
 	$Points.text = str(roundi(points))
 func _update_money():
@@ -54,30 +53,28 @@ func _on_timer_timeout():
 		happy.value -= 0.8
 	qol = snappedf(((hunger.value * clean.value * happy.value)/50),0.01)
 
-func _on_iap_menu_pressed():
-	$IAPMenu/IAPBackground.visible = true
-	get_parent().get_node("VirtPet/OpenPet").visible = false
-	get_parent().get_node("VirtPet/OpenPet").disabled = true
-	_toggle_menu_buttons()
-
 func _on_upgrade_menu_pressed():
-	$UpgradeMenu/UpgBackround.visible = true
-	get_parent().get_node("VirtPet/OpenPet").visible = false
-	get_parent().get_node("VirtPet/OpenPet").disabled = true
 	get_parent().get_node("MiscUp").visible = true
+	_background_tog("Misc")
+	_pet_butt()
 	_toggle_menu_buttons()
 
 func _on_passive_menu_pressed():
-	$PassiveUpgrade/PasBackground.visible = true
-	get_parent().get_node("VirtPet/OpenPet").visible = false
-	get_parent().get_node("VirtPet/OpenPet").disabled = true
-	get_parent().get_node("PassiveUp").visible = true	
+	get_parent().get_node("PassiveUp").visible = true
+	_background_tog("Pass")
+	_pet_butt()
+	_toggle_menu_buttons()
+
+func _on_iap_menu_pressed():
+	_background_tog("IAP")
+	_pet_butt()
 	_toggle_menu_buttons()
 
 func _on_shmoney_store_pressed():
-	$ShmoneyStore/ShStoreBackground.visible = true
+	_background_tog("Shmoney")
+	_pet_butt()
 	_toggle_menu_buttons()
-		
+
 func _toggle_menu_buttons():
 	for i in buttons:
 		if i.disabled:
@@ -85,7 +82,15 @@ func _toggle_menu_buttons():
 		else:
 			i.disabled = true
 	_back_off()
-	
+
+func _pet_butt():
+	if get_parent().get_node("VirtPet/OpenPet").visible:
+		get_parent().get_node("VirtPet/OpenPet").visible = false
+		get_parent().get_node("VirtPet/OpenPet").disabled = true
+	else:
+		get_parent().get_node("VirtPet/OpenPet").visible = true
+		get_parent().get_node("VirtPet/OpenPet").disabled = false
+
 func _back_off():
 	if $Back.disabled:
 		$Back.disabled = false
@@ -93,20 +98,33 @@ func _back_off():
 	else:
 		$Back.disabled = true
 		$Back.visible = false
-		
+
 func _disable_shops():
 	for i in shops:
 		if i.visible:
 			i.visible = false
 			return
 
+func _background_tog(back):
+	if back == null:
+		$IAPMenu/IAPBackground.visible = false
+		$UpgradeMenu/UpgBackround.visible = false
+		$PassiveUpgrade/PasBackground.visible = false
+		$ShmoneyStore/ShStoreBackground.visible = false
+	else:
+		if back == "Misc":
+			$UpgradeMenu/UpgBackround.visible = true
+		elif back == "Pass":
+			$PassiveUpgrade/PasBackground.visible = true
+		elif back == "IAP":
+			$IAPMenu/IAPBackground.visible = true
+		elif back == "Shmoney":
+			$ShmoneyStore/ShStoreBackground.visible = true
+
 func _back_button():
 	_toggle_menu_buttons()
 	_disable_shops()
-	$IAPMenu/IAPBackground.visible = false
-	$UpgradeMenu/UpgBackround.visible = false
-	$PassiveUpgrade/PasBackground.visible = false
-	$ShmoneyStore/ShStoreBackground.visible = false
-	get_parent().get_node("VirtPet/OpenPet").visible = true
-	get_parent().get_node("VirtPet/OpenPet").disabled = false
+	_background_tog(null)
+	
+	
 	

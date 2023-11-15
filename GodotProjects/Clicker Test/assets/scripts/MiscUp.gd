@@ -40,15 +40,11 @@ func _on_misc_shop_pressed(price,clickBonus,index,xpurchased):
 			childNode.visible = true
 			childNode.text = (str(xpurchased) + " owned")
 		
-func _on_otp_shop_pressed(price, clickBonus, index, owned):
+func _on_otp_shop_pressed(price, clickBonus, index):
 	nameRef = get_child(index)
-	if !owned:
-		if player.points >= price:
-			player.points -= price
-			player.click += roundi((clickBonus * .1) * player.click)
-			player._update_points()
-			owned = true
-			nameRef.modulate = Color(0,1,0)
-			nameRef.disconnect("pressed",_on_otp_shop_pressed)
-			nameRef.connect("pressed",_on_otp_shop_pressed.bind(price,clickBonus,index,owned))
-			
+	if player.points >= price:
+		player.points -= price
+		player.click += roundi((clickBonus * .1) * player.click)
+		player._update_points()
+		nameRef.modulate = Color(0,1,0)
+		nameRef.disconnect("pressed",_on_otp_shop_pressed)
