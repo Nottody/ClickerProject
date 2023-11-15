@@ -1014,9 +1014,9 @@ text = "	Cost: 150
 	Clicks + 10%"
 
 [node name="ShopTitle" type="RichTextLabel" parent="PassiveUp"]
-offset_left = 3.0
+offset_left = -35.0
 offset_top = 20.0
-offset_right = 603.0
+offset_right = 565.0
 offset_bottom = 116.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 4
@@ -1024,7 +1024,7 @@ theme_override_constants/shadow_offset_y = 4
 theme_override_constants/shadow_outline_size = 20
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 60
-text = "	 Click Upgrades"
+text = "	 Passive Upgrades"
 
 [node name="ColumnTitle" type="RichTextLabel" parent="PassiveUp"]
 offset_top = 150.0
