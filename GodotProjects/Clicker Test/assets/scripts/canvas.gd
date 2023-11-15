@@ -56,27 +56,19 @@ func _on_timer_timeout():
 
 func _on_iap_menu_pressed():
 	$IAPMenu/IAPBackground.visible = true
-	$Back.visible = true
-	$Back.disabled = false
 	_toggle_menu_buttons()
 
 func _on_upgrade_menu_pressed():
 	$UpgradeMenu/UpgBackround.visible = true
 	get_parent().get_node("MiscUp").visible = true
-	$Back.visible = true
-	$Back.disabled = false
 	_toggle_menu_buttons()
 
 func _on_passive_menu_pressed():
 	$PassiveUpgrade/PasBackground.visible = true
-	$Back.visible = true
-	$Back.disabled = false
 	_toggle_menu_buttons()
 
 func _on_shmoney_store_pressed():
 	$ShmoneyStore/ShStoreBackground.visible = true
-	$Back.visible = true
-	$Back.disabled = false
 	_toggle_menu_buttons()
 		
 func _toggle_menu_buttons():
@@ -85,7 +77,16 @@ func _toggle_menu_buttons():
 			i.disabled = false
 		else:
 			i.disabled = true
-			
+	_back_off()
+	
+func _back_off():
+	if $Back.disabled:
+		$Back.disabled = false
+		$Back.visible = true
+	else:
+		$Back.disabled = true
+		$Back.visible = false
+		
 func _disable_shops():
 	for i in shops:
 		if i.visible:
@@ -95,8 +96,6 @@ func _disable_shops():
 func _back_button():
 	_toggle_menu_buttons()
 	_disable_shops()
-	$Back.visible = false
-	$Back.disabled = true
 	$IAPMenu/IAPBackground.visible = false
 	$UpgradeMenu/UpgBackround.visible = false
 	$PassiveUpgrade/PasBackground.visible = false

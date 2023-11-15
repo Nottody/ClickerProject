@@ -31,10 +31,12 @@ func _on_misc_shop_pressed(price,clickBonus,index,xpurchased):
 		newPrice = roundi(price * priceMult)
 		xpurchased += 1
 		nameRef.tooltip_text = "This upgrade costs: " + str(newPrice)
+		var label = nameRef.get_child(0)
+		label.text = "	Cost: " + str(newPrice)
 		nameRef.disconnect("pressed",_on_misc_shop_pressed)
 		nameRef.connect("pressed",_on_misc_shop_pressed.bind(newPrice, clickBonus,index,xpurchased))
 		if xpurchased > 0:
-			childNode = nameRef.get_child(1)
+			childNode = nameRef.get_child(2)
 			childNode.visible = true
 			childNode.text = (str(xpurchased) + " owned")
 		

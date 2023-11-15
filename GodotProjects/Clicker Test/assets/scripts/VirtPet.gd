@@ -22,12 +22,14 @@ func _on_open_pet_pressed(button_pressed):
 	if button_pressed:
 		$SlideAnim.play("Close")
 		player._toggle_menu_buttons()
+		player._back_off()
 		toggleMenu.set_texture_normal(load("res://assets/UIassets/Buttons/SideButtonWIP.png"))
 		toggleMenu.disconnect("pressed",_on_open_pet_pressed)
 		toggleMenu.connect("pressed",_on_open_pet_pressed.bind(false))
 	else:
 		$SlideAnim.play("Slide")
 		player._toggle_menu_buttons()
+		player._back_off()
 		toggleMenu.set_texture_normal(load("res://assets/UIassets/Buttons/SideButtonWIP2.png"))
 		toggleMenu.disconnect("pressed",_on_open_pet_pressed)
 		toggleMenu.connect("pressed",_on_open_pet_pressed.bind(true))
