@@ -1,3 +1,3 @@
 [{ "Config": { "Test": false, "PetName": "doggie" } },
-{ "event": "Log", "data": { "Points": 1252, "Money": 0, "InGameMoney": 0, "Click": 19, "Passive": 11, "QualityScore": 2500, "Time": { "year": 2023, "month": 11, "day": 15, "weekday": 3, "hour": 10, "minute": 27, "second": 8, "dst": false } } },
+{ "event": "Log", "data": { "Points": 1538, "Money": 0, "InGameMoney": 0, "Click": 19, "Passive": 11, "QualityScore": 2500, "Time": { "year": 2023, "month": 11, "day": 15, "weekday": 3, "hour": 21, "minute": 54, "second": 15, "dst": false } } },
 ]

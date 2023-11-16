@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dqsdtb7gmxa3m"]
+[gd_scene load_steps=24 format=3 uid="uid://dqsdtb7gmxa3m"]
 
 [ext_resource type="Script" path="res://assets/scripts/eventlogger.gd" id="2_b72aw"]
 [ext_resource type="Script" path="res://assets/scripts/canvas.gd" id="3_61uyt"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://blak5420nx6yu" path="res://assets/UIassets/Buttons/ButtonWIP.png" id="4_mhha5"]
 [ext_resource type="Texture2D" uid="uid://dpt4cfr3sm3na" path="res://assets/UIassets/Buttons/ClickUpgradeWIP.png" id="5_k1yog"]
 [ext_resource type="Texture2D" uid="uid://cp5q8pt66pb4b" path="res://assets/UIassets/Background/MiscUpgradeWIP.png" id="6_0a3bb"]
-[ext_resource type="Texture2D" uid="uid://cjyuh8n465h17" path="res://assets/UIassets/Buttons/IAPButtonWIP.png" id="7_trubm"]
+[ext_resource type="Texture2D" uid="uid://or0papcmne3i" path="res://assets/UIassets/Icons/Shmoney.png" id="7_v5dr0"]
 [ext_resource type="Texture2D" uid="uid://j3806usw5pba" path="res://assets/UIassets/Background/InAppShopWIP.png" id="8_oyxb0"]
 [ext_resource type="Texture2D" uid="uid://nmvgg2gg11bi" path="res://assets/UIassets/Buttons/PassiveUpgradeWIP.png" id="9_qy4fn"]
 [ext_resource type="Texture2D" uid="uid://byomeo0i54u7g" path="res://assets/UIassets/Background/PassUpgradeWIP.png" id="10_8n2cq"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://yr8g6i7epxgd" path="res://assets/UIassets/Background/SideMenuWIP.png" id="16_38vj7"]
 [ext_resource type="Texture2D" uid="uid://bexwiggm7xsi8" path="res://assets/UIassets/PetVisuals/DogWIP.png" id="17_d4gmj"]
 [ext_resource type="Texture2D" uid="uid://bk4aaxwxkfmo4" path="res://assets/UIassets/Buttons/SideButtonWIP.png" id="18_kftsq"]
+[ext_resource type="Script" path="res://assets/scripts/IAP.gd" id="20_k0h5b"]
 
 [sub_resource type="Animation" id="Animation_h0ym6"]
 resource_name = "Close"
@@ -104,19 +105,19 @@ scale = Vector2(1.1375, 0.825781)
 texture = ExtResource("3_npvp0")
 
 [node name="Clock" type="RichTextLabel" parent="canvas"]
-offset_left = 422.0
-offset_top = -4.0
-offset_right = 604.0
-offset_bottom = 141.0
+offset_left = 432.0
+offset_top = 216.0
+offset_right = 614.0
+offset_bottom = 361.0
 theme_override_font_sizes/normal_font_size = 75
 text = "time"
 
 [node name="Money" type="RichTextLabel" parent="canvas"]
-offset_left = 47.0
-offset_top = 14.0
-offset_right = 309.0
-offset_bottom = 150.0
+offset_left = 336.0
+offset_right = 598.0
+offset_bottom = 136.0
 theme_override_font_sizes/normal_font_size = 75
+text = "$"
 
 [node name="TextureButton" type="TextureButton" parent="canvas"]
 z_as_relative = false
@@ -179,11 +180,11 @@ text = "  	Upgrade
 [node name="IAPMenu" type="TextureButton" parent="canvas" groups=["MenuButtons"]]
 light_mask = 8
 visibility_layer = 8
-offset_left = 8.0
-offset_top = 88.0
-offset_right = 120.0
-offset_bottom = 215.0
-texture_normal = ExtResource("7_trubm")
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 105.0
+offset_bottom = 115.0
+texture_normal = ExtResource("7_v5dr0")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -194,6 +195,28 @@ z_index = 1
 position = Vector2(303, 422)
 scale = Vector2(1.385, 1.32094)
 texture = ExtResource("8_oyxb0")
+
+[node name="Shmoney" type="RichTextLabel" parent="canvas/IAPMenu"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -38.5
+offset_right = 198.0
+offset_bottom = 31.5
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "20"
 
 [node name="PassiveUpgrade" type="TextureButton" parent="canvas" groups=["MenuButtons"]]
 light_mask = 8
@@ -314,6 +337,297 @@ offset_right = 579.0
 offset_bottom = 203.0
 texture_normal = ExtResource("13_yuop2")
 flip_h = true
+
+[node name="VirtPet" type="CanvasLayer" parent="."]
+offset = Vector2(615, -50)
+transform = Transform2D(1, 0, 0, 1, 615, -50)
+script = ExtResource("15_1gy51")
+
+[node name="SlideAnim" type="AnimationPlayer" parent="VirtPet"]
+libraries = {
+"": SubResource("AnimationLibrary_16c7x")
+}
+
+[node name="PetMenu" type="Sprite2D" parent="VirtPet"]
+position = Vector2(1, 98)
+scale = Vector2(1.15, 1.358)
+texture = ExtResource("16_38vj7")
+centered = false
+
+[node name="DogieWIP" type="Sprite2D" parent="VirtPet"]
+position = Vector2(300, 350)
+texture = ExtResource("17_d4gmj")
+
+[node name="Name" type="RichTextLabel" parent="VirtPet"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.0
+offset_top = 120.0
+offset_right = 70.0003
+offset_bottom = 185.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 45
+text = "Doggie :)"
+fit_content = true
+
+[node name="Hunger" type="TextureProgressBar" parent="VirtPet" groups=["PetStats"]]
+offset_left = 115.0
+offset_top = 530.0
+offset_right = 465.0
+offset_bottom = 550.0
+step = 0.1
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_k1yog")
+texture_progress = ExtResource("5_k1yog")
+tint_under = Color(0.419608, 0.419608, 0.419608, 1)
+
+[node name="StatLabel" type="RichTextLabel" parent="VirtPet/Hunger"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 76.0
+offset_bottom = 32.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Hunger"
+
+[node name="Clean" type="TextureProgressBar" parent="VirtPet" groups=["PetStats"]]
+offset_left = 115.0
+offset_top = 580.0
+offset_right = 465.0
+offset_bottom = 600.0
+step = 0.1
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("11_jxiia")
+texture_progress = ExtResource("11_jxiia")
+tint_under = Color(0.109804, 0.192157, 0.568627, 1)
+tint_progress = Color(0.270588, 0.439216, 1, 1)
+
+[node name="StatLabel" type="RichTextLabel" parent="VirtPet/Clean"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 100.0
+offset_bottom = 40.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Cleanliness"
+
+[node name="Happy" type="TextureProgressBar" parent="VirtPet" groups=["PetStats"]]
+offset_left = 115.0
+offset_top = 630.0
+offset_right = 465.0
+offset_bottom = 650.0
+step = 0.1
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("11_jxiia")
+texture_progress = ExtResource("11_jxiia")
+tint_under = Color(0, 0.419608, 0.0352941, 1)
+tint_progress = Color(0.133333, 1, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VirtPet/Happy"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 92.0
+offset_bottom = 40.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Happiness"
+
+[node name="FoodButton" type="TextureButton" parent="VirtPet"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -265.0
+offset_top = -210.0
+offset_right = -105.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("11_jxiia")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/FoodButton"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 158.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 30
+text = "  5$ Food"
+
+[node name="FoodButton2" type="TextureButton" parent="VirtPet"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -265.0
+offset_top = -100.0
+offset_right = -105.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("11_jxiia")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/FoodButton2"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 158.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 30
+text = " 10$ Food"
+
+[node name="CleanButton" type="TextureButton" parent="VirtPet"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -210.0
+offset_right = 70.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("11_jxiia")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/CleanButton"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 158.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 30
+text = " 5$ Clean"
+
+[node name="CleanButton2" type="TextureButton" parent="VirtPet"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -100.0
+offset_right = 70.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("11_jxiia")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/CleanButton2"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 158.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 30
+text = " 10$ Clean"
+
+[node name="HappyButton" type="TextureButton" parent="VirtPet"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 85.0
+offset_top = -210.0
+offset_right = 245.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("11_jxiia")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/HappyButton"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 158.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 30
+text = " 5$ Happy"
+
+[node name="HappyButton2" type="TextureButton" parent="VirtPet"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 85.0
+offset_top = -100.0
+offset_right = 245.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("11_jxiia")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/HappyButton2"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 158.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 28
+text = " 10$ Happy"
+
+[node name="OpenPet" type="TextureButton" parent="VirtPet"]
+offset_left = -83.0
+offset_top = 450.0
+offset_right = 12.0001
+offset_bottom = 570.0
+texture_normal = ExtResource("18_kftsq")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="MiscUp" type="CanvasLayer" parent="." groups=["Shops"]]
 visible = false
@@ -1051,306 +1365,274 @@ theme_override_constants/outline_size = 0
 theme_override_font_sizes/normal_font_size = 30
 text = " One Time Upgrades"
 
-[node name="VirtPet" type="CanvasLayer" parent="."]
-offset = Vector2(615, -50)
-transform = Transform2D(1, 0, 0, 1, 615, -50)
-script = ExtResource("15_1gy51")
+[node name="IAP" type="CanvasLayer" parent="." groups=["Shops"]]
+visible = false
+script = ExtResource("20_k0h5b")
 
-[node name="SlideAnim" type="AnimationPlayer" parent="VirtPet"]
-libraries = {
-"": SubResource("AnimationLibrary_16c7x")
-}
+[node name="FlatCliUp0" type="TextureButton" parent="IAP" groups=["IAPButtons"]]
+offset_left = 50.0
+offset_top = 210.0
+offset_right = 275.0
+offset_bottom = 335.0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="PetMenu" type="Sprite2D" parent="VirtPet"]
-position = Vector2(1, 98)
-scale = Vector2(1.15, 1.358)
-texture = ExtResource("16_38vj7")
-centered = false
-
-[node name="DogieWIP" type="Sprite2D" parent="VirtPet"]
-position = Vector2(300, 350)
-texture = ExtResource("17_d4gmj")
-
-[node name="Name" type="RichTextLabel" parent="VirtPet"]
-anchors_preset = 5
+[node name="Cost" type="RichTextLabel" parent="IAP/FlatCliUp0"]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -130.0
-offset_top = 120.0
-offset_right = 70.0003
-offset_bottom = 185.0
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 7.5
 grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 10
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/normal_font_size = 45
-text = "Doggie :)"
-fit_content = true
-
-[node name="Hunger" type="TextureProgressBar" parent="VirtPet" groups=["PetStats"]]
-offset_left = 115.0
-offset_top = 530.0
-offset_right = 465.0
-offset_bottom = 550.0
-step = 0.1
-value = 50.0
-nine_patch_stretch = true
-texture_under = ExtResource("5_k1yog")
-texture_progress = ExtResource("5_k1yog")
-tint_under = Color(0.419608, 0.419608, 0.419608, 1)
-
-[node name="StatLabel" type="RichTextLabel" parent="VirtPet/Hunger"]
-layout_mode = 0
-offset_left = 6.0
-offset_right = 76.0
-offset_bottom = 32.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Hunger"
-
-[node name="Clean" type="TextureProgressBar" parent="VirtPet" groups=["PetStats"]]
-offset_left = 115.0
-offset_top = 580.0
-offset_right = 465.0
-offset_bottom = 600.0
-step = 0.1
-value = 50.0
-nine_patch_stretch = true
-texture_under = ExtResource("11_jxiia")
-texture_progress = ExtResource("11_jxiia")
-tint_under = Color(0.109804, 0.192157, 0.568627, 1)
-tint_progress = Color(0.270588, 0.439216, 1, 1)
-
-[node name="StatLabel" type="RichTextLabel" parent="VirtPet/Clean"]
-layout_mode = 0
-offset_left = 6.0
-offset_right = 100.0
-offset_bottom = 40.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Cleanliness"
-
-[node name="Happy" type="TextureProgressBar" parent="VirtPet" groups=["PetStats"]]
-offset_left = 115.0
-offset_top = 630.0
-offset_right = 465.0
-offset_bottom = 650.0
-step = 0.1
-value = 50.0
-nine_patch_stretch = true
-texture_under = ExtResource("11_jxiia")
-texture_progress = ExtResource("11_jxiia")
-tint_under = Color(0, 0.419608, 0.0352941, 1)
-tint_progress = Color(0.133333, 1, 0, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VirtPet/Happy"]
-layout_mode = 0
-offset_left = 6.0
-offset_right = 92.0
-offset_bottom = 40.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Happiness"
-
-[node name="FoodButton" type="TextureButton" parent="VirtPet"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -265.0
-offset_top = -210.0
-offset_right = -105.0
-offset_bottom = -120.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("11_jxiia")
-ignore_texture_size = true
-stretch_mode = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/FoodButton"]
-layout_mode = 0
-offset_top = 16.0
-offset_right = 158.0
-offset_bottom = 72.0
-mouse_filter = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/shadow_outline_size = 8
-theme_override_constants/outline_size = 3
 theme_override_font_sizes/normal_font_size = 30
-text = "  5$ Food"
+text = "	Cost: $1"
 
-[node name="FoodButton2" type="TextureButton" parent="VirtPet"]
-anchors_preset = 7
+[node name="Bonus" type="RichTextLabel" parent="IAP/FlatCliUp0"]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -265.0
-offset_top = -100.0
-offset_right = -105.0
-offset_bottom = -10.0
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -2.5
+offset_right = 112.5
+offset_bottom = 47.5
 grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("11_jxiia")
-ignore_texture_size = true
-stretch_mode = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/FoodButton2"]
-layout_mode = 0
-offset_top = 16.0
-offset_right = 158.0
-offset_bottom = 72.0
+grow_vertical = 2
 mouse_filter = 2
+mouse_force_pass_scroll_events = false
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_constants/shadow_outline_size = 8
-theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
-text = " 10$ Food"
+text = "	+100"
 
-[node name="CleanButton" type="TextureButton" parent="VirtPet"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -90.0
-offset_top = -210.0
-offset_right = 70.0
-offset_bottom = -120.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("11_jxiia")
+[node name="Icon" type="Sprite2D" parent="IAP/FlatCliUp0"]
+position = Vector2(135, 85)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_v5dr0")
+
+[node name="FlatCliUp1" type="TextureButton" parent="IAP" groups=["IAPButtons"]]
+offset_left = 50.0
+offset_top = 375.0
+offset_right = 275.0
+offset_bottom = 500.0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/CleanButton"]
-layout_mode = 0
-offset_top = 16.0
-offset_right = 158.0
-offset_bottom = 72.0
+[node name="Cost" type="RichTextLabel" parent="IAP/FlatCliUp1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
+mouse_force_pass_scroll_events = false
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_constants/shadow_outline_size = 8
-theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
-text = " 5$ Clean"
+text = "	Cost: $5"
 
-[node name="CleanButton2" type="TextureButton" parent="VirtPet"]
-anchors_preset = 7
+[node name="Bonus" type="RichTextLabel" parent="IAP/FlatCliUp1"]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -90.0
-offset_top = -100.0
-offset_right = 70.0
-offset_bottom = -10.0
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -2.5
+offset_right = 112.5
+offset_bottom = 47.5
 grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("11_jxiia")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/CleanButton2"]
-layout_mode = 0
-offset_top = 16.0
-offset_right = 158.0
-offset_bottom = 72.0
+grow_vertical = 2
 mouse_filter = 2
+mouse_force_pass_scroll_events = false
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_constants/shadow_outline_size = 8
-theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
-text = " 10$ Clean"
+text = "	+500"
 
-[node name="HappyButton" type="TextureButton" parent="VirtPet"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 85.0
-offset_top = -210.0
-offset_right = 245.0
-offset_bottom = -120.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("11_jxiia")
+[node name="Icon" type="Sprite2D" parent="IAP/FlatCliUp1"]
+position = Vector2(135, 85)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_v5dr0")
+
+[node name="FlatCliUp2" type="TextureButton" parent="IAP" groups=["IAPButtons"]]
+offset_left = 50.0
+offset_top = 540.0
+offset_right = 275.0
+offset_bottom = 665.0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/HappyButton"]
-layout_mode = 0
-offset_top = 16.0
-offset_right = 158.0
-offset_bottom = 72.0
+[node name="Cost" type="RichTextLabel" parent="IAP/FlatCliUp2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
+mouse_force_pass_scroll_events = false
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_constants/shadow_outline_size = 8
-theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
-text = " 5$ Happy"
+text = "	Cost: $20"
 
-[node name="HappyButton2" type="TextureButton" parent="VirtPet"]
-anchors_preset = 7
+[node name="Bonus" type="RichTextLabel" parent="IAP/FlatCliUp2"]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 85.0
-offset_top = -100.0
-offset_right = 245.0
-offset_bottom = -10.0
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -2.5
+offset_right = 112.5
+offset_bottom = 47.5
 grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("11_jxiia")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="PriceLabel" type="RichTextLabel" parent="VirtPet/HappyButton2"]
-layout_mode = 0
-offset_top = 16.0
-offset_right = 158.0
-offset_bottom = 72.0
+grow_vertical = 2
 mouse_filter = 2
+mouse_force_pass_scroll_events = false
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_constants/shadow_outline_size = 8
-theme_override_constants/outline_size = 3
-theme_override_font_sizes/normal_font_size = 28
-text = " 10$ Happy"
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	+3000"
 
-[node name="OpenPet" type="TextureButton" parent="VirtPet"]
-offset_left = -83.0
-offset_top = 450.0
-offset_right = 12.0001
-offset_bottom = 570.0
-texture_normal = ExtResource("18_kftsq")
+[node name="Icon" type="Sprite2D" parent="IAP/FlatCliUp2"]
+position = Vector2(155, 85)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_v5dr0")
+
+[node name="FlatCliUp3" type="TextureButton" parent="IAP" groups=["IAPButtons"]]
+offset_left = 50.0
+offset_top = 705.0
+offset_right = 275.0
+offset_bottom = 830.0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="Cost" type="RichTextLabel" parent="IAP/FlatCliUp3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: $100
+"
+
+[node name="Bonus" type="RichTextLabel" parent="IAP/FlatCliUp3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -2.5
+offset_right = 112.5
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	+20000"
+
+[node name="Icon" type="Sprite2D" parent="IAP/FlatCliUp3"]
+position = Vector2(175, 85)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_v5dr0")
+
+[node name="Shmoney" type="CanvasLayer" parent="."]
+visible = false
 
 [connection signal="timeout" from="LogNode/Timer" to="LogNode" method="_on_timer_timeout"]
 [connection signal="timeout" from="canvas/Timer" to="canvas" method="_on_timer_timeout"]
 [connection signal="pressed" from="canvas/TextureButton" to="canvas" method="_on_button_pressed"]
-[connection signal="pressed" from="canvas/UpgradeMenu" to="canvas" method="_on_upgrade_menu_pressed"]
-[connection signal="pressed" from="canvas/IAPMenu" to="canvas" method="_on_iap_menu_pressed"]
-[connection signal="pressed" from="canvas/PassiveUpgrade" to="canvas" method="_on_passive_menu_pressed"]
-[connection signal="pressed" from="canvas/ShmoneyStore" to="canvas" method="_on_shmoney_store_pressed"]
+[connection signal="pressed" from="canvas/UpgradeMenu" to="canvas" method="_on_main_button_pressed" binds= ["MiscUp", true]]
+[connection signal="pressed" from="canvas/IAPMenu" to="canvas" method="_on_main_button_pressed" binds= ["IAP", false]]
+[connection signal="pressed" from="canvas/PassiveUpgrade" to="canvas" method="_on_main_button_pressed" binds= ["PassiveUp", true]]
+[connection signal="pressed" from="canvas/ShmoneyStore" to="canvas" method="_on_main_button_pressed" binds= ["Shmoney", false]]
 [connection signal="pressed" from="canvas/Back" to="canvas" method="_back_button"]
 [connection signal="pressed" from="canvas/Reset" to="LogNode" method="_on_reset_pressed"]
+[connection signal="pressed" from="VirtPet/FoodButton" to="VirtPet" method="_on_hunger_purchase" binds= [5]]
+[connection signal="pressed" from="VirtPet/FoodButton2" to="VirtPet" method="_on_hunger_purchase" binds= [10]]
+[connection signal="pressed" from="VirtPet/CleanButton" to="VirtPet" method="_on_clean_purchase" binds= [5]]
+[connection signal="pressed" from="VirtPet/CleanButton2" to="VirtPet" method="_on_clean_purchase" binds= [10]]
+[connection signal="pressed" from="VirtPet/HappyButton" to="VirtPet" method="_on_happy_purchase" binds= [5]]
+[connection signal="pressed" from="VirtPet/HappyButton2" to="VirtPet" method="_on_happy_purchase" binds= [10]]
+[connection signal="pressed" from="VirtPet/OpenPet" to="VirtPet" method="_on_open_pet_pressed" binds= [false]]
 [connection signal="visibility_changed" from="MiscUp" to="MiscUp" method="_toggle_buttons"]
 [connection signal="pressed" from="MiscUp/FlatCliUp0" to="MiscUp" method="_on_misc_shop_pressed" binds= [50, 1, 0, 0]]
 [connection signal="pressed" from="MiscUp/FlatCliUp1" to="MiscUp" method="_on_misc_shop_pressed" binds= [150, 3, 1, 0]]
@@ -1363,10 +1645,8 @@ stretch_mode = 0
 [connection signal="pressed" from="PassiveUp/FlatCliUp2" to="PassiveUp" method="_on_pass_shop_pressed" binds= [500, 2.5, 2, 0]]
 [connection signal="pressed" from="PassiveUp/FlatCliUp3" to="PassiveUp" method="_on_pass_shop_pressed" binds= [1000, 5.0, 3, 0]]
 [connection signal="pressed" from="PassiveUp/OtpUp0" to="PassiveUp" method="_on_otp_shop_pressed" binds= [150, 1.1, 4]]
-[connection signal="pressed" from="VirtPet/FoodButton" to="VirtPet" method="_on_hunger_purchase" binds= [5]]
-[connection signal="pressed" from="VirtPet/FoodButton2" to="VirtPet" method="_on_hunger_purchase" binds= [10]]
-[connection signal="pressed" from="VirtPet/CleanButton" to="VirtPet" method="_on_clean_purchase" binds= [5]]
-[connection signal="pressed" from="VirtPet/CleanButton2" to="VirtPet" method="_on_clean_purchase" binds= [10]]
-[connection signal="pressed" from="VirtPet/HappyButton" to="VirtPet" method="_on_happy_purchase" binds= [5]]
-[connection signal="pressed" from="VirtPet/HappyButton2" to="VirtPet" method="_on_happy_purchase" binds= [10]]
-[connection signal="pressed" from="VirtPet/OpenPet" to="VirtPet" method="_on_open_pet_pressed" binds= [false]]
+[connection signal="visibility_changed" from="IAP" to="IAP" method="_toggle_buttons"]
+[connection signal="pressed" from="IAP/FlatCliUp0" to="IAP" method="_on_IAP_pressed" binds= [1, 100]]
+[connection signal="pressed" from="IAP/FlatCliUp1" to="IAP" method="_on_IAP_pressed" binds= [5, 500]]
+[connection signal="pressed" from="IAP/FlatCliUp2" to="IAP" method="_on_IAP_pressed" binds= [20, 3000]]
+[connection signal="pressed" from="IAP/FlatCliUp3" to="IAP" method="_on_IAP_pressed" binds= [100, 20000]]
