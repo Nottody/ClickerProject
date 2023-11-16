@@ -27,7 +27,7 @@ func _on_misc_shop_pressed(price,clickBonus,index,xpurchased):
 	if player.points >= price:
 		player.points -= price
 		player.click += clickBonus
-		player._update_points()
+		player._update_pmc()
 		newPrice = roundi(price * priceMult)
 		xpurchased += 1
 		nameRef.tooltip_text = "This upgrade costs: " + str(newPrice)
@@ -45,6 +45,6 @@ func _on_otp_shop_pressed(price, clickBonus, index):
 	if player.points >= price:
 		player.points -= price
 		player.click += roundi((clickBonus * .1) * player.click)
-		player._update_points()
+		player._update_pmc()
 		nameRef.modulate = Color(0,1,0)
 		nameRef.disconnect("pressed",_on_otp_shop_pressed)

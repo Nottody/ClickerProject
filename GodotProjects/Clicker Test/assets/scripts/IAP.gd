@@ -20,6 +20,7 @@ func _on_IAP_pressed(price,bonus):
 	if player.money >= price:
 		player.money -= price
 		player.shmoney += bonus
+		player._update_pmc()
 		
 func _on_dog_upgrade_pressed():
 	pass

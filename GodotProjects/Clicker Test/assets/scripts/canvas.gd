@@ -28,10 +28,13 @@ func _update_money():
 	$Money.text = "$" + str(money)
 func _update_clock():
 	$Clock.text = str(clock)
+func _update_shmoney():
+	$IAPMenu/Shmoney.text = str(shmoney)
 func _update_pmc():
 	_update_clock()
 	_update_money()
 	_update_points()
+	_update_shmoney()
 	
 func _toggle_points():
 	if $Points.visible:
