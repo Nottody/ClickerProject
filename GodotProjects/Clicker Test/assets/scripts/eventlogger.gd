@@ -61,6 +61,9 @@ func save():
 			file.store_string("]")
 	file.close()
 	dirty = false
+	
+
+func _save2():
 	var file2 = FileAccess.open(playersave, FileAccess.WRITE)
 	file2.store_string(str(playerdata))
 	file2.close()
@@ -89,7 +92,7 @@ func load_game():
 				player.points = int(array[1])
 			elif "Money" in x:
 				player.money = int(array[1])
-			elif "inGameMoney" in x:
+			elif "Abstract" in x:
 				player.shmoney = int(array[1])
 			elif "Click" in x:
 				player.click = int(array[1])
@@ -110,7 +113,7 @@ func _on_timer_timeout():
 	time = Time.get_datetime_dict_from_system(false)
 	playerdata = {"Points": points,
 					"Money":money,
-					"InGameMoney":shmoney,
+					"Abrstract":shmoney,
 					"Click":click,
 					"Passive":passive,
 					"QualityScore":qol,
@@ -147,6 +150,7 @@ func _on_timer_timeout():
 				dirty = true
 	$Timer.start()
 	save()
+	_save2()
 
 func _on_reset_pressed():
 	var file = FileAccess.open("res://savedata/playersave.json",FileAccess.WRITE)

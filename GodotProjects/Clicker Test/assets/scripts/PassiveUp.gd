@@ -45,7 +45,7 @@ func _on_otp_shop_pressed(price, passive, index):
 	nameRef = get_child(index)
 	if player.points >= price:	
 		player.points -= price
-		player.click += roundi((passive * .1) * player.click)
+		player.passiveEarn += roundi((passive * .1) * player.passiveEarn)
 		player._update_pmc()
 		nameRef.modulate = Color(0,1,0)
 		nameRef.disconnect("pressed",_on_otp_shop_pressed)

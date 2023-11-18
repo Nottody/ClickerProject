@@ -7,7 +7,12 @@ var menu
 var hunger
 var clean
 var happy
-#var money
+var hunmult = 1.0
+var clemult = 1.0
+var hapmult = 1.0
+var lilcare = 15 
+var medcare = 20
+var bigcare = 25
 
 func _ready():
 	player = get_parent().get_node("canvas")
@@ -16,7 +21,6 @@ func _ready():
 	hunger = get_node("Hunger")
 	clean = get_node("Clean")
 	happy = get_node("Happy")
-	#money = player.money
 
 func _on_open_pet_pressed(button_pressed):
 	if button_pressed:
@@ -38,34 +42,40 @@ func _on_hunger_purchase(price):
 	if player.money >= price:
 		if price > 5:
 			player.money -= price
-			hunger.value += 25
-			happy.value += 15
+			hunger.value += (bigcare * hunmult)
+			happy.value += (lilcare * hunmult)
 		else:
 			player.money -= price
-			hunger.value += 20
-		player._update_money()
+			hunger.value += (medcare * hunmult)
+		player._update_pmc()
 			
 func _on_clean_purchase(price):
 	if player.money >= price:
 		if price > 5:
 			player.money -= price
-			clean.value += 25
-			hunger.value += 15
+			clean.value += (bigcare * clemult)
+			hunger.value += (lilcare * clemult)
 		else:
 			player.money -= price
-			clean.value += 20
-		player._update_money()
+			clean.value += (medcare * clemult)
+		player._update_pmc()
 	
 func _on_happy_purchase(price):
 	if player.money >= price:
 		if price > 5:
 			player.money -= price
-			happy.value += 25
-			clean.value += 15
+			happy.value += (bigcare * hapmult)
+			clean.value += (lilcare * hapmult)
 		else:
 			player.money -= price
-			happy.value += 20
-		player._update_money()
+			happy.value += (medcare * hapmult)
+		player._update_pmc()
 
-
+func _upgrade_stat(stat):
+	if stat == "hunger":
+		hunmult = 1.2
+	elif stat == "happy":
+		hapmult = 1.2
+	elif stat == "clean":
+		clemult = 1.2
 

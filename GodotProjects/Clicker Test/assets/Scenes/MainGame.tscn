@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dqsdtb7gmxa3m"]
+[gd_scene load_steps=29 format=3 uid="uid://dqsdtb7gmxa3m"]
 
 [ext_resource type="Script" path="res://assets/scripts/eventlogger.gd" id="2_b72aw"]
 [ext_resource type="Script" path="res://assets/scripts/canvas.gd" id="3_61uyt"]
@@ -20,6 +20,62 @@
 [ext_resource type="Texture2D" uid="uid://bexwiggm7xsi8" path="res://assets/UIassets/PetVisuals/DogWIP.png" id="17_d4gmj"]
 [ext_resource type="Texture2D" uid="uid://bk4aaxwxkfmo4" path="res://assets/UIassets/Buttons/SideButtonWIP.png" id="18_kftsq"]
 [ext_resource type="Script" path="res://assets/scripts/IAP.gd" id="20_k0h5b"]
+[ext_resource type="Script" path="res://assets/scripts/Shmoney.gd" id="21_t38um"]
+
+[sub_resource type="Animation" id="Animation_0k6p2"]
+resource_name = "Gshmoney"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GShmuck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3, 4, 5, 6.5, 7.5, 9, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-100, -100), Vector2(250, 800), Vector2(500, 350), Vector2(250, 0), Vector2(0, 250), Vector2(300, 800), Vector2(500, 500), Vector2(200, 0), Vector2(-150, 250)]
+}
+
+[sub_resource type="Animation" id="Animation_752uo"]
+resource_name = "boing"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7atmh"]
+resource_name = "gshmoneyreset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GShmuck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-200, 200), Vector2(-200, 200)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y1ovq"]
+_data = {
+"Gshmoney": SubResource("Animation_0k6p2"),
+"boing": SubResource("Animation_752uo"),
+"gshmoneyreset": SubResource("Animation_7atmh")
+}
 
 [sub_resource type="Animation" id="Animation_h0ym6"]
 resource_name = "Close"
@@ -97,10 +153,15 @@ script = ExtResource("3_61uyt")
 
 [node name="Timer" type="Timer" parent="canvas"]
 
+[node name="globAnim" type="AnimationPlayer" parent="canvas"]
+libraries = {
+"": SubResource("AnimationLibrary_y1ovq")
+}
+
 [node name="Background" type="Sprite2D" parent="canvas"]
 light_mask = 16
 visibility_layer = 16
-position = Vector2(288.5, 437.5)
+position = Vector2(290, 450)
 scale = Vector2(1.1375, 0.825781)
 texture = ExtResource("3_npvp0")
 
@@ -122,6 +183,7 @@ text = "$"
 [node name="TextureButton" type="TextureButton" parent="canvas"]
 z_as_relative = false
 clip_contents = true
+layout_direction = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -133,7 +195,10 @@ offset_right = 150.0
 offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(153, 150)
 texture_normal = ExtResource("4_mhha5")
+ignore_texture_size = true
+stretch_mode = 0
 flip_v = true
 
 [node name="UpgradeMenu" type="TextureButton" parent="canvas" groups=["MenuButtons"]]
@@ -337,6 +402,14 @@ offset_right = 579.0
 offset_bottom = 203.0
 texture_normal = ExtResource("13_yuop2")
 flip_h = true
+
+[node name="GShmuck" type="TextureButton" parent="canvas"]
+modulate = Color(0.941176, 1, 0, 1)
+offset_left = -150.0
+offset_top = 250.0
+offset_right = -50.0
+offset_bottom = 350.0
+texture_normal = ExtResource("7_v5dr0")
 
 [node name="VirtPet" type="CanvasLayer" parent="."]
 offset = Vector2(615, -50)
@@ -959,6 +1032,120 @@ theme_override_font_sizes/normal_font_size = 30
 text = "	Cost: 150
 	Clicks + 10%"
 
+[node name="OtpUp1" type="TextureButton" parent="MiscUp" groups=["MiscButtons"]]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -275.0
+offset_top = 375.0
+offset_right = -50.0
+offset_bottom = 500.0
+grow_horizontal = 0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost_Bonus" type="RichTextLabel" parent="MiscUp/OtpUp1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: 500
+	Clicks + 20%"
+
+[node name="OtpUp2" type="TextureButton" parent="MiscUp" groups=["MiscButtons"]]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -275.0
+offset_top = 540.0
+offset_right = -50.0
+offset_bottom = 665.0
+grow_horizontal = 0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost_Bonus" type="RichTextLabel" parent="MiscUp/OtpUp2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: 2000
+	Clicks + 30%"
+
+[node name="OtpUp3" type="TextureButton" parent="MiscUp" groups=["MiscButtons"]]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -275.0
+offset_top = 705.0
+offset_right = -50.0
+offset_bottom = 830.0
+grow_horizontal = 0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost_Bonus" type="RichTextLabel" parent="MiscUp/OtpUp3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: 10000
+	Clicks + 50%"
+
 [node name="ShopTitle" type="RichTextLabel" parent="MiscUp"]
 offset_left = 3.0
 offset_top = 20.0
@@ -1001,7 +1188,7 @@ text = " One Time Upgrades"
 visible = false
 script = ExtResource("15_c4loe")
 
-[node name="FlatCliUp0" type="TextureButton" parent="PassiveUp" groups=["PassButtons"]]
+[node name="FlatPassUp0" type="TextureButton" parent="PassiveUp" groups=["PassButtons"]]
 offset_left = 50.0
 offset_top = 210.0
 offset_right = 275.0
@@ -1011,7 +1198,7 @@ texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Cost" type="RichTextLabel" parent="PassiveUp/FlatCliUp0"]
+[node name="Cost" type="RichTextLabel" parent="PassiveUp/FlatPassUp0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1034,7 +1221,7 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
 text = "	Cost: 50"
 
-[node name="Bonus" type="RichTextLabel" parent="PassiveUp/FlatCliUp0"]
+[node name="Bonus" type="RichTextLabel" parent="PassiveUp/FlatPassUp0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1057,7 +1244,7 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
 text = "	0.1 bits/sec"
 
-[node name="Owned" type="RichTextLabel" parent="PassiveUp/FlatCliUp0"]
+[node name="Owned" type="RichTextLabel" parent="PassiveUp/FlatPassUp0"]
 visible = false
 layout_mode = 0
 offset_left = 4.0
@@ -1073,7 +1260,7 @@ theme_override_constants/outline_size = 1
 theme_override_font_sizes/normal_font_size = 20
 text = "0 owned"
 
-[node name="FlatCliUp1" type="TextureButton" parent="PassiveUp" groups=["PassButtons"]]
+[node name="FlatPassUp1" type="TextureButton" parent="PassiveUp" groups=["PassButtons"]]
 offset_left = 50.0
 offset_top = 375.0
 offset_right = 275.0
@@ -1083,7 +1270,7 @@ texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Cost" type="RichTextLabel" parent="PassiveUp/FlatCliUp1"]
+[node name="Cost" type="RichTextLabel" parent="PassiveUp/FlatPassUp1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1106,7 +1293,7 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
 text = "	Cost: 150"
 
-[node name="Bonus" type="RichTextLabel" parent="PassiveUp/FlatCliUp1"]
+[node name="Bonus" type="RichTextLabel" parent="PassiveUp/FlatPassUp1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1129,7 +1316,7 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
 text = "	0.5 bits/sec"
 
-[node name="Owned" type="RichTextLabel" parent="PassiveUp/FlatCliUp1"]
+[node name="Owned" type="RichTextLabel" parent="PassiveUp/FlatPassUp1"]
 visible = false
 layout_mode = 0
 offset_left = 4.0
@@ -1145,7 +1332,7 @@ theme_override_constants/outline_size = 1
 theme_override_font_sizes/normal_font_size = 20
 text = "0 owned"
 
-[node name="FlatCliUp2" type="TextureButton" parent="PassiveUp" groups=["PassButtons"]]
+[node name="FlatPassUp2" type="TextureButton" parent="PassiveUp" groups=["PassButtons"]]
 offset_left = 50.0
 offset_top = 540.0
 offset_right = 275.0
@@ -1155,7 +1342,7 @@ texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Cost" type="RichTextLabel" parent="PassiveUp/FlatCliUp2"]
+[node name="Cost" type="RichTextLabel" parent="PassiveUp/FlatPassUp2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1178,7 +1365,7 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
 text = "	Cost: 500"
 
-[node name="Bonus" type="RichTextLabel" parent="PassiveUp/FlatCliUp2"]
+[node name="Bonus" type="RichTextLabel" parent="PassiveUp/FlatPassUp2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1201,7 +1388,7 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
 text = "	2.5 bits/sec"
 
-[node name="Owned" type="RichTextLabel" parent="PassiveUp/FlatCliUp2"]
+[node name="Owned" type="RichTextLabel" parent="PassiveUp/FlatPassUp2"]
 visible = false
 layout_mode = 0
 offset_left = 4.0
@@ -1217,7 +1404,7 @@ theme_override_constants/outline_size = 1
 theme_override_font_sizes/normal_font_size = 20
 text = "0 owned"
 
-[node name="FlatCliUp3" type="TextureButton" parent="PassiveUp" groups=["PassButtons"]]
+[node name="FlatPassUp3" type="TextureButton" parent="PassiveUp" groups=["PassButtons"]]
 offset_left = 50.0
 offset_top = 705.0
 offset_right = 275.0
@@ -1227,7 +1414,7 @@ texture_normal = ExtResource("5_k1yog")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Cost" type="RichTextLabel" parent="PassiveUp/FlatCliUp3"]
+[node name="Cost" type="RichTextLabel" parent="PassiveUp/FlatPassUp3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1250,7 +1437,7 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
 text = "	Cost: 1000"
 
-[node name="Bonus" type="RichTextLabel" parent="PassiveUp/FlatCliUp3"]
+[node name="Bonus" type="RichTextLabel" parent="PassiveUp/FlatPassUp3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1273,7 +1460,7 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
 text = "	5 bits/sec"
 
-[node name="Owned" type="RichTextLabel" parent="PassiveUp/FlatCliUp3"]
+[node name="Owned" type="RichTextLabel" parent="PassiveUp/FlatPassUp3"]
 visible = false
 layout_mode = 0
 offset_left = 4.0
@@ -1325,7 +1512,121 @@ theme_override_constants/shadow_outline_size = 10
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 30
 text = "	Cost: 150
-	Clicks + 10%"
+ +10% Bits/sec"
+
+[node name="OtpUp1" type="TextureButton" parent="PassiveUp" groups=["PassButtons"]]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -275.0
+offset_top = 375.0
+offset_right = -50.0
+offset_bottom = 500.0
+grow_horizontal = 0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost_Bonus" type="RichTextLabel" parent="PassiveUp/OtpUp1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: 500
+ +20% Bits/sec"
+
+[node name="OtpUp2" type="TextureButton" parent="PassiveUp" groups=["PassButtons"]]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -275.0
+offset_top = 540.0
+offset_right = -50.0
+offset_bottom = 665.0
+grow_horizontal = 0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost_Bonus" type="RichTextLabel" parent="PassiveUp/OtpUp2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: 2000
+ +30% Bits/sec"
+
+[node name="OtpUp3" type="TextureButton" parent="PassiveUp" groups=["PassButtons"]]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -275.0
+offset_top = 705.0
+offset_right = -50.0
+offset_bottom = 830.0
+grow_horizontal = 0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost_Bonus" type="RichTextLabel" parent="PassiveUp/OtpUp3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: 10000
+ +50% Bits/sec"
 
 [node name="ShopTitle" type="RichTextLabel" parent="PassiveUp"]
 offset_left = -35.0
@@ -1614,6 +1915,158 @@ position = Vector2(175, 85)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_v5dr0")
 
+[node name="OtpUp0" type="TextureButton" parent="IAP" groups=["IAPButtons"]]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -275.0
+offset_top = 210.0
+offset_right = -50.0
+offset_bottom = 335.0
+grow_horizontal = 0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost_Bonus" type="RichTextLabel" parent="IAP/OtpUp0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: $100
+	Clean + 10%"
+
+[node name="OtpUp1" type="TextureButton" parent="IAP" groups=["IAPButtons"]]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -275.0
+offset_top = 375.0
+offset_right = -50.0
+offset_bottom = 500.0
+grow_horizontal = 0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost_Bonus" type="RichTextLabel" parent="IAP/OtpUp1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: $100
+	Hunger+10%"
+
+[node name="OtpUp2" type="TextureButton" parent="IAP" groups=["IAPButtons"]]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -275.0
+offset_top = 540.0
+offset_right = -50.0
+offset_bottom = 665.0
+grow_horizontal = 0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost_Bonus" type="RichTextLabel" parent="IAP/OtpUp2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: $100
+	Happy +10%"
+
+[node name="OtpUp3" type="TextureButton" parent="IAP" groups=["IAPButtons"]]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -275.0
+offset_top = 705.0
+offset_right = -50.0
+offset_bottom = 830.0
+grow_horizontal = 0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost_Bonus" type="RichTextLabel" parent="IAP/OtpUp3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: $500
+	Auto Feed"
+
 [node name="ShopTitle" type="RichTextLabel" parent="IAP"]
 offset_left = -35.0
 offset_top = 20.0
@@ -1627,8 +2080,266 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 60
 text = "		Buy Shmoney"
 
-[node name="Shmoney" type="CanvasLayer" parent="."]
+[node name="Shmoney" type="CanvasLayer" parent="." groups=["Shops"]]
 visible = false
+script = ExtResource("21_t38um")
+
+[node name="FlatShmUp0" type="TextureButton" parent="Shmoney" groups=["ShmButtons"]]
+offset_left = 100.0
+offset_top = 210.0
+offset_right = 500.0
+offset_bottom = 335.0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost" type="RichTextLabel" parent="Shmoney/FlatShmUp0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: 150"
+
+[node name="Bonus" type="RichTextLabel" parent="Shmoney/FlatShmUp0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -2.5
+offset_right = 137.0
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "1 min +50% Clicks"
+
+[node name="Icon" type="Sprite2D" parent="Shmoney/FlatShmUp0"]
+position = Vector2(300, 38)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_v5dr0")
+
+[node name="FlatShmUp1" type="TextureButton" parent="Shmoney" groups=["ShmButtons"]]
+offset_left = 100.0
+offset_top = 375.0
+offset_right = 500.0
+offset_bottom = 500.0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost" type="RichTextLabel" parent="Shmoney/FlatShmUp1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: 500"
+
+[node name="Bonus" type="RichTextLabel" parent="Shmoney/FlatShmUp1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = 0.5
+offset_right = 156.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "2 min +100% Clicks"
+
+[node name="Icon" type="Sprite2D" parent="Shmoney/FlatShmUp1"]
+position = Vector2(300, 38)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_v5dr0")
+
+[node name="GShmucks" type="TextureButton" parent="Shmoney" groups=["ShmButtons"]]
+offset_left = 100.0
+offset_top = 540.0
+offset_right = 500.0
+offset_bottom = 665.0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost" type="RichTextLabel" parent="Shmoney/GShmucks"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: 5000"
+
+[node name="Bonus" type="RichTextLabel" parent="Shmoney/GShmucks"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = 0.5
+offset_right = 172.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "Golden Shmucks"
+
+[node name="Icon" type="Sprite2D" parent="Shmoney/GShmucks"]
+position = Vector2(303, 38)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_v5dr0")
+
+[node name="TimeSkip" type="TextureButton" parent="Shmoney" groups=["ShmButtons"]]
+offset_left = 100.0
+offset_top = 705.0
+offset_right = 500.0
+offset_bottom = 830.0
+disabled = true
+texture_normal = ExtResource("5_k1yog")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cost" type="RichTextLabel" parent="Shmoney/TimeSkip"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -42.5
+offset_right = 112.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "	Cost: 10000"
+
+[node name="Bonus" type="RichTextLabel" parent="Shmoney/TimeSkip"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = 0.5
+offset_right = 156.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 30
+text = "Gain 5 min of bits"
+
+[node name="Icon" type="Sprite2D" parent="Shmoney/TimeSkip"]
+position = Vector2(320, 38)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_v5dr0")
+
+[node name="ShopTitle" type="RichTextLabel" parent="Shmoney"]
+offset_left = -35.0
+offset_top = 20.0
+offset_right = 565.0
+offset_bottom = 116.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 20
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 60
+text = "		Shmoney Shop"
 
 [connection signal="timeout" from="LogNode/Timer" to="LogNode" method="_on_timer_timeout"]
 [connection signal="timeout" from="canvas/Timer" to="canvas" method="_on_timer_timeout"]
@@ -1652,14 +2363,29 @@ visible = false
 [connection signal="pressed" from="MiscUp/FlatCliUp2" to="MiscUp" method="_on_misc_shop_pressed" binds= [500, 10, 2, 0]]
 [connection signal="pressed" from="MiscUp/FlatCliUp3" to="MiscUp" method="_on_misc_shop_pressed" binds= [1000, 15, 3, 0]]
 [connection signal="pressed" from="MiscUp/OtpUp0" to="MiscUp" method="_on_otp_shop_pressed" binds= [150, 1, 4]]
+[connection signal="pressed" from="MiscUp/OtpUp1" to="MiscUp" method="_on_otp_shop_pressed" binds= [500, 2, 5]]
+[connection signal="pressed" from="MiscUp/OtpUp2" to="MiscUp" method="_on_otp_shop_pressed" binds= [2000, 3, 6]]
+[connection signal="pressed" from="MiscUp/OtpUp3" to="MiscUp" method="_on_otp_shop_pressed" binds= [10000, 5, 7]]
 [connection signal="visibility_changed" from="PassiveUp" to="PassiveUp" method="_toggle_buttons"]
-[connection signal="pressed" from="PassiveUp/FlatCliUp0" to="PassiveUp" method="_on_pass_shop_pressed" binds= [50, 0.1, 0, 0]]
-[connection signal="pressed" from="PassiveUp/FlatCliUp1" to="PassiveUp" method="_on_pass_shop_pressed" binds= [150, 0.5, 1, 0]]
-[connection signal="pressed" from="PassiveUp/FlatCliUp2" to="PassiveUp" method="_on_pass_shop_pressed" binds= [500, 2.5, 2, 0]]
-[connection signal="pressed" from="PassiveUp/FlatCliUp3" to="PassiveUp" method="_on_pass_shop_pressed" binds= [1000, 5.0, 3, 0]]
-[connection signal="pressed" from="PassiveUp/OtpUp0" to="PassiveUp" method="_on_otp_shop_pressed" binds= [150, 1.1, 4]]
+[connection signal="pressed" from="PassiveUp/FlatPassUp0" to="PassiveUp" method="_on_pass_shop_pressed" binds= [50, 0.1, 0, 0]]
+[connection signal="pressed" from="PassiveUp/FlatPassUp1" to="PassiveUp" method="_on_pass_shop_pressed" binds= [150, 0.5, 1, 0]]
+[connection signal="pressed" from="PassiveUp/FlatPassUp2" to="PassiveUp" method="_on_pass_shop_pressed" binds= [500, 2.5, 2, 0]]
+[connection signal="pressed" from="PassiveUp/FlatPassUp3" to="PassiveUp" method="_on_pass_shop_pressed" binds= [1000, 5.0, 3, 0]]
+[connection signal="pressed" from="PassiveUp/OtpUp0" to="PassiveUp" method="_on_otp_shop_pressed" binds= [150, 1, 4]]
+[connection signal="pressed" from="PassiveUp/OtpUp1" to="PassiveUp" method="_on_otp_shop_pressed" binds= [500, 2, 5]]
+[connection signal="pressed" from="PassiveUp/OtpUp2" to="PassiveUp" method="_on_otp_shop_pressed" binds= [2000, 3, 6]]
+[connection signal="pressed" from="PassiveUp/OtpUp3" to="PassiveUp" method="_on_otp_shop_pressed" binds= [10000, 5, 7]]
 [connection signal="visibility_changed" from="IAP" to="IAP" method="_toggle_buttons"]
 [connection signal="pressed" from="IAP/FlatCliUp0" to="IAP" method="_on_IAP_pressed" binds= [1, 100]]
 [connection signal="pressed" from="IAP/FlatCliUp1" to="IAP" method="_on_IAP_pressed" binds= [5, 500]]
 [connection signal="pressed" from="IAP/FlatCliUp2" to="IAP" method="_on_IAP_pressed" binds= [20, 3000]]
 [connection signal="pressed" from="IAP/FlatCliUp3" to="IAP" method="_on_IAP_pressed" binds= [100, 20000]]
+[connection signal="pressed" from="IAP/OtpUp0" to="IAP" method="_on_dog_upgrade_pressed" binds= [100, "clean", 4]]
+[connection signal="pressed" from="IAP/OtpUp1" to="IAP" method="_on_dog_upgrade_pressed" binds= [100, "hunger", 5]]
+[connection signal="pressed" from="IAP/OtpUp2" to="IAP" method="_on_dog_upgrade_pressed" binds= [100, "happy", 6]]
+[connection signal="pressed" from="IAP/OtpUp3" to="IAP" method="_on_auto_upgrade_pressed" binds= [500, 7]]
+[connection signal="visibility_changed" from="Shmoney" to="Shmoney" method="_toggle_buttons"]
+[connection signal="pressed" from="Shmoney/FlatShmUp0" to="Shmoney" method="_on_shmoney_temp_bonus" binds= [150, 1.5, 60]]
+[connection signal="pressed" from="Shmoney/FlatShmUp1" to="Shmoney" method="_on_shmoney_temp_bonus" binds= [500, 2.0, 120]]
+[connection signal="pressed" from="Shmoney/GShmucks" to="Shmoney" method="_on_golden_shmucks" binds= [5000, 2]]
+[connection signal="pressed" from="Shmoney/TimeSkip" to="Shmoney" method="_on_time_skip_pressed" binds= [10000]]

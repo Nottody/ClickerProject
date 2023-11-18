@@ -5,13 +5,17 @@ var hunger
 var clean 
 var happy 
 var qol = 0.0
-var money = 25
+var money = 1000
 var passiveEarn = 0.0
-var shmoney = 0
+var shmoney = 100
 var click = 1
 var clock = 120
 var buttons
 var shops
+var auto = false
+var gshmucks = false
+var pointmult = 1.0
+var bonustimer
 
 func _ready():
 	$Timer.start()
@@ -44,7 +48,18 @@ func _toggle_points():
 
 func _on_button_pressed():
 	points += click
+	$globAnim.play("boing")
 	_update_points()
+
+func _skip_time():
+	points += (passiveEarn * 300)
+
+func _auto_feed():
+	if money >= 5:
+		money -= 5
+		hunger.value += 5
+		happy.value += 4.2
+		clean.value += 3.4
 
 func _on_timer_timeout():
 	$Timer.start()
@@ -60,6 +75,21 @@ func _on_timer_timeout():
 		clean.value -= 0.6
 		happy.value -= 0.8
 	qol = snappedf(((hunger.value * clean.value * happy.value)/50),0.01)
+	if clock % 12 == 0:
+		if auto:
+			_auto_feed()
+	_golden_shmucks()
+	
+func _golden_shmucks():
+	if !gshmucks:
+		return
+	else:
+		if randi_range(0,117) == 1:
+			$globAnim.play("Gshmoney")
+	
+func _on_gshmuck_pressed():
+	$globalAnim.play("gshmoneyreset")
+	shmoney += randi_range(10,100)
 	
 func _on_main_button_pressed(button,score):
 	get_parent().get_node(button).visible = true
@@ -122,4 +152,3 @@ func _back_button():
 	_background_tog(null)
 	if !$Points.visible:
 		_toggle_points()
-	
