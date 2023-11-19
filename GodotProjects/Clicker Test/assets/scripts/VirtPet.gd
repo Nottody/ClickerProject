@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 var player
+var loge
 var buttons
 var toggleMenu
 var menu
@@ -14,8 +15,10 @@ var lilcare = 15
 var medcare = 20
 var bigcare = 25
 
+
 func _ready():
 	player = get_parent().get_node("canvas")
+	loge = get_parent().get_node("LogNode")
 	toggleMenu = get_node("OpenPet")
 	menu = get_node("PetMenu")
 	hunger = get_node("Hunger")
@@ -48,7 +51,8 @@ func _on_hunger_purchase(price):
 			player.money -= price
 			hunger.value += (medcare * hunmult)
 		player._update_pmc()
-			
+		loge._update_dog_spent(price)
+
 func _on_clean_purchase(price):
 	if player.money >= price:
 		if price > 5:
@@ -59,7 +63,8 @@ func _on_clean_purchase(price):
 			player.money -= price
 			clean.value += (medcare * clemult)
 		player._update_pmc()
-	
+		loge._update_dog_spent(price)
+
 func _on_happy_purchase(price):
 	if player.money >= price:
 		if price > 5:
@@ -70,6 +75,7 @@ func _on_happy_purchase(price):
 			player.money -= price
 			happy.value += (medcare * hapmult)
 		player._update_pmc()
+		loge._update_dog_spent(price)
 
 func _upgrade_stat(stat):
 	if stat == "hunger":
