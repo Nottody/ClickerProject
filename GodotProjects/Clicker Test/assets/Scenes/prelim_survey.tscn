@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cww6ytqad1vl5"]
 
 [ext_resource type="Texture2D" uid="uid://b8qxhh2yll88o" path="res://assets/UIassets/Background/Consent.png" id="1_21gns"]
-[ext_resource type="Script" path="res://assets/prelim_survey.gd" id="1_toeqw"]
+[ext_resource type="Script" path="res://assets/scripts/prelim_survey.gd" id="1_toeqw"]
 [ext_resource type="FontFile" uid="uid://7036dkcqaq6x" path="res://assets/fonts/Raleway-SemiBold.ttf" id="3_bwa6y"]
 [ext_resource type="Texture2D" uid="uid://c1mau58r2tr43" path="res://assets/UIassets/Buttons/RadioDe.png" id="4_rc1i4"]
 [ext_resource type="Texture2D" uid="uid://emdl1npoh7jd" path="res://assets/UIassets/Buttons/RadioSel.png" id="4_tql74"]
