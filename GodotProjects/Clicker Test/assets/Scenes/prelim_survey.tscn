@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cww6ytqad1vl5"]
+[gd_scene load_steps=8 format=3 uid="uid://cww6ytqad1vl5"]
 
 [ext_resource type="Texture2D" uid="uid://b8qxhh2yll88o" path="res://assets/UIassets/Background/Consent.png" id="1_21gns"]
 [ext_resource type="Script" path="res://assets/scripts/prelim_survey.gd" id="1_toeqw"]
 [ext_resource type="FontFile" uid="uid://7036dkcqaq6x" path="res://assets/fonts/Raleway-SemiBold.ttf" id="3_bwa6y"]
 [ext_resource type="Texture2D" uid="uid://c1mau58r2tr43" path="res://assets/UIassets/Buttons/RadioDe.png" id="4_rc1i4"]
 [ext_resource type="Texture2D" uid="uid://emdl1npoh7jd" path="res://assets/UIassets/Buttons/RadioSel.png" id="4_tql74"]
+[ext_resource type="Texture2D" uid="uid://d1s8q3oxulbk8" path="res://assets/UIassets/Buttons/UnclickableNext.png" id="6_rtifp"]
+[ext_resource type="Texture2D" uid="uid://bkbjytcqihwmx" path="res://assets/UIassets/Buttons/Next.png" id="6_v3g8o"]
 
 [node name="PrelimSurvey" type="CanvasLayer"]
 script = ExtResource("1_toeqw")
@@ -133,8 +135,18 @@ theme_override_fonts/normal_font = ExtResource("3_bwa6y")
 theme_override_font_sizes/normal_font_size = 18
 text = "Yes                                            No"
 
+[node name="NextButton" type="TextureButton" parent="."]
+offset_left = 199.0
+offset_top = 754.0
+offset_right = 401.0
+offset_bottom = 853.0
+disabled = true
+texture_normal = ExtResource("6_v3g8o")
+texture_disabled = ExtResource("6_rtifp")
+
 [connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Yes" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="No" to="." method="_on_no_pressed"]
 [connection signal="pressed" from="Yes2" to="." method="_on_yes_2_pressed"]
 [connection signal="pressed" from="No2" to="." method="_on_no_2_pressed"]
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

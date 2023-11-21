@@ -5,6 +5,8 @@ var no = false
 var yes2 = false
 var no2 = false
 var hours
+var Q2 = false
+var Q3 = false
 
 func _ready():
 	$Yes.set_texture_normal(load("res://assets/UIassets/Buttons/RadioDe.png"))
@@ -26,6 +28,9 @@ func _on_yes_pressed():
 		$Yes.set_texture_normal(load("res://assets/UIassets/Buttons/RadioSel.png"))
 		no = false
 		$No.set_texture_normal(load("res://assets/UIassets/Buttons/RadioDe.png"))
+		Q2 = true
+	if Q2 && Q3 == true:
+		$NextButton.disabled = false
 
 func _on_no_pressed():
 	if no:
@@ -35,6 +40,9 @@ func _on_no_pressed():
 		$No.set_texture_normal(load("res://assets/UIassets/Buttons/RadioSel.png"))
 		yes = false
 		$Yes.set_texture_normal(load("res://assets/UIassets/Buttons/RadioDe.png"))
+		Q2 = true
+	if Q2 && Q3 == true:
+		$NextButton.disabled = false
 
 func _on_yes_2_pressed():
 	if yes2:
@@ -44,6 +52,9 @@ func _on_yes_2_pressed():
 		$Yes2.set_texture_normal(load("res://assets/UIassets/Buttons/RadioSel.png"))
 		no2 = false
 		$No2.set_texture_normal(load("res://assets/UIassets/Buttons/RadioDe.png"))
+		Q3 = true
+	if Q2 && Q3 == true:
+		$NextButton.disabled = false
 
 func _on_no_2_pressed():
 	if no2:
@@ -53,3 +64,9 @@ func _on_no_2_pressed():
 		$No2.set_texture_normal(load("res://assets/UIassets/Buttons/RadioSel.png"))
 		yes2 = false
 		$Yes2.set_texture_normal(load("res://assets/UIassets/Buttons/RadioDe.png"))
+		Q3 = true
+	if Q2 && Q3 == true:
+		$NextButton.disabled = false
+
+func _on_next_button_pressed():
+	get_tree().change_scene_to_file("res://assets/Scenes/dog_name.tscn")

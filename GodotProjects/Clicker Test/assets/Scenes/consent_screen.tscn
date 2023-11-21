@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://crm5i2nggdcw3" path="res://assets/UIassets/Buttons/Start.png" id="6_u5lsr"]
 [ext_resource type="Texture2D" uid="uid://be1cdrirwg1if" path="res://assets/UIassets/Buttons/UnclickableStart.png" id="7_utmv2"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="ConForm" type="CanvasLayer"]
 script = ExtResource("1_fol76")
 
 [node name="Background" type="Sprite2D" parent="."]
