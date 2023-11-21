@@ -24,6 +24,7 @@ func _ready():
 	hunger = get_node("Hunger")
 	clean = get_node("Clean")
 	happy = get_node("Happy")
+	$Name.text = Global.dog_name
 
 func _on_open_pet_pressed(button_pressed):
 	if button_pressed:
