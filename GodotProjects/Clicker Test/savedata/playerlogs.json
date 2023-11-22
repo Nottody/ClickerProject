@@ -1,3 +1,4 @@
-[{ "Config": { "Test": false, "PetName": "doggie" } },
-{ "event": "Log", "data": { "Name": "doggie", "Points": 5490, "Money": 1729, "IAPSpent": 121, "DogSpent": 150, "Abrstract": 100, "Click": 4, "Passive": 6, "QualityScore": 2500, "Time": { "year": 2023, "month": 11, "day": 21, "weekday": 2, "hour": 21, "minute": 29, "second": 43, "dst": false } } },
+[{ "Config": { "Test": <null>, "PetName": "Great Jimothy", "Q1": 0, "Q2": true, "Q3": true } },
+{ "event": "Log", "data": { "Name": "doggie", "Points": 5554, "Money": 1729, "IAPSpent": 121, "DogSpent": 150, "Abrstract": 100, "Click": 4, "Passive": 6, "QualityScore": 2500, "Time": { "year": 2023, "month": 11, "day": 22, "weekday": 3, "hour": 15, "minute": 26, "second": 55, "dst": false } } },
+{ "event": "Log", "data": { "Name": "doggie", "Points": 10695, "Money": 1809, "IAPSpent": 421, "DogSpent": 270, "Abrstract": 100, "Click": 64, "Passive": 6, "QualityScore": 2718.59, "Time": { "year": 2023, "month": 11, "day": 22, "weekday": 3, "hour": 15, "minute": 37, "second": 16, "dst": false } } },
 ]

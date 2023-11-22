@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjpfy5d4v0g84"]
+[gd_scene load_steps=7 format=3 uid="uid://bjpfy5d4v0g84"]
 
 [ext_resource type="Script" path="res://assets/scripts/dog_name.gd" id="1_fq5bh"]
 [ext_resource type="Texture2D" uid="uid://b8qxhh2yll88o" path="res://assets/UIassets/Background/Consent.png" id="1_penre"]
 [ext_resource type="Texture2D" uid="uid://bexwiggm7xsi8" path="res://assets/UIassets/PetVisuals/DogWIP.png" id="2_sccrf"]
+[ext_resource type="FontFile" uid="uid://7036dkcqaq6x" path="res://assets/fonts/Raleway-SemiBold.ttf" id="3_obrf7"]
 [ext_resource type="Texture2D" uid="uid://bsuykjom8phu2" path="res://assets/UIassets/Buttons/Play.png" id="4_q00rv"]
 [ext_resource type="Texture2D" uid="uid://c8rok4o4mmh54" path="res://assets/UIassets/Buttons/UnclickablePlay.png" id="5_sqnn6"]
 
@@ -15,12 +16,14 @@ texture = ExtResource("1_penre")
 
 [node name="Introduction" type="RichTextLabel" parent="."]
 offset_left = 39.0
-offset_top = 38.0
+offset_top = 33.0
 offset_right = 563.0
-offset_bottom = 711.0
+offset_bottom = 706.0
+theme_override_fonts/normal_font = ExtResource("3_obrf7")
 theme_override_font_sizes/normal_font_size = 54
 bbcode_enabled = true
 text = "[center]This is your dog.
+
 
 
 
@@ -33,9 +36,9 @@ texture = ExtResource("2_sccrf")
 
 [node name="DogEdit" type="TextEdit" parent="."]
 offset_left = 101.0
-offset_top = 654.0
+offset_top = 646.0
 offset_right = 496.0
-offset_bottom = 717.0
+offset_bottom = 709.0
 theme_override_font_sizes/font_size = 36
 placeholder_text = "Enter a name here..."
 wrap_mode = 1
