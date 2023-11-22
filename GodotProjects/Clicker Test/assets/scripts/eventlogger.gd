@@ -4,8 +4,6 @@ extends Node
 var points
 var money
 var abstract
-# checks for test or control (false = control)
-var test = false
 # tracks the player's progress
 var passive
 var click
@@ -26,7 +24,7 @@ var player
 var playerconfig = {}
 var playerdata = {}
 var surveydata = {}
-var events: Array = []
+#var events
 var dirty = false
 const playerlogs = "res://savedata/playerlogs.json"
 const playersave = "res://savedata/playersave.json"
@@ -39,12 +37,13 @@ var geturl = (apiurl + "?sheetname=" +sheetname)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_parent().get_node("canvas")
-	playerconfig = {"Test":test,"PetName":pet_name}
+	playerconfig = {"Test":Global.Test,
+					"PetName":Global.DogName,
+					"Q1":Global.AvgHours,
+					"Q2":Global.Idle,
+					"Q3":Global.Idle}
 	starttime = Time.get_datetime_dict_from_system(false)
-	#playerconfig.append(surveydata)
-	events = [{"Config":playerconfig}]
-	#pet_name = ()
-	#test = false
+	Global.PlayerDataArray = [{"Config":playerconfig}]
 	$Timer.start()
 	load_game()
 	_get_data()
@@ -58,7 +57,7 @@ func _event_log(event_type: String, event_data: Dictionary ):
 	var event : Dictionary = {
 		'event': event_type,
 		'data': event_data};
-	events.append(event)
+	Global.PlayerDataArray.append(event)
 	
 func save():
 	if !dirty:
@@ -66,14 +65,15 @@ func save():
 		return
 	print_debug("saving")
 	var file = FileAccess.open(playerlogs, FileAccess.WRITE)
-	for x in events:
-		if x == events[0]:
+	for x in Global.PlayerDataArray:
+		if x == Global.PlayerDataArray[0]:
 			file.store_string("[")
 		file.store_string(str(x))
 		file.store_line(",")
-		if x == events[-1]:
+		if x == Global.PlayerDataArray[-1]:
 			file.store_string("]")
 	file.close()
+	print_debug(Global.PlayerDataArray)
 	dirty = false
 	
 
