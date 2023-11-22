@@ -1,10 +1,5 @@
 extends CanvasLayer
 
-var yes = false
-var no = false 
-var yes2 = false
-var no2 = false
-var hours
 var Q2 = false
 var Q3 = false
 
@@ -18,51 +13,51 @@ func _on_h_slider_value_changed(value):
 	$HourValue.set_text(str(value))
 	if value == 20:
 		$HourValue.set_text('20+')
-	hours = value
+	Global.hours = value
 
 func _on_yes_pressed():
-	if yes:
+	if Global.IdleT:
 		return
 	else:
-		yes = true
+		Global.IdleT = true
 		$Yes.set_texture_normal(load("res://assets/UIassets/Buttons/RadioSel.png"))
-		no = false
+		Global.IdleF = false
 		$No.set_texture_normal(load("res://assets/UIassets/Buttons/RadioDe.png"))
 		Q2 = true
 	if Q2 && Q3 == true:
 		$NextButton.disabled = false
 
 func _on_no_pressed():
-	if no:
+	if Global.IdleF:
 		return
 	else:
-		no = true
+		Global.IdleF = true
 		$No.set_texture_normal(load("res://assets/UIassets/Buttons/RadioSel.png"))
-		yes = false
+		Global.IdleT = false
 		$Yes.set_texture_normal(load("res://assets/UIassets/Buttons/RadioDe.png"))
 		Q2 = true
 	if Q2 && Q3 == true:
 		$NextButton.disabled = false
 
 func _on_yes_2_pressed():
-	if yes2:
+	if Global.MicroT:
 		return
 	else:
-		yes2 = true
+		Global.MicroT = true
 		$Yes2.set_texture_normal(load("res://assets/UIassets/Buttons/RadioSel.png"))
-		no2 = false
+		Global.MicroF = false
 		$No2.set_texture_normal(load("res://assets/UIassets/Buttons/RadioDe.png"))
 		Q3 = true
 	if Q2 && Q3 == true:
 		$NextButton.disabled = false
 
 func _on_no_2_pressed():
-	if no2:
+	if Global.MicroF:
 		return
 	else:
-		no2 = true
+		Global.MicroF = true
 		$No2.set_texture_normal(load("res://assets/UIassets/Buttons/RadioSel.png"))
-		yes2 = false
+		Global.MicroT = false
 		$Yes2.set_texture_normal(load("res://assets/UIassets/Buttons/RadioDe.png"))
 		Q3 = true
 	if Q2 && Q3 == true:

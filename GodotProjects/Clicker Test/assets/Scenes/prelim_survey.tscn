@@ -34,22 +34,24 @@ theme_override_font_sizes/normal_font_size = 22
 text = "How many hours a week do you play video games?"
 
 [node name="QuestionTwo" type="RichTextLabel" parent="."]
-offset_left = 190.0
-offset_top = 340.0
-offset_right = 420.0
-offset_bottom = 431.0
+offset_left = 66.0
+offset_top = 315.0
+offset_right = 541.0
+offset_bottom = 404.0
 theme_override_fonts/normal_font = ExtResource("3_bwa6y")
 theme_override_font_sizes/normal_font_size = 22
-text = "Have you ever played an idle game before?"
+bbcode_enabled = true
+text = "[center]An idle game is a game in which you can make progress even when you aren't playing. Have you ever played an idle game before?"
 
 [node name="QuestionThree" type="RichTextLabel" parent="."]
-offset_left = 153.0
-offset_top = 561.0
-offset_right = 463.0
-offset_bottom = 671.0
+offset_left = 50.0
+offset_top = 538.0
+offset_right = 560.0
+offset_bottom = 648.0
 theme_override_fonts/normal_font = ExtResource("3_bwa6y")
 theme_override_font_sizes/normal_font_size = 22
-text = "Have you ever spent money on a microtransaction before?"
+bbcode_enabled = true
+text = "[center]A microtransaction is a small digital pruchase of virtual goods from within a game. Have you ever spent money on a microtransaction before?"
 
 [node name="HourValue" type="RichTextLabel" parent="."]
 offset_left = 421.0
