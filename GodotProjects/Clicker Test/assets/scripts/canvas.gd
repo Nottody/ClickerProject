@@ -5,6 +5,8 @@ var hunger
 var clean 
 var happy 
 var qol = 0.0
+var sleep = 100
+var sleeping = false
 var money = 1000
 var passiveEarn = 0.0
 var shmoney = 100
@@ -74,7 +76,7 @@ func _on_timer_timeout():
 		hunger.value -= 1
 		clean.value -= 0.6
 		happy.value -= 0.8
-	qol = snappedf(((hunger.value * clean.value * happy.value)/50),0.01)
+	qol = snappedf(((hunger.value * clean.value * happy.value)/500),0.01)
 	if clock % 12 == 0:
 		if auto:
 			_auto_feed()

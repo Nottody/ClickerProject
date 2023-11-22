@@ -86,3 +86,29 @@ func _upgrade_stat(stat):
 	elif stat == "clean":
 		clemult = 1.2
 
+func _pet_animation_manager():
+	if player.sleeping:
+		player.sleep += 2
+		if player.sleep >= 100:
+			player.sleeping = false
+			$DogAnim.play("HappyDog")
+	if player.qol <= 300:
+		$DogAnim.play("Misery")
+		return
+	elif happy.value <= 15:
+		$DogAnim.play("SadDog")
+		return
+	elif hunger.value <= 15:
+		$DogAnim.play("HungryDog")
+		return
+	elif clean.value <= 15:
+		$DogAnim.play("StinkyDog")
+		return
+	elif player.sleep <= 15:
+		$DogAnim.play("SleepDog")
+		player.sleep += 1.5
+		return
+	elif player.qol >= 350:
+		$DogAnim.play("HappyDog")
+		return
+	

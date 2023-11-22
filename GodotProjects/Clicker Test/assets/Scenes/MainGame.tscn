@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dqsdtb7gmxa3m"]
+[gd_scene load_steps=37 format=3 uid="uid://dqsdtb7gmxa3m"]
 
 [ext_resource type="Script" path="res://assets/scripts/eventlogger.gd" id="2_b72aw"]
 [ext_resource type="Script" path="res://assets/scripts/canvas.gd" id="3_61uyt"]
@@ -17,8 +17,11 @@
 [ext_resource type="Script" path="res://assets/scripts/VirtPet.gd" id="15_1gy51"]
 [ext_resource type="Script" path="res://assets/scripts/PassiveUp.gd" id="15_c4loe"]
 [ext_resource type="Texture2D" uid="uid://yr8g6i7epxgd" path="res://assets/UIassets/Background/SideMenuWIP.png" id="16_38vj7"]
-[ext_resource type="Texture2D" uid="uid://bexwiggm7xsi8" path="res://assets/UIassets/PetVisuals/DogWIP.png" id="17_d4gmj"]
+[ext_resource type="Texture2D" uid="uid://ckghbyi0onv2x" path="res://assets/UIassets/PetVisuals/LowHappy.png" id="16_b8m27"]
+[ext_resource type="Texture2D" uid="uid://dvnlnof2qiu5b" path="res://assets/UIassets/PetVisuals/DefHiStats.png" id="16_odayd"]
+[ext_resource type="Texture2D" uid="uid://x6do42ia8h18" path="res://assets/UIassets/PetVisuals/LowStats.png" id="17_1o8fm"]
 [ext_resource type="Texture2D" uid="uid://bk4aaxwxkfmo4" path="res://assets/UIassets/Buttons/SideButtonWIP.png" id="18_kftsq"]
+[ext_resource type="Texture2D" uid="uid://c875411klgbfb" path="res://assets/UIassets/PetVisuals/Tail.png" id="19_ms7cr"]
 [ext_resource type="Script" path="res://assets/scripts/IAP.gd" id="20_k0h5b"]
 [ext_resource type="Script" path="res://assets/scripts/Shmoney.gd" id="21_t38um"]
 
@@ -137,6 +140,101 @@ tracks/1/keys = {
 _data = {
 "Close": SubResource("Animation_h0ym6"),
 "Slide": SubResource("Animation_ia8hw")
+}
+
+[sub_resource type="Animation" id="Animation_1ypsn"]
+resource_name = "HappyDog"
+length = 2.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dog:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_odayd")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tail:rotation")
+tracks/1/interp = 4
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.436332, -0.174533, 0.436332]
+}
+
+[sub_resource type="Animation" id="Animation_01tp5"]
+resource_name = "SadDog"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dog:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_b8m27")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tail:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4wthc"]
+resource_name = "Miserable"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dog:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("17_1o8fm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tail:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_sx1cl"]
+resource_name = "SleepyDog"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_83dvn"]
+_data = {
+"HappyDog": SubResource("Animation_1ypsn"),
+"Misery": SubResource("Animation_4wthc"),
+"SadDog": SubResource("Animation_01tp5"),
+"SleepDog": SubResource("Animation_sx1cl")
 }
 
 [node name="Node2D" type="Node2D"]
@@ -393,7 +491,7 @@ z_index = 1
 offset_top = 100.0
 offset_right = 600.0
 offset_bottom = 200.0
-theme_override_font_sizes/normal_font_size = 75
+theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "[center]points[/center]"
 
@@ -432,15 +530,28 @@ libraries = {
 "": SubResource("AnimationLibrary_16c7x")
 }
 
+[node name="DogAnim" type="AnimationPlayer" parent="VirtPet"]
+speed_scale = 3.0
+libraries = {
+"": SubResource("AnimationLibrary_83dvn")
+}
+
 [node name="PetMenu" type="Sprite2D" parent="VirtPet"]
 position = Vector2(1, 98)
 scale = Vector2(1.15, 1.358)
 texture = ExtResource("16_38vj7")
 centered = false
 
-[node name="DogieWIP" type="Sprite2D" parent="VirtPet"]
-position = Vector2(300, 350)
-texture = ExtResource("17_d4gmj")
+[node name="Tail" type="Sprite2D" parent="VirtPet"]
+visible = false
+position = Vector2(420, 420)
+texture = ExtResource("19_ms7cr")
+offset = Vector2(34, -50)
+
+[node name="Dog" type="Sprite2D" parent="VirtPet"]
+position = Vector2(305, 354)
+scale = Vector2(0.882102, 0.882103)
+texture = ExtResource("16_b8m27")
 
 [node name="Name" type="RichTextLabel" parent="VirtPet"]
 anchors_preset = 5
