@@ -92,23 +92,23 @@ func _pet_animation_manager():
 		if player.sleep >= 100:
 			player.sleeping = false
 			$DogAnim.play("HappyDog")
-	if player.qol <= 300:
+	if player.qol <= 500:
 		$DogAnim.play("Misery")
 		return
-	elif happy.value <= 15:
+	elif happy.value <= 30:
 		$DogAnim.play("SadDog")
 		return
-	elif hunger.value <= 15:
+	elif hunger.value <= 30:
 		$DogAnim.play("HungryDog")
 		return
-	elif clean.value <= 15:
+	elif clean.value <= 30:
 		$DogAnim.play("StinkyDog")
 		return
-	elif player.sleep <= 15:
+	elif player.sleep <= 25:
 		$DogAnim.play("SleepDog")
 		player.sleep += 1.5
 		return
-	elif player.qol >= 350:
+	elif player.qol >= 540:
 		$DogAnim.play("HappyDog")
 		return
 	

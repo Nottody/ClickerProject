@@ -1,3 +1,3 @@
 [{ "Config": { "Test": false, "PetName": "doggie" } },
-{ "event": "Log", "data": { "Name": "doggie", "Points": 5206, "Money": 1729, "IAPSpent": 121, "DogSpent": 150, "Abrstract": 100, "Click": 4, "Passive": 6, "QualityScore": 2500, "Time": { "year": 2023, "month": 11, "day": 21, "weekday": 2, "hour": 18, "minute": 33, "second": 43, "dst": false } } },
+{ "event": "Log", "data": { "Name": "doggie", "Points": 5490, "Money": 1729, "IAPSpent": 121, "DogSpent": 150, "Abrstract": 100, "Click": 4, "Passive": 6, "QualityScore": 2500, "Time": { "year": 2023, "month": 11, "day": 21, "weekday": 2, "hour": 21, "minute": 29, "second": 43, "dst": false } } },
 ]

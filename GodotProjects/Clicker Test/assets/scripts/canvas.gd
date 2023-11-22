@@ -7,6 +7,7 @@ var happy
 var qol = 0.0
 var sleep = 100
 var sleeping = false
+var pet
 var money = 1000
 var passiveEarn = 0.0
 var shmoney = 100
@@ -24,6 +25,7 @@ func _ready():
 	_update_pmc()
 	buttons = get_tree().get_nodes_in_group("MenuButtons")
 	shops = get_tree().get_nodes_in_group("Shops")
+	pet = get_parent().get_node("VirtPet")
 	hunger = get_parent().get_node("VirtPet/Hunger")
 	clean = get_parent().get_node("VirtPet/Clean")
 	happy = get_parent().get_node("VirtPet/Happy")
@@ -76,7 +78,8 @@ func _on_timer_timeout():
 		hunger.value -= 1
 		clean.value -= 0.6
 		happy.value -= 0.8
-	qol = snappedf(((hunger.value * clean.value * happy.value)/500),0.01)
+		pet._pet_animation_manager()
+	qol = snappedf(((hunger.value * clean.value * happy.value)/50),0.01)
 	if clock % 12 == 0:
 		if auto:
 			_auto_feed()

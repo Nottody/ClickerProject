@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dqsdtb7gmxa3m"]
+[gd_scene load_steps=44 format=3 uid="uid://dqsdtb7gmxa3m"]
 
 [ext_resource type="Script" path="res://assets/scripts/eventlogger.gd" id="2_b72aw"]
 [ext_resource type="Script" path="res://assets/scripts/canvas.gd" id="3_61uyt"]
@@ -20,10 +20,15 @@
 [ext_resource type="Texture2D" uid="uid://ckghbyi0onv2x" path="res://assets/UIassets/PetVisuals/LowHappy.png" id="16_b8m27"]
 [ext_resource type="Texture2D" uid="uid://dvnlnof2qiu5b" path="res://assets/UIassets/PetVisuals/DefHiStats.png" id="16_odayd"]
 [ext_resource type="Texture2D" uid="uid://x6do42ia8h18" path="res://assets/UIassets/PetVisuals/LowStats.png" id="17_1o8fm"]
+[ext_resource type="Texture2D" uid="uid://c2i5yjjy2e3uh" path="res://assets/UIassets/PetVisuals/Sleepy.png" id="18_acst3"]
 [ext_resource type="Texture2D" uid="uid://bk4aaxwxkfmo4" path="res://assets/UIassets/Buttons/SideButtonWIP.png" id="18_kftsq"]
+[ext_resource type="Texture2D" uid="uid://hicktw4vcftk" path="res://assets/UIassets/PetVisuals/LowHunger.png" id="19_dxcua"]
 [ext_resource type="Texture2D" uid="uid://c875411klgbfb" path="res://assets/UIassets/PetVisuals/Tail.png" id="19_ms7cr"]
+[ext_resource type="Texture2D" uid="uid://dxp78iot8glpb" path="res://assets/UIassets/PetVisuals/LowClean.png" id="20_2dnbv"]
+[ext_resource type="Texture2D" uid="uid://bh4p4ohqjlck" path="res://assets/UIassets/PetVisuals/Zzz.png" id="20_b6t2m"]
 [ext_resource type="Script" path="res://assets/scripts/IAP.gd" id="20_k0h5b"]
 [ext_resource type="Script" path="res://assets/scripts/Shmoney.gd" id="21_t38um"]
+[ext_resource type="Texture2D" uid="uid://bpbyt0cit6d5d" path="res://assets/UIassets/PetVisuals/HungerLines.png" id="22_388m1"]
 
 [sub_resource type="Animation" id="Animation_0k6p2"]
 resource_name = "Gshmoney"
@@ -170,6 +175,118 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, 0.436332, -0.174533, 0.436332]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tail:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(420, 420)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Dog:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.88, 0.88)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Dog:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 350)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tail:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tail:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("19_ms7cr")]
+}
+
+[sub_resource type="Animation" id="Animation_4wthc"]
+resource_name = "Miserable"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dog:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("17_1o8fm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tail:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dog:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(290, 350)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Dog:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.88, 0.88)]
+}
 
 [sub_resource type="Animation" id="Animation_01tp5"]
 resource_name = "SadDog"
@@ -198,9 +315,35 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dog:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.95, 0.95)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Dog:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 350)]
+}
 
-[sub_resource type="Animation" id="Animation_4wthc"]
-resource_name = "Miserable"
+[sub_resource type="Animation" id="Animation_sx1cl"]
+resource_name = "SleepyDog"
+length = 4.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -211,7 +354,83 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("17_1o8fm")]
+"values": [ExtResource("18_acst3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dog:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 350)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dog:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.88, 0.88), Vector2(0.9, 0.9)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tail:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tail:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("20_b6t2m")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tail:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(130, 330)]
+}
+
+[sub_resource type="Animation" id="Animation_ui17y"]
+resource_name = "HungryDog"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dog:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("19_dxcua")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -223,18 +442,154 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dog:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.88, 0.88)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Dog:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(335, 350)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tail:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("22_388m1")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tail:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(130, 450)]
 }
 
-[sub_resource type="Animation" id="Animation_sx1cl"]
-resource_name = "SleepyDog"
+[sub_resource type="Animation" id="Animation_8be8x"]
+resource_name = "StinkyDog"
+length = 2.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dog:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("20_2dnbv")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tail:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tail:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.436332, -0.174533, 0.436332]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Dog:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.65, 0.65)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Dog:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 340)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tail:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(350, 470)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tail:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("19_ms7cr")]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_83dvn"]
 _data = {
 "HappyDog": SubResource("Animation_1ypsn"),
+"HungryDog": SubResource("Animation_ui17y"),
 "Misery": SubResource("Animation_4wthc"),
 "SadDog": SubResource("Animation_01tp5"),
-"SleepDog": SubResource("Animation_sx1cl")
+"SleepDog": SubResource("Animation_sx1cl"),
+"StinkyDog": SubResource("Animation_8be8x")
 }
 
 [node name="Node2D" type="Node2D"]
@@ -543,15 +898,14 @@ texture = ExtResource("16_38vj7")
 centered = false
 
 [node name="Tail" type="Sprite2D" parent="VirtPet"]
-visible = false
 position = Vector2(420, 420)
 texture = ExtResource("19_ms7cr")
 offset = Vector2(34, -50)
 
 [node name="Dog" type="Sprite2D" parent="VirtPet"]
-position = Vector2(305, 354)
-scale = Vector2(0.882102, 0.882103)
-texture = ExtResource("16_b8m27")
+position = Vector2(300, 350)
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("16_odayd")
 
 [node name="Name" type="RichTextLabel" parent="VirtPet"]
 anchors_preset = 5
