@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b174j6610ssfs"]
+[gd_scene load_steps=4 format=3 uid="uid://b174j6610ssfs"]
 
+[ext_resource type="Script" path="res://assets/scripts/post_survey.gd" id="1_bcnmh"]
 [ext_resource type="Texture2D" uid="uid://b8qxhh2yll88o" path="res://assets/UIassets/Background/Consent.png" id="1_c0887"]
 [ext_resource type="FontFile" uid="uid://7036dkcqaq6x" path="res://assets/fonts/Raleway-SemiBold.ttf" id="2_mvs18"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_bcnmh")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(300, 450)
@@ -11,9 +13,9 @@ texture = ExtResource("1_c0887")
 
 [node name="Title" type="RichTextLabel" parent="Background"]
 offset_left = -303.0
-offset_top = -425.0
+offset_top = -415.0
 offset_right = 305.0
-offset_bottom = -342.0
+offset_bottom = -332.0
 theme_override_fonts/normal_font = ExtResource("2_mvs18")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
@@ -29,20 +31,78 @@ theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
 text = "[center]How many dollars do you think you spent on virtual currency?"
 
+[node name="Q2" type="RichTextLabel" parent="Background"]
+offset_left = -250.0
+offset_top = -99.0
+offset_right = -22.0
+offset_bottom = -1.0
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[center]How well would you say you took care of your virtual dog?"
+
 [node name="TextEdit" type="TextEdit" parent="Background"]
-offset_left = -79.0
+offset_left = -77.0
 offset_top = -236.0
-offset_right = 70.0
+offset_right = 72.0
 offset_bottom = -182.0
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 30
+placeholder_text = "ex. \"436\""
 wrap_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Background"]
-offset_left = -184.0
+[node name="Caption" type="RichTextLabel" parent="Background"]
+offset_left = -150.0
 offset_top = -174.0
-offset_right = 181.0
-offset_bottom = -113.0
+offset_right = 145.0
+offset_bottom = -148.0
 theme_override_colors/default_color = Color(0.345098, 0.345098, 0.345098, 1)
 theme_override_fonts/normal_font = ExtResource("2_mvs18")
 bbcode_enabled = true
 text = "[center] (please answer using a whole number)"
+
+[node name="DogSlider" type="HSlider" parent="Background"]
+offset_left = -187.0
+offset_top = 36.0
+offset_right = 185.0
+offset_bottom = 52.0
+max_value = 4.0
+value = 2.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background"]
+offset_left = -174.0
+offset_top = 148.0
+offset_right = 43.0
+offset_bottom = 232.0
+theme_override_fonts/normal_font = ExtResource("2_mvs18")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[center]How would you rate this game on a scale of 1 to 10?"
+
+[node name="GameSlider" type="HSlider" parent="Background"]
+offset_left = -186.0
+offset_top = 251.0
+offset_right = 185.0
+offset_bottom = 267.0
+max_value = 9.0
+
+[node name="DogCare" type="RichTextLabel" parent="."]
+offset_left = 312.0
+offset_top = 370.0
+offset_right = 534.0
+offset_bottom = 455.0
+theme_override_fonts/normal_font = ExtResource("2_mvs18")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[center]I cared for my dog an adequate amount"
+
+[node name="GameRating" type="RichTextLabel" parent="."]
+offset_left = 338.0
+offset_top = 607.0
+offset_right = 493.0
+offset_bottom = 668.0
+theme_override_fonts/normal_font = ExtResource("2_mvs18")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]1"
+
+[connection signal="value_changed" from="Background/DogSlider" to="." method="_on_dog_slider_value_changed"]
+[connection signal="value_changed" from="Background/GameSlider" to="." method="_on_game_slider_value_changed"]
