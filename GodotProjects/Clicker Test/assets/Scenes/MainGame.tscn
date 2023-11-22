@@ -390,12 +390,12 @@ text = "Back"
 
 [node name="Points" type="RichTextLabel" parent="canvas"]
 z_index = 1
-offset_left = 108.0
-offset_top = 83.0
-offset_right = 676.0
-offset_bottom = 249.0
+offset_top = 100.0
+offset_right = 600.0
+offset_bottom = 200.0
 theme_override_font_sizes/normal_font_size = 75
-text = "points"
+bbcode_enabled = true
+text = "[center]points[/center]"
 
 [node name="Reset" type="TextureButton" parent="canvas"]
 offset_left = 24.0
@@ -446,9 +446,9 @@ texture = ExtResource("17_d4gmj")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -130.0
+offset_left = -299.0
 offset_top = 120.0
-offset_right = 70.0003
+offset_right = 285.0
 offset_bottom = 185.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -457,7 +457,8 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 10
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 45
-text = "Doggie :)"
+bbcode_enabled = true
+text = "[center]Doggie :)[/center]"
 fit_content = true
 
 [node name="Hunger" type="TextureProgressBar" parent="VirtPet" groups=["PetStats"]]

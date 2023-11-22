@@ -27,7 +27,7 @@ func _ready():
 	happy = get_parent().get_node("VirtPet/Happy")
 
 func _update_points():
-	$Points.text = str(roundi(points))
+	$Points.text = "[center]"+str(roundi(points))+"[/center]"
 func _update_money():
 	$Money.text = "$" + str(money)
 func _update_clock():

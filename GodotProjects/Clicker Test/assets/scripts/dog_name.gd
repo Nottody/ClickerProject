@@ -10,7 +10,7 @@ func _on_dog_edit_text_changed():
 	
 
 func _on_play_button_pressed():
-	Global.dog_name = $DogEdit.get_text()
+	Global.DogName = $DogEdit.get_text()
 	get_tree().change_scene_to_file("res://assets/Scenes/MainGame.tscn")
 
 #he he he ha. grrr
