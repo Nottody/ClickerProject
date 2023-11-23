@@ -13,7 +13,7 @@ var indexer = 0
 var PlayerDataArray: Array = []
 var playertestarray: Array = []
 
-const apiurl = "https://script.google.com/macros/s/AKfycbxjMqg1W3YondiM7VNx0pMWOdC-MUzlUmIH7vJJxykx6NJPN0lpWkwZPEA_-NSNHLRqNQ/exec"
+const apiurl = "https://script.google.com/macros/s/AKfycbwiZanpZcNNpGs1aI_rF8SvPa2Ieq76Enjd16Mw_H4b_NhDEjzn8-heUis97sEaOUQlkA/exec"
 
 func _ready():
 	print_debug("ready2")
@@ -35,10 +35,11 @@ func _on_HTTPRequest_request_complete(_result, _response_code, _headers, body):
 	print_debug(Test)
 	
 func _on_config_request_complete(_result, _response_code, _headers, _body):
-	pass
+	return
 func _on_log_request_complete(_result, _response_code, _headers, _body):
 	indexer += 1
 	if indexer > 14:
+		indexer = 0
 		return
 	_send_log_data(playertestarray,indexer)
 
@@ -46,22 +47,21 @@ func _send_config_data(dataset):
 	var Request = HTTPRequest.new()
 	add_child(Request)
 	Request.connect("request_completed",_on_config_request_complete)
-	for x in dataset:
-		if "Config" in x:
-			var i = x["Config"]
-			var datasend = ("?name="+str(i["PetName"])+
-							"&test="+str(i["Test"])+
-							"&q1="+str(i["Q1"])+
-							"&q2="+str(i["Q2"])+
-							"&q3="+str(i["Q3"])+
-							"&q4="+str(i["Q4"])+
-							"&q5="+str(i["Q5"])+
-							"&q6="+str(i["Q6"])+
-							"&sheetname="+"SurveyData")
-			var headers = ["Content-Length: 0"]
-			var posturl = apiurl + datasend
-			Request.request(posturl,headers,HTTPClient.METHOD_POST,"")
-			indexer += 1
+	var x = dataset[0]
+	var i = x["Config"]
+	var datasend = ("?name="+str(i["PetName"])+
+					"&test="+str(i["Test"])+
+					"&q1="+str(i["Q1"])+
+					"&q2="+str(i["Q2"])+
+					"&q3="+str(i["Q3"])+
+					"&q4="+str(i["Q4"])+
+					"&q5="+str(i["Q5"])+
+					"&q6="+str(i["Q6"])+
+					"&sheetname="+"SurveyData")
+	var headers = ["Content-Length: 0"]
+	var posturl = apiurl + datasend
+	Request.request(posturl,headers,HTTPClient.METHOD_POST,"")
+	indexer += 1
 
 
 func _send_log_data(dataset,index):

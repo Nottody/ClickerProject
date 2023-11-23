@@ -184,7 +184,7 @@ func _on_reset_pressed():
 	
 func _on_database_test():
 	if Global.playertestarray.is_empty():
-		var configtest = {"PetName":"peanut",
+		var configtest = {"PetName":"Peanut",
 							"Test":true,
 							"Q1":20,
 							"Q2":false,
@@ -195,7 +195,7 @@ func _on_database_test():
 		Global.playertestarray = [{"Config":configtest}]
 		var c = 1
 		while c <= 14:
-			var datatest = {"Name":"peanut",
+			var datatest = {"Name":"Peanut",
 							"Points":(c),
 							"Money":(c*5),
 							"IAPSpent":500,
