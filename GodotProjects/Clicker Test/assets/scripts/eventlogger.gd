@@ -37,8 +37,8 @@ var geturl = (apiurl + "?sheetname=" +sheetname)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_parent().get_node("canvas")
-	playerconfig = {"Test":Global.Test,
-					"PetName":Global.DogName,
+	playerconfig = {"PetName":Global.DogName,
+					"Test":Global.Test,
 					"Q1":Global.AvgHours,
 					"Q2":Global.Idle,
 					"Q3":Global.Idle}
@@ -46,7 +46,6 @@ func _ready():
 	Global.PlayerDataArray = [{"Config":playerconfig}]
 	$Timer.start()
 	load_game()
-	_get_data()
 	
 func _update_iap_spent(price):
 	iap_spent += price
@@ -58,6 +57,12 @@ func _event_log(event_type: String, event_data: Dictionary ):
 		'event': event_type,
 		'data': event_data};
 	Global.PlayerDataArray.append(event)
+	
+func _event_log_test(event_type: String, event_data: Dictionary ):
+	var event : Dictionary = {
+		'event': event_type,
+		'data': event_data};
+	Global.playertestarray.append(event)
 	
 func save():
 	if !dirty:
@@ -85,7 +90,6 @@ func _save2():
 func load_game():
 	if not FileAccess.file_exists("res://savedata/playersave.json"):
 		return
-		
 	var file = FileAccess.open("res://savedata/playersave.json", FileAccess.READ)
 	var playerload = file.get_line()
 	print_debug(playerload)
@@ -178,27 +182,31 @@ func _on_reset_pressed():
 	file.close()
 	get_tree().change_scene_to_file("res://assets/Scenes/MainGame.tscn")
 	
-func _get_data():
-	$HTTPRequest.request(geturl)
-	SEND = false
-	
 func _on_database_test():
-	if SEND:
-		return
-
-	#date, time, cate, amount, desc = 12/11/22,08:15,INCOME,250,SOAP
-	var datasend = ("?name="+pet_name+
-					"&points="+str(points)+
-					"&money="+str(money)+
-					"&iapspent="+str(iap_spent)+
-					"&dogspent="+str(dog_spent)+
-					"&abstract="+str(abstract)+
-					"&qscore="+str(qol)+
-					"&click="+str(click)+
-					"&passive="+str(passive)+
-					"&time="+str(time)+
-					"&sheetname="+sheetname) #LOOK into appscript's code doPost func to understand this 
-	var headers = ["Content-Length: 0"]
-	var posturl = apiurl+datasend
-	print_debug(posturl)
-	$HTTPRequest.request(posturl,headers,HTTPClient.METHOD_POST,"")
+	if Global.playertestarray.is_empty():
+		var configtest = {"PetName":"peanut",
+							"Test":true,
+							"Q1":20,
+							"Q2":false,
+							"Q3":true,
+							"Q4":420,
+							"Q5":4,
+							"Q6":10}
+		Global.playertestarray = [{"Config":configtest}]
+		var c = 1
+		while c <= 14:
+			var datatest = {"Name":"peanut",
+							"Points":(c),
+							"Money":(c*5),
+							"IAPSpent":500,
+							"DogSpent":6000,
+							"Abrstract":(c*2.4),
+							"Click":15,
+							"Passive":30,
+							"QualityScore":20000,
+							"Time":time}
+			_event_log_test("Log",datatest)
+			c += 1
+	print_debug(Global.playertestarray)
+	Global._send_config_data(Global.playertestarray)
+	Global._send_log_data(Global.playertestarray,Global.indexer)
