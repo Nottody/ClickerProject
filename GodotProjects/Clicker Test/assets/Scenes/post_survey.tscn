@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b174j6610ssfs"]
+[gd_scene load_steps=6 format=3 uid="uid://b174j6610ssfs"]
 
 [ext_resource type="Script" path="res://assets/scripts/post_survey.gd" id="1_bcnmh"]
 [ext_resource type="Texture2D" uid="uid://b8qxhh2yll88o" path="res://assets/UIassets/Background/Consent.png" id="1_c0887"]
 [ext_resource type="FontFile" uid="uid://7036dkcqaq6x" path="res://assets/fonts/Raleway-SemiBold.ttf" id="2_mvs18"]
+[ext_resource type="Texture2D" uid="uid://dw2tjcyggd1v" path="res://assets/UIassets/Buttons/Submit.png" id="4_qvv5o"]
+[ext_resource type="Texture2D" uid="uid://bwvdgbyhs8rev" path="res://assets/UIassets/Buttons/UnclickableSubmit.png" id="5_r42uf"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_bcnmh")
@@ -83,6 +85,7 @@ offset_top = 251.0
 offset_right = 185.0
 offset_bottom = 267.0
 max_value = 9.0
+value = 9.0
 
 [node name="DogCare" type="RichTextLabel" parent="."]
 offset_left = 312.0
@@ -102,7 +105,17 @@ offset_bottom = 668.0
 theme_override_fonts/normal_font = ExtResource("2_mvs18")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "[center]1"
+text = "[center]10"
 
+[node name="SubmitButton" type="TextureButton" parent="."]
+offset_left = 199.0
+offset_top = 756.0
+offset_right = 401.0
+offset_bottom = 857.0
+disabled = true
+texture_normal = ExtResource("4_qvv5o")
+texture_disabled = ExtResource("5_r42uf")
+
+[connection signal="text_changed" from="Background/TextEdit" to="." method="_on_text_edit_text_changed"]
 [connection signal="value_changed" from="Background/DogSlider" to="." method="_on_dog_slider_value_changed"]
 [connection signal="value_changed" from="Background/GameSlider" to="." method="_on_game_slider_value_changed"]

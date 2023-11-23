@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://cx0vfabvs6kc3"]
+
+[ext_resource type="Texture2D" uid="uid://j3806usw5pba" path="res://assets/UIassets/Background/InAppShopWIP.png" id="1_2cg0r"]
+[ext_resource type="Script" path="res://assets/scripts/end_screen.gd" id="1_3aw5s"]
+[ext_resource type="FontFile" uid="uid://7036dkcqaq6x" path="res://assets/fonts/Raleway-SemiBold.ttf" id="2_05tn5"]
+[ext_resource type="Texture2D" uid="uid://cuuj6mn0mdp2u" path="res://assets/UIassets/Buttons/Close.png" id="3_jude6"]
+[ext_resource type="Texture2D" uid="uid://cheg3k6wtbqso" path="res://assets/UIassets/Buttons/UnclickableClose.png" id="3_ogdn8"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_3aw5s")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(301, 450.5)
+scale = Vector2(1.01333, 1.13875)
+texture = ExtResource("1_2cg0r")
+
+[node name="Title" type="RichTextLabel" parent="."]
+offset_left = 34.0
+offset_top = 24.0
+offset_right = 566.0
+offset_bottom = 189.0
+theme_override_fonts/normal_font = ExtResource("2_05tn5")
+theme_override_font_sizes/normal_font_size = 44
+bbcode_enabled = true
+text = "[center]Thank you for participating in our study!"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 200.0
+offset_top = 764.0
+offset_right = 400.0
+offset_bottom = 864.0
+disabled = true
+texture_normal = ExtResource("3_jude6")
+texture_disabled = ExtResource("3_ogdn8")
+
+[node name="Credits" type="RichTextLabel" parent="."]
+offset_left = 124.0
+offset_top = 229.0
+offset_right = 480.0
+offset_bottom = 448.0
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Study administered by
+Theodore Farland
+Benjamin Deschene"
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
