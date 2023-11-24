@@ -139,3 +139,4 @@ text = "Poorly                                                                  
 [connection signal="text_changed" from="Background/TextEdit" to="." method="_on_text_edit_text_changed"]
 [connection signal="value_changed" from="Background/DogSlider" to="." method="_on_dog_slider_value_changed"]
 [connection signal="value_changed" from="Background/GameSlider" to="." method="_on_game_slider_value_changed"]
+[connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]

@@ -6,6 +6,7 @@ var Q3 = false
 
 func _on_text_edit_text_changed():
 	Q1 = true
+	Global.ESV = $Background/TextEdit.get_text()
 	if Q1 == true && Q2 == true && Q3 == true:
 		$SubmitButton.disabled = false
 
@@ -34,5 +35,8 @@ func _on_game_slider_value_changed(value):
 	if Q1 == true && Q2 == true && Q3 == true:
 		$SubmitButton.disabled = false
 
-
-	
+func _on_submit_button_pressed():
+	Global.PlayerDataArray[0]["Config"]["Q4"] = Global.ESV
+	Global.PlayerDataArray[0]["Config"]["Q5"] = Global.DogCare
+	Global.PlayerDataArray[0]["Config"]["Q6"] = Global.GameRating
+	get_tree().Change_scene_to_file("res://assets/Scenes/end_screen.tscn")

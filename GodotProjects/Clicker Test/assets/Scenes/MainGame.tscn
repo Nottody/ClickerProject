@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dqsdtb7gmxa3m"]
+[gd_scene load_steps=47 format=3 uid="uid://dqsdtb7gmxa3m"]
 
 [ext_resource type="Script" path="res://assets/scripts/eventlogger.gd" id="2_b72aw"]
 [ext_resource type="Script" path="res://assets/scripts/canvas.gd" id="3_61uyt"]
@@ -29,6 +29,9 @@
 [ext_resource type="Script" path="res://assets/scripts/IAP.gd" id="20_k0h5b"]
 [ext_resource type="Script" path="res://assets/scripts/Shmoney.gd" id="21_t38um"]
 [ext_resource type="Texture2D" uid="uid://bpbyt0cit6d5d" path="res://assets/UIassets/PetVisuals/HungerLines.png" id="22_388m1"]
+[ext_resource type="Script" path="res://assets/scripts/GameComp.gd" id="30_e5rhu"]
+[ext_resource type="Texture2D" uid="uid://b8qxhh2yll88o" path="res://assets/UIassets/Background/Consent.png" id="31_dmsrg"]
+[ext_resource type="Texture2D" uid="uid://bkbjytcqihwmx" path="res://assets/UIassets/Buttons/Next.png" id="32_1w5pk"]
 
 [sub_resource type="Animation" id="Animation_0k6p2"]
 resource_name = "Gshmoney"
@@ -2818,6 +2821,55 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 60
 text = "		Shmoney Shop"
 
+[node name="GameComp" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("30_e5rhu")
+
+[node name="Background" type="Sprite2D" parent="GameComp"]
+position = Vector2(300, 450)
+scale = Vector2(0.9, 0.6)
+texture = ExtResource("31_dmsrg")
+
+[node name="EndMessage" type="RichTextLabel" parent="GameComp"]
+offset_left = 125.0
+offset_top = 240.0
+offset_right = 475.0
+offset_bottom = 590.0
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center] 
+You have reached the end of the game portion of the study.
+"
+
+[node name="EndMessage2" type="RichTextLabel" parent="GameComp"]
+offset_left = 125.0
+offset_top = 385.0
+offset_right = 475.0
+offset_bottom = 735.0
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center] 
+Please click the next button to proceed to the post game survey."
+
+[node name="EndMessage3" type="RichTextLabel" parent="GameComp"]
+offset_left = 125.0
+offset_top = 165.0
+offset_right = 475.0
+offset_bottom = 515.0
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "[center] CONGRATULATIONS! 
+
+"
+
+[node name="Next" type="TextureButton" parent="GameComp"]
+offset_left = 200.0
+offset_top = 580.0
+offset_right = 400.0
+offset_bottom = 680.0
+disabled = true
+texture_normal = ExtResource("32_1w5pk")
+
 [connection signal="timeout" from="LogNode/Timer" to="LogNode" method="_on_timer_timeout"]
 [connection signal="timeout" from="canvas/Timer" to="canvas" method="_on_timer_timeout"]
 [connection signal="pressed" from="canvas/TextureButton" to="canvas" method="_on_button_pressed"]
@@ -2867,3 +2919,4 @@ text = "		Shmoney Shop"
 [connection signal="pressed" from="Shmoney/FlatShmUp1" to="Shmoney" method="_on_shmoney_temp_bonus" binds= [500, 2.0, 120]]
 [connection signal="pressed" from="Shmoney/GShmucks" to="Shmoney" method="_on_golden_shmucks" binds= [5000, 2]]
 [connection signal="pressed" from="Shmoney/TimeSkip" to="Shmoney" method="_on_time_skip_pressed" binds= [10000]]
+[connection signal="visibility_changed" from="GameComp" to="GameComp" method="_on_visibility_changed"]
