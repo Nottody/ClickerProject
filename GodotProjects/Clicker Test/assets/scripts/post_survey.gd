@@ -12,7 +12,7 @@ func _on_text_edit_text_changed():
 func _on_dog_slider_value_changed(value):
 	Q2 = true
 	if value == 0:
-		$DogCare.set_text("[center]I actively disregarded my dog.")
+		$DogCare.set_text("[center]I did not care for my dog at all.")
 	elif value == 1:
 		$DogCare.set_text("[center]I did not care very well for my dog.")
 	elif value == 2:

@@ -5,8 +5,10 @@ extends CanvasLayer
 func _on_dog_edit_text_changed():
 	if $DogEdit.get_text().length() >= 3 && $DogEdit.get_text().length() <= 15:
 		$PlayButton.disabled = false
+		$LenWarn.visible = false
 	else:
 		$PlayButton.disabled = true
+		$LenWarn.visible = true
 	
 
 func _on_play_button_pressed():

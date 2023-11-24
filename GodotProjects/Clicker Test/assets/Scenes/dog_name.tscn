@@ -16,14 +16,15 @@ position = Vector2(300, 450)
 texture = ExtResource("1_penre")
 
 [node name="Introduction" type="RichTextLabel" parent="."]
-offset_left = 39.0
+offset_left = 22.0
 offset_top = 33.0
-offset_right = 563.0
+offset_right = 576.0
 offset_bottom = 706.0
 theme_override_fonts/normal_font = ExtResource("3_obrf7")
-theme_override_font_sizes/normal_font_size = 54
+theme_override_font_sizes/normal_font_size = 52
 bbcode_enabled = true
 text = "[center]This is your dog.
+
 
 
 
@@ -31,7 +32,7 @@ text = "[center]This is your dog.
 There are many like it, but this one is yours. Please name them.[/center]"
 
 [node name="DogWip" type="Sprite2D" parent="."]
-position = Vector2(300, 235)
+position = Vector2(300, 248)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_joknl")
 
@@ -42,21 +43,31 @@ texture = ExtResource("5_0jqpa")
 
 [node name="DogEdit" type="TextEdit" parent="."]
 offset_left = 101.0
-offset_top = 646.0
+offset_top = 626.0
 offset_right = 496.0
-offset_bottom = 709.0
+offset_bottom = 689.0
 theme_override_font_sizes/font_size = 36
 placeholder_text = "Enter a name here..."
 wrap_mode = 1
 
 [node name="PlayButton" type="TextureButton" parent="."]
 offset_left = 198.0
-offset_top = 754.0
-offset_right = 397.0
-offset_bottom = 855.0
+offset_top = 751.0
+offset_right = 398.0
+offset_bottom = 852.0
 disabled = true
 texture_normal = ExtResource("4_q00rv")
 texture_disabled = ExtResource("5_sqnn6")
+
+[node name="LenWarn" type="RichTextLabel" parent="."]
+offset_left = 90.0
+offset_top = 694.0
+offset_right = 508.0
+offset_bottom = 751.0
+theme_override_colors/default_color = Color(0.470588, 0.2, 0.176471, 1)
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]The dog's name must be between 3 and 15 characters"
 
 [connection signal="text_changed" from="DogEdit" to="." method="_on_dog_edit_text_changed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
