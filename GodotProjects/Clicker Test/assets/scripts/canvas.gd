@@ -84,11 +84,14 @@ func _on_timer_timeout():
 		return
 	$Timer.start()
 	clock -= 1
+	$ClockCircle.value += 1
 	points += ((passiveEarn/10)* passmult)
 	_update_pmc()
 	if clock == 0:
 		money += 100
 		clock = 1200
+		$Payday.play("PayDay")
+		$ClockCircle.value = 0
 		_update_pmc()
 	if clock%30 == 0:
 		hunger.value -= 1
@@ -102,7 +105,10 @@ func _on_timer_timeout():
 	_golden_shmucks()
 	if bonustimer > 0:
 		bonustimer -= 1
+		$BonusTime.visible = true
+		$BonusTime.text = "Bonus: +"+ str((pointmult - 1)*100) +"% \nTime: " + str(roundi(float(bonustimer/10)))
 	else:
+		$BonusTime.visible = false
 		pointmult = 1.0
 
 func _golden_shmucks():
