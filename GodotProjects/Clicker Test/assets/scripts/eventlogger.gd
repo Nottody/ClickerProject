@@ -20,6 +20,7 @@ var pet_name = ""
 # tracks how many times data has been logged
 var loginc = 0
 # variables to hold payer data
+var end
 var player
 var playerconfig = {}
 var playerdata = {}
@@ -37,6 +38,7 @@ var geturl = (apiurl + "?sheetname=" +sheetname)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_parent().get_node("canvas")
+	end = get_parent().get_node("GameComp/Next")
 	playerconfig = {"PetName":Global.DogName,
 					"Test":Global.Test,
 					"Q1":Global.AvgHours,
@@ -225,6 +227,7 @@ func _on_timer_timeout():
 			_event_log("Log", playerdata)
 			loginc = 14
 			dirty = true
+			end.disabled = false
 	$Timer.start()
 	save()
 	_save2()

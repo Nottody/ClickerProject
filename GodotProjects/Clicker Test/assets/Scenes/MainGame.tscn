@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dqsdtb7gmxa3m"]
+[gd_scene load_steps=54 format=3 uid="uid://dqsdtb7gmxa3m"]
 
 [ext_resource type="Script" path="res://assets/scripts/eventlogger.gd" id="2_b72aw"]
 [ext_resource type="Script" path="res://assets/scripts/canvas.gd" id="3_61uyt"]
@@ -35,6 +35,7 @@
 [ext_resource type="Script" path="res://assets/scripts/GameComp.gd" id="30_e5rhu"]
 [ext_resource type="Texture2D" uid="uid://b8qxhh2yll88o" path="res://assets/UIassets/Background/Consent.png" id="31_dmsrg"]
 [ext_resource type="Texture2D" uid="uid://bkbjytcqihwmx" path="res://assets/UIassets/Buttons/Next.png" id="32_1w5pk"]
+[ext_resource type="Texture2D" uid="uid://d1s8q3oxulbk8" path="res://assets/UIassets/Buttons/UnclickableNext.png" id="36_uorhl"]
 
 [sub_resource type="Animation" id="Animation_0k6p2"]
 resource_name = "Gshmoney"
@@ -3063,6 +3064,7 @@ offset_right = 400.0
 offset_bottom = 680.0
 disabled = true
 texture_normal = ExtResource("32_1w5pk")
+texture_disabled = ExtResource("36_uorhl")
 
 [connection signal="timeout" from="LogNode/Timer" to="LogNode" method="_on_timer_timeout"]
 [connection signal="timeout" from="canvas/Timer" to="canvas" method="_on_timer_timeout"]
