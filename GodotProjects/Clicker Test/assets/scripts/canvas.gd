@@ -109,12 +109,12 @@ func _golden_shmucks():
 	if !gshmucks:
 		return
 	else:
-		if randi_range(0,117) == 1:
+		if randi_range(0,1170) == 1:
 			$globAnim.play("Gshmoney")
 	
 func _on_gshmuck_pressed():
 	$globAnim.play("gshmoneyreset")
-	shmoney += randi_range(10,100)
+	shmoney += randi_range(10,117)
 	
 func _on_main_button_pressed(button,score):
 	get_parent().get_node(button).visible = true
