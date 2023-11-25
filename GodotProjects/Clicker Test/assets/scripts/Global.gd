@@ -36,7 +36,7 @@ func _on_config_request_complete(_result, _response_code, _headers, _body):
 	return
 func _on_log_request_complete(_result, _response_code, _headers, _body):
 	indexer += 1
-	if indexer > 14:
+	if indexer > (PlayerDataArray.size()-1):
 		indexer = 0
 		$/root/CanvasLayer/Timer.start()
 		return
