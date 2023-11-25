@@ -130,7 +130,7 @@ func _on_timer_timeout():
 	click = player.click
 	passive = player.passiveEarn
 	qol = player.qol
-	time = (str(Time.get_time_dict_from_system()["minute"] - starttime["minute"])+"-"+str(Time.get_time_dict_from_system()["second"]- starttime["second"]))
+	time = (str(Time.get_time_dict_from_system()["hour"])+ "-" +str(Time.get_time_dict_from_system()["minute"])+"-"+str(Time.get_time_dict_from_system()["second"]))
 	curtime = Time.get_datetime_dict_from_system(false)
 	playerdata = {"Name":Global.DogName,
 					"Points":points,
