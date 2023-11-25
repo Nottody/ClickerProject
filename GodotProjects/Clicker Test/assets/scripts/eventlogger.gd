@@ -43,7 +43,7 @@ func _ready():
 					"Test":Global.Test,
 					"Q1":Global.AvgHours,
 					"Q2":Global.Idle,
-					"Q3":Global.Idle}
+					"Q3":Global.Micro}
 	starttime = Time.get_datetime_dict_from_system(false)
 	Global.PlayerDataArray = [{"Config":playerconfig}]
 	$Timer.start()
