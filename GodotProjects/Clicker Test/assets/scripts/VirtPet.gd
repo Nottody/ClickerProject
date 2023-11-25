@@ -41,7 +41,8 @@ func _on_open_pet_pressed(button_pressed):
 		toggleMenu.set_texture_normal(load("res://assets/UIassets/Buttons/SideButtonWIP2.png"))
 		toggleMenu.disconnect("pressed",_on_open_pet_pressed)
 		toggleMenu.connect("pressed",_on_open_pet_pressed.bind(true))
-			
+	_update_money()
+
 func _on_hunger_purchase(price):
 	if player.money >= price:
 		if price > 5:
@@ -53,6 +54,7 @@ func _on_hunger_purchase(price):
 			hunger.value += (medcare * hunmult)
 		player._update_pmc()
 		loge._update_dog_spent(price)
+	_update_money()
 
 func _on_clean_purchase(price):
 	if player.money >= price:
@@ -65,6 +67,7 @@ func _on_clean_purchase(price):
 			clean.value += (medcare * clemult)
 		player._update_pmc()
 		loge._update_dog_spent(price)
+		_update_money()
 
 func _on_happy_purchase(price):
 	if player.money >= price:
@@ -77,6 +80,7 @@ func _on_happy_purchase(price):
 			happy.value += (medcare * hapmult)
 		player._update_pmc()
 		loge._update_dog_spent(price)
+	_update_money()
 
 func _upgrade_stat(stat):
 	if stat == "hunger":
@@ -112,3 +116,5 @@ func _pet_animation_manager():
 		$DogAnim.play("HappyDog")
 		return
 	
+func _update_money():
+	$Money.text = ("[center]$"+str(player.money))

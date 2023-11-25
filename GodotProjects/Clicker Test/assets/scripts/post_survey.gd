@@ -39,4 +39,4 @@ func _on_submit_button_pressed():
 	Global.PlayerDataArray[0]["Config"]["Q4"] = Global.ESV
 	Global.PlayerDataArray[0]["Config"]["Q5"] = Global.DogCare
 	Global.PlayerDataArray[0]["Config"]["Q6"] = Global.GameRating
-	get_tree().Change_scene_to_file("res://assets/Scenes/end_screen.tscn")
+	get_tree().change_scene_to_file("res://assets/Scenes/end_screen.tscn")

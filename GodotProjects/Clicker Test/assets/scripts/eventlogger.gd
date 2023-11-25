@@ -7,16 +7,16 @@ var abstract
 # tracks the player's progress
 var passive
 var click
-var iap_spent
+var iap_spent = 0
 # tracks player's interaction with the virtual pet
 var qol
-var dog_spent
+var dog_spent = 0
 # tracks real time\
 var starttime
 var time 
 var curtime = Time.get_datetime_dict_from_system(false)
 # one time use for dog name
-var pet_name = "doggie"
+var pet_name = ""
 # tracks how many times data has been logged
 var loginc = 0
 # variables to hold payer data
@@ -45,7 +45,7 @@ func _ready():
 	starttime = Time.get_datetime_dict_from_system(false)
 	Global.PlayerDataArray = [{"Config":playerconfig}]
 	$Timer.start()
-	load_game()
+	#load_game()
 	
 func _update_iap_spent(price):
 	iap_spent += price
@@ -57,13 +57,13 @@ func _event_log(event_type: String, event_data: Dictionary ):
 		'event': event_type,
 		'data': event_data};
 	Global.PlayerDataArray.append(event)
-	
+
 func _event_log_test(event_type: String, event_data: Dictionary ):
 	var event : Dictionary = {
 		'event': event_type,
 		'data': event_data};
 	Global.playertestarray.append(event)
-	
+
 func save():
 	if !dirty:
 		print_debug("returned")
@@ -124,7 +124,7 @@ func load_game():
 				player.qol = int(array[1])
 
 func _on_timer_timeout():
-	points = player.points
+	points = roundi(player.points)
 	money = player.money
 	abstract = player.shmoney
 	click = player.click
@@ -132,7 +132,7 @@ func _on_timer_timeout():
 	qol = player.qol
 	time = (str(Time.get_time_dict_from_system()["minute"] - starttime["minute"])+"-"+str(Time.get_time_dict_from_system()["second"]- starttime["second"]))
 	curtime = Time.get_datetime_dict_from_system(false)
-	playerdata = {"Name":pet_name,
+	playerdata = {"Name":Global.DogName,
 					"Points":points,
 					"Money":money,
 					"IAPSpent":iap_spent,
@@ -141,7 +141,7 @@ func _on_timer_timeout():
 					"Click":click,
 					"Passive":passive,
 					"QualityScore":qol,
-					"Time":curtime }
+					"Time":time }
 	if points >= 10:
 		if loginc < 1:
 			if points < 100:
@@ -166,12 +166,65 @@ func _on_timer_timeout():
 				_event_log("Log", playerdata)
 				loginc = 4
 				dirty = true
-	if points > 100000:
+	if points >= 100000:
 		if loginc < 5:
 			if points < 200000:	
 				_event_log("Log", playerdata)
 				loginc = 5
 				dirty = true
+	if points >= 200000:
+		if loginc < 6:
+			if points < 300000:
+				_event_log("Log", playerdata)
+				loginc = 6
+				dirty = true
+	if points >= 300000:
+		if loginc < 7:
+			if points < 400000:
+				_event_log("Log", playerdata)
+				loginc = 7
+				dirty = true
+	if points >= 400000:
+		if loginc < 8:
+			if points < 500000:
+				_event_log("Log", playerdata)
+				loginc = 8
+				dirty = true
+	if points >= 500000:
+		if loginc < 9:
+			if points < 600000:
+				_event_log("Log", playerdata)
+				loginc = 9
+				dirty = true
+	if points >= 600000:
+		if loginc < 10:
+			if points < 700000:
+				_event_log("Log", playerdata)
+				loginc = 10
+				dirty = true
+	if points >= 700000:
+		if loginc < 11:
+			if points < 800000:
+				_event_log("Log", playerdata)
+				loginc = 11
+				dirty = true
+	if points >= 800000:
+		if loginc < 12:
+			if points < 900000:
+				_event_log("Log", playerdata)
+				loginc = 12
+				dirty = true
+	if points >= 900000:
+		if loginc < 13:
+			if points < 1000000:
+				_event_log("Log", playerdata)
+				loginc = 13
+				dirty = true
+	if points >= 1000000:
+		if loginc < 14:
+			_event_log("Log", playerdata)
+			loginc = 14
+			dirty = true
 	$Timer.start()
 	save()
 	_save2()
@@ -181,32 +234,4 @@ func _on_reset_pressed():
 	file.store_string("")
 	file.close()
 	get_tree().change_scene_to_file("res://assets/Scenes/MainGame.tscn")
-	
-func _on_database_test():
-	if Global.playertestarray.is_empty():
-		var configtest = {"PetName":"Peanut",
-							"Test":true,
-							"Q1":20,
-							"Q2":false,
-							"Q3":true,
-							"Q4":420,
-							"Q5":4,
-							"Q6":10}
-		Global.playertestarray = [{"Config":configtest}]
-		var c = 1
-		while c <= 14:
-			var datatest = {"Name":"Peanut",
-							"Points":(c),
-							"Money":(c*5),
-							"IAPSpent":500,
-							"DogSpent":6000,
-							"Abrstract":(c*2.4),
-							"Click":15,
-							"Passive":30,
-							"QualityScore":20000,
-							"Time":time}
-			_event_log_test("Log",datatest)
-			c += 1
-	print_debug(Global.playertestarray)
-	Global._send_config_data(Global.playertestarray)
-	Global._send_log_data(Global.playertestarray,Global.indexer)
+

@@ -11,12 +11,10 @@ var GameRating
 
 var indexer = 0
 var PlayerDataArray: Array = []
-var playertestarray: Array = []
 
 const apiurl = "https://script.google.com/macros/s/AKfycbwiZanpZcNNpGs1aI_rF8SvPa2Ieq76Enjd16Mw_H4b_NhDEjzn8-heUis97sEaOUQlkA/exec"
 
 func _ready():
-	print_debug("ready2")
 	var gettest = HTTPRequest.new()
 	add_child(gettest)
 	var geturl = (apiurl + "?sheetname="+"Test")
@@ -40,8 +38,10 @@ func _on_log_request_complete(_result, _response_code, _headers, _body):
 	indexer += 1
 	if indexer > 14:
 		indexer = 0
+		$/root/CanvasLayer/Timer.start()
 		return
-	_send_log_data(playertestarray,indexer)
+	print_debug("landed")
+	_send_log_data(PlayerDataArray,indexer)
 
 func _send_config_data(dataset):
 	var Request = HTTPRequest.new()
@@ -85,4 +85,4 @@ func _send_log_data(dataset,index):
 			var headers = ["Content-Length: 0"]
 			var posturl = apiurl+datasend
 			Request1.request(posturl,headers,HTTPClient.METHOD_POST,"")
-
+	print_debug("sent")

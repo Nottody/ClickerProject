@@ -22,6 +22,7 @@ func _toggle_buttons():
 		else:
 			i.disabled = true
 			i.visible = false
+	_update_points_sec()
 			
 func _on_pass_shop_pressed(price,passive,index,xpurchased):
 	nameRef = get_child(index)
@@ -40,12 +41,24 @@ func _on_pass_shop_pressed(price,passive,index,xpurchased):
 			childNode = nameRef.get_child(2)
 			childNode.visible = true
 			childNode.text = (str(xpurchased) + " owned")
+	_update_points_sec()
 
 func _on_otp_shop_pressed(price, passive, index):
 	nameRef = get_child(index)
 	if player.points >= price:	
 		player.points -= price
-		player.passiveEarn += roundi((passive * .1) * player.passiveEarn)
+		player.passmult += (passive * .1)
 		player._update_pmc()
 		nameRef.modulate = Color(0,1,0)
+		nameRef.get_child(0).text = ""
+		var owned = Sprite2D.new()
+		add_child(owned)
+		var spot = nameRef.position
+		owned.move_local_x(440)
+		owned.move_local_y(spot.y + 60)
+		owned.texture = load("res://assets/UIassets/Buttons/Owned.png")
 		nameRef.disconnect("pressed",_on_otp_shop_pressed)
+	_update_points_sec()
+
+func _update_points_sec():
+	$PointsPerSec.text = ("[center]"+str(player.passiveEarn * player.passmult)+"bits/sec")

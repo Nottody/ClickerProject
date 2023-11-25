@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cx0vfabvs6kc3"]
+[gd_scene load_steps=8 format=3 uid="uid://cx0vfabvs6kc3"]
 
 [ext_resource type="Texture2D" uid="uid://j3806usw5pba" path="res://assets/UIassets/Background/InAppShopWIP.png" id="1_2cg0r"]
 [ext_resource type="Script" path="res://assets/scripts/end_screen.gd" id="1_3aw5s"]
 [ext_resource type="FontFile" uid="uid://7036dkcqaq6x" path="res://assets/fonts/Raleway-SemiBold.ttf" id="2_05tn5"]
 [ext_resource type="Texture2D" uid="uid://cuuj6mn0mdp2u" path="res://assets/UIassets/Buttons/Close.png" id="3_jude6"]
 [ext_resource type="Texture2D" uid="uid://cheg3k6wtbqso" path="res://assets/UIassets/Buttons/UnclickableClose.png" id="3_ogdn8"]
+[ext_resource type="Texture2D" uid="uid://dvnlnof2qiu5b" path="res://assets/UIassets/PetVisuals/DefHiStats.png" id="6_pl57j"]
+[ext_resource type="Texture2D" uid="uid://c875411klgbfb" path="res://assets/UIassets/PetVisuals/Tail.png" id="7_nc7gr"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_3aw5s")
@@ -24,7 +26,7 @@ theme_override_font_sizes/normal_font_size = 44
 bbcode_enabled = true
 text = "[center]Thank you for participating in our study!"
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="EndButton" type="TextureButton" parent="."]
 offset_left = 200.0
 offset_top = 764.0
 offset_right = 400.0
@@ -33,15 +35,37 @@ disabled = true
 texture_normal = ExtResource("3_jude6")
 texture_disabled = ExtResource("3_ogdn8")
 
+[node name="Dog" type="Sprite2D" parent="."]
+position = Vector2(300, 480)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_pl57j")
+
+[node name="Tail" type="Sprite2D" parent="Dog"]
+show_behind_parent = true
+position = Vector2(152, 32)
+texture = ExtResource("7_nc7gr")
+
 [node name="Credits" type="RichTextLabel" parent="."]
-offset_left = 124.0
-offset_top = 229.0
-offset_right = 480.0
-offset_bottom = 448.0
+offset_left = 128.0
+offset_top = 184.0
+offset_right = 484.0
+offset_bottom = 403.0
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[center]Study administered by
 Theodore Farland
 Benjamin Deschene"
 
-[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[node name="Message" type="RichTextLabel" parent="."]
+offset_top = 648.0
+offset_right = 600.0
+offset_bottom = 760.0
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Please wait for the button to turn red to close the game."
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="pressed" from="EndButton" to="." method="_on_endbutton_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -61,10 +61,12 @@ text = "	You are being invited to participate in a research study involving user
 	This study is being conducted as part of our Senior Research Course, and is approved by Dr. Dancik. As the study will be limited to this class project, it was not reviewed by Eastern Connecticut State University's Institutional Review Board. However, we have completed the Collaborative Institutional Training Initiative (CITI) Program course for Social & Behavior Research. If you have any concerns about your rights in this study, please contact Dr. Dancik at (860) 465-4587 or email dancikg@easternct.edu."
 
 [node name="DebugButton" type="Button" parent="."]
+visible = false
 offset_left = 510.0
 offset_top = 819.0
 offset_right = 589.0
 offset_bottom = 889.0
+disabled = true
 
 [node name="StartButton" type="TextureButton" parent="."]
 offset_left = 206.0
