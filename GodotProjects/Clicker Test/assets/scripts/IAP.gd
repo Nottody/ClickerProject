@@ -20,7 +20,7 @@ func _ready():
 		$FlatCliUp2/Icon.set_texture(load("res://assets/UIassets/Icons/money.png"))
 		$FlatCliUp2/Bonus.text = " + $30.00"
 		$FlatCliUp3/Icon.set_texture(load("res://assets/UIassets/Icons/money.png"))
-		$FlatCliUp3/Bonus.text = " + $200.00"
+		$FlatCliUp3/Bonus.text = " + $170.00"
 		
 		
 func _toggle_buttons():
@@ -51,6 +51,7 @@ func _on_dog_upgrade_pressed(price,stat,index):
 		player._update_pmc()
 		loge._update_dog_spent(price)
 		pet._upgrade_stat(stat)
+		nameRef.set_texture_normal(load("res://assets/UIassets/Buttons/ClickUpgradeWIP.png"))
 		nameRef.modulate = Color(0,1,0)
 		nameRef.get_child(0).text = ""
 		var owned = Sprite2D.new()

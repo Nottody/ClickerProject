@@ -5,8 +5,8 @@ var hunger
 var clean 
 var happy 
 var qol = 0.0
-var sleep = 100
-var sleeping = false
+#var sleep = 100
+#var sleeping = false
 var pet
 var money = 100
 var passiveEarn = 0.0

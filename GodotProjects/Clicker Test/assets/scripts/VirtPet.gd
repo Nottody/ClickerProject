@@ -12,8 +12,8 @@ var hunmult = 1.0
 var clemult = 1.0
 var hapmult = 1.0
 var lilcare = 15 
-var medcare = 20
-var bigcare = 25
+var medcare = 22
+var bigcare = 30
 
 
 func _ready():
@@ -45,7 +45,7 @@ func _on_open_pet_pressed(button_pressed):
 
 func _on_hunger_purchase(price):
 	if player.money >= price:
-		if price > 5:
+		if price > 15:
 			player.money -= price
 			hunger.value += (bigcare * hunmult)
 			happy.value += (lilcare * hunmult)
@@ -58,7 +58,7 @@ func _on_hunger_purchase(price):
 
 func _on_clean_purchase(price):
 	if player.money >= price:
-		if price > 5:
+		if price > 15:
 			player.money -= price
 			clean.value += (bigcare * clemult)
 			hunger.value += (lilcare * clemult)
@@ -71,7 +71,7 @@ func _on_clean_purchase(price):
 
 func _on_happy_purchase(price):
 	if player.money >= price:
-		if price > 5:
+		if price > 15:
 			player.money -= price
 			happy.value += (bigcare * hapmult)
 			clean.value += (lilcare * hapmult)
@@ -84,18 +84,18 @@ func _on_happy_purchase(price):
 
 func _upgrade_stat(stat):
 	if stat == "hunger":
-		hunmult = 1.2
+		hunmult = 1.5
 	elif stat == "happy":
-		hapmult = 1.2
+		hapmult = 1.5
 	elif stat == "clean":
-		clemult = 1.2
+		clemult = 1.5
 
 func _pet_animation_manager():
-	if player.sleeping:
-		player.sleep += 2
-		if player.sleep >= 100:
-			player.sleeping = false
-			$DogAnim.play("HappyDog")
+#	if player.sleeping:
+#		player.sleep += 2
+#		if player.sleep >= 100:
+#			player.sleeping = false
+#			$DogAnim.play("HappyDog")
 	if player.qol <= 500:
 		$DogAnim.play("Misery")
 		return
@@ -108,10 +108,10 @@ func _pet_animation_manager():
 	elif clean.value <= 30:
 		$DogAnim.play("StinkyDog")
 		return
-	elif player.sleep <= 25:
-		$DogAnim.play("SleepDog")
-		player.sleep += 1.5
-		return
+#	elif player.sleep <= 25:
+#		$DogAnim.play("SleepDog")
+#		player.sleep += 1.5
+#		return
 	elif player.qol >= 540:
 		$DogAnim.play("HappyDog")
 		return

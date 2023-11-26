@@ -11,11 +11,11 @@ func _ready():
 		$Shmoney/Shmoney.set_texture(load("res://assets/UIassets/Icons/money.png"))
 		$FlatShmUp0/Cost.text = ("Cost: $1.50")
 		$FlatShmUp0/Icon.set_texture(load("res://assets/UIassets/Icons/money.png"))
-		$FlatShmUp1/Cost.text = ("Cost: $5.00")
+		$FlatShmUp1/Cost.text = ("Cost: $6.00")
 		$FlatShmUp1/Icon.set_texture(load("res://assets/UIassets/Icons/money.png"))
 		$GShmucks/Cost.text = ("Cost: $50.00")
 		$GShmucks/Icon.set_texture(load("res://assets/UIassets/Icons/money.png"))
-		$TimeSkip/Cost.text = ("Cost: $100.00")
+		$TimeSkip/Cost.text = ("Cost: $90.00")
 		$TimeSkip/Icon.set_texture(load("res://assets/UIassets/Icons/money.png"))
 
 func _toggle_buttons():
