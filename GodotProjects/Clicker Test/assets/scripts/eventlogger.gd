@@ -35,11 +35,17 @@ var sheetname = "PlayerData"
 var SEND
 var geturl = (apiurl + "?sheetname=" +sheetname)
 
+var salt
+var adjname
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
+	salt = str(randi() % 10000)
+	adjname = Global.DogName.replace(" ", "-")
 	player = get_parent().get_node("canvas")
 	end = get_parent().get_node("GameComp/Next")
-	playerconfig = {"PetName":Global.DogName,
+	playerconfig = {"PetName":(adjname + salt),
 					"Test":Global.Test,
 					"Q1":Global.AvgHours,
 					"Q2":Global.Idle,
@@ -134,7 +140,7 @@ func _on_timer_timeout():
 	qol = player.qol
 	time = (str(Time.get_time_dict_from_system()["hour"])+ "-" +str(Time.get_time_dict_from_system()["minute"])+"-"+str(Time.get_time_dict_from_system()["second"]))
 	curtime = Time.get_datetime_dict_from_system(false)
-	playerdata = {"Name":Global.DogName,
+	playerdata = {"Name":(adjname + salt),
 					"Points":points,
 					"Money":money,
 					"IAPSpent":iap_spent,

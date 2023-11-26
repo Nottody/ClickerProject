@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var click
-var priceMult = 1.1
+var priceMult = 1.15
 var newPrice
 var buttons
 var points

@@ -8,7 +8,7 @@ var qol = 0.0
 var sleep = 100
 var sleeping = false
 var pet
-var money = 1000
+var money = 100
 var passiveEarn = 0.0
 var shmoney = 100
 var click = 1
@@ -106,7 +106,7 @@ func _on_timer_timeout():
 	if bonustimer > 0:
 		bonustimer -= 1
 		$BonusTime.visible = true
-		$BonusTime.text = "Bonus: +"+ str((pointmult - 1)*100) +"% \nTime: " + str(roundi(float(bonustimer/10)))
+		$BonusTime.text = "Bonus: +"+ str((pointmult - 1)*100) +"% \nTime: " + str(roundi(float(bonustimer)/10))
 	else:
 		$BonusTime.visible = false
 		pointmult = 1.0

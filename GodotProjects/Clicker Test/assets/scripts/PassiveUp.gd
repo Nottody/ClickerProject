@@ -28,7 +28,7 @@ func _on_pass_shop_pressed(price,passive,index,xpurchased):
 	nameRef = get_child(index)
 	if player.points >= price:
 		player.points -= price
-		player.passiveEarn += passive
+		player.passiveEarn += snapped(passive,0.1)
 		player._update_pmc()
 		newPrice = roundi(price * priceMult)
 		xpurchased += 1
@@ -61,4 +61,4 @@ func _on_otp_shop_pressed(price, passive, index):
 	_update_points_sec()
 
 func _update_points_sec():
-	$PointsPerSec.text = ("[center]"+str(player.passiveEarn * player.passmult)+"bits/sec")
+	$PointsPerSec.text = ("[center]"+str(snapped(player.passiveEarn * player.passmult,.01))+"bits/sec")
